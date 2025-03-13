@@ -15,6 +15,7 @@ import Testimonials from "./Testimonials";
 import Pricing from "./Pricing";
 import Footer from "./Footer";
 import Hero from "./Hero";
+import PartnersShowcase from "./Partners";
 
 function LandingPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -276,6 +277,7 @@ function LandingPage() {
     >
       <Header />
       <Hero isLoading={isLoading} router={router} />
+      <PartnersShowcase className="-mt-16" />
       <Features
         ideas={sampleIdeas.ideas}
         inProgressIdeas={sampleIdeas.inProgress}
@@ -290,7 +292,6 @@ function LandingPage() {
         onFeatureSubmit={fetchAllIdeas}
       />
       <Testimonials />
-      <Pricing />
       <Footer />
       <Toaster />
     </motion.div>

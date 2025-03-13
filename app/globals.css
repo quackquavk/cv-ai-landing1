@@ -12,4 +12,5 @@ body{
   background-color: linear-gradient(to bottom, #000000, #111111);
   scroll-behavior: smooth;
   transition: all 0.3s ease;
+  scrollbar-width: none;
 }

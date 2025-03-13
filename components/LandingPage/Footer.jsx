@@ -32,13 +32,12 @@ const itemVariants = {
 // Footer navigation links
 const footerLinks = [
   {
-    title: "Product",
+    title: "Affiliates",
     links: [
-      { name: "Features", href: "#" },
-      { name: "Pricing", href: "#" },
-      { name: "Testimonials", href: "#" },
-      { name: "FAQ", href: "#" },
-      { name: "Roadmap", href: "#" },
+      { name: "CV-AI", href: "https://cvai.dev" },
+      { name: "POS App", href: "https://rebuzzpos.com" },
+      { name: "Ordering App", href: "https://" },
+      { name: "Outsourcing", href: "https://nextoffice.dev" },
     ],
   },
   {
@@ -48,20 +47,17 @@ const footerLinks = [
       { name: "Content Library", href: "#" },
       { name: "Tutorials", href: "#" },
       { name: "Case Studies", href: "#" },
-      { name: "API Documentation", href: "#" },
     ],
   },
   {
     title: "Company",
     links: [
-      { name: "About Us", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Contact", href: "#" },
-      { name: "Partners", href: "#" },
-      { name: "Press Kit", href: "#" },
+      { name: "mail@rebuzzllc.com", href: "mailto:mail@rebuzzllc.com" },
+      { name: "+1 929 483 3345", href: "tel:+19294833345" },
+      { name: "Delaware, USA", href: "#" },
     ],
   },
-];
+]
 
 // Social media links
 const socialLinks = [

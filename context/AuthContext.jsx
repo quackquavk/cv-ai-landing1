@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   let api_url = process.env.NEXT_PUBLIC_SCRUM_API_URL;
   const handleLogin = () => {
-    window.location.href = `${api_url}/auth/google`;
+    window.location.href = `${api_url}/auth/google?service=cvai`;
   };
 
   const checkAuth = async () => {

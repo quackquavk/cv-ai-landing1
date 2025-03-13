@@ -25,7 +25,7 @@ const Hero = ({ isLoading, router }) => {
   };
 
   return (
-    <div className="relative z-10 container mx-auto px-2 md:px-6 flex flex-col items-center justify-center min-h-[90vh] -mt-16 bg-black">
+    <section id="home" className="relative z-10 container mx-auto px-2 md:px-6 flex flex-col items-center justify-center min-h-[90vh] -mt-16 bg-black">
       <div className="max-w-2xl w-full space-y-8 text-center">
         <motion.div
           initial="hidden"
@@ -114,7 +114,7 @@ const Hero = ({ isLoading, router }) => {
           </motion.div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
