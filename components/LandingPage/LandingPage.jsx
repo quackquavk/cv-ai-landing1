@@ -277,7 +277,7 @@ function LandingPage() {
     >
       <Header />
       <Hero isLoading={isLoading} router={router} />
-      <PartnersShowcase className="-mt-16" />
+      <PartnersShowcase className="-mt-25 z-50" />
       <Features
         ideas={sampleIdeas.ideas}
         inProgressIdeas={sampleIdeas.inProgress}
