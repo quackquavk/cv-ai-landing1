@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AuthCallback() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { checkAuth } = useAuth();
   const { toast } = useToast();
 
@@ -14,7 +14,6 @@ export default function AuthCallback() {
         const params = new URLSearchParams(window.location.search);
         const token = params.get('token');
         const error = params.get('error');
-
 
         if (token) {
           localStorage.setItem('auth_token', token);
@@ -26,7 +25,7 @@ export default function AuthCallback() {
             title: "Success",
             description: "Successfully signed in!",
           });
-          navigate('/', { replace: true });
+          router.replace('/');
         } else if (error) {
           console.error('Authentication error:', error);
           toast({
@@ -34,7 +33,7 @@ export default function AuthCallback() {
             description: error || "Authentication failed",
             variant: "destructive",
           });
-          navigate('/', { replace: true });
+          router.replace('/');
         } else {
           console.error('No token or error in URL');
           toast({
@@ -42,7 +41,7 @@ export default function AuthCallback() {
             description: "Authentication response missing",
             variant: "destructive",
           });
-          navigate('/', { replace: true });
+          router.replace('/');
         }
       } catch (error) {
         console.error('Auth callback error:', error);
@@ -51,12 +50,12 @@ export default function AuthCallback() {
           description: "Authentication process failed",
           variant: "destructive",
         });
-        navigate('/', { replace: true });
+        router.replace('/');
       }
     };
 
     handleAuth();
-  }, [navigate, checkAuth, toast]);
+  }, [router, checkAuth, toast]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-black">

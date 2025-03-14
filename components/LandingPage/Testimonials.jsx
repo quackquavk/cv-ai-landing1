@@ -50,44 +50,45 @@ const testimonials = [
   {
     id: 1,
     name: "Sarah Johnson",
-    role: "Marketing Director",
-    company: "TechGrowth Inc.",
+    role: "HR Manager",
+    company: "TalentBridge Inc.",
     avatar: "/sarah.jpg",
     content:
-      "This content calendar tool has completely transformed our marketing strategy. We've seen a 40% increase in engagement since implementing the AI-generated content ideas.",
+      "CV-AI has revolutionized our hiring process. We’ve cut candidate screening time by 60%, allowing us to focus on top talent faster.",
     rating: 5,
   },
   {
     id: 2,
     name: "Michael Chen",
-    role: "Social Media Manager",
+    role: "Recruitment Lead",
     company: "Innovate Solutions",
     avatar: "/michael.jpg",
     content:
-      "I was skeptical at first, but the quality of content suggestions is remarkable. It's like having an expert content strategist on demand, available with just one click.",
+      "I was skeptical at first, but CV-AI’s candidate matching is incredibly accurate. It feels like having an AI recruiter working 24/7 for us.",
     rating: 5,
   },
   {
     id: 3,
     name: "Jessica Williams",
-    role: "E-commerce Owner",
-    company: "StyleBoutique",
+    role: "Hiring Specialist",
+    company: "TechTalent Hub",
     avatar: "/jessica.jpg",
     content:
-      "The country-specific holiday recommendations have been a game-changer for our international campaigns. Our engagement rates have never been higher.",
+      "The AI-driven recommendations have helped us discover hidden talent we would’ve otherwise overlooked. Our hiring speed has doubled!",
     rating: 4,
   },
   {
     id: 4,
     name: "David Rodriguez",
-    role: "Content Creator",
-    company: "Digital Nomad",
+    role: "Talent Acquisition Manager",
+    company: "GlobalHire",
     avatar: "/david.jpg",
     content:
-      "As a solo creator, planning content was always my biggest challenge. Now I can generate a month's worth of ideas in minutes. Absolutely worth every penny!",
+      "CV-AI takes the guesswork out of recruitment. It quickly filters top candidates, making our decision-making process much smoother.",
     rating: 5,
   },
-]
+];
+
 
 const cn = (...classes) => {
   return classes.filter(Boolean).join(" ")
@@ -105,7 +106,7 @@ export default function Testimonials() {
     const interval = setInterval(() => {
       setDirection(1)
       setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1))
-    }, 4000)
+    }, 3000)
 
     return () => clearInterval(interval)
   }, [isAutoPlaying])
@@ -135,7 +136,7 @@ export default function Testimonials() {
       className="py-[140px] relative overflow-hidden bg-black text-white"
     >
       {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden ">
         <div className="absolute -top-[30%] -left-[10%] w-[50%] h-[70%] rounded-full bg-[#ff6600]/5 blur-[120px]" />
         <div className="absolute -bottom-[30%] -right-[10%] w-[50%] h-[70%] rounded-full bg-[#ff6600]/5 blur-[120px]" />
         <div className="absolute top-[20%] right-[5%] w-[30%] h-[40%] rounded-full bg-[#ff9d4d]/5 blur-[100px]" />
@@ -155,7 +156,7 @@ export default function Testimonials() {
         {/* Testimonial carousel */}
         <div className="relative max-w-4xl mx-auto">
           {/* Add a fixed height container to prevent layout shifts */}
-          <div className="relative" style={{ height: "auto", minHeight: "300px" }}>
+          <div className="relative" style={{  height: "auto" ,minHeight: "300px" , maxHeight: "500px" }}>
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
