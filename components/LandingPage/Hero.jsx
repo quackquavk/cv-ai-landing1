@@ -77,7 +77,7 @@ const Hero = ({ isLoading, router }) => {
                   borderColor: "#ff6600",
                   color: "white",
                 }}
-                onClick={() => router.push("/calendar")}
+                onClick={() => router.push("https://app.cvai.dev")}
                 className="relative px-8 py-6 text-lg font-medium rounded-lg 
                   transition-all duration-300 ease-out text-white bg-[#ff6600] hover:bg-[#ff6600]
                   shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40"
