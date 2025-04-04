@@ -12,7 +12,7 @@ const poppins = Poppins({
 
 
 export const metadata = {
-  title: "CV-AI",
+  title: "Resume AI",
   description: "Find your next candidate faster",
 };
 

@@ -11,6 +11,7 @@ import {
   Linkedin,
   Twitter,
 } from "lucide-react";
+import Image from "next/image";
 
 // Animation variants
 const containerVariants = {
@@ -34,10 +35,11 @@ const footerLinks = [
   {
     title: "Affiliates",
     links: [
-      { name: "CV-AI", href: "https://cvai.dev" },
+      { name: "Rebuzz AI", href: "https://rebuzzai.com" },
       { name: "POS App", href: "https://rebuzzpos.com" },
-      { name: "Ordering App", href: "https://" },
+      { name: "Ordering App", href: "https://shop.rebuzzpos.com" },
       { name: "Outsourcing", href: "https://nextoffice.dev" },
+      { name: "Brandbuilder", href: "https://brandbuilder.com.np" },
     ],
   },
   {
@@ -57,7 +59,7 @@ const footerLinks = [
       { name: "Delaware, USA", href: "#" },
     ],
   },
-]
+];
 
 // Social media links
 const socialLinks = [
@@ -110,15 +112,21 @@ export default function Footer() {
             className="lg:col-span-2 space-y-6"
           >
             <div className="flex items-center">
-              <Calendar className="w-8 h-8 text-[#ff6600] mr-2" />
+              <Image
+                src="/cvai.png"
+                alt="CV_AI"
+                width={50}
+                height={50}
+                className="object-contain mr-2"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
-                Rebuzz AI
+                Resume AI
               </span>
             </div>
 
             <p className="text-gray-400 max-w-md">
-              AI-powered content calendar generation to help you plan, create,
-              and schedule your content strategy with just a click.
+              AI-powered candidate sourcing to help recruiters find, assess, and
+              connect with top talent faster—all with just a click.
             </p>
 
             {/* Newsletter subscription
@@ -217,7 +225,7 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} Rebuzz AI. All rights reserved.
+            &copy; {new Date().getFullYear()} Resume AI. All rights reserved.
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex gap-6 text-sm">

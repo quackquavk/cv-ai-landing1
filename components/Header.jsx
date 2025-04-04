@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeLink, setActiveLink] = useState("")
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("");
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Handle intersection observer for active link
   useEffect(() => {
@@ -27,27 +27,27 @@ const Header = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveLink(entry.target.id)
+            setActiveLink(entry.target.id);
           }
-        })
+        });
       },
-      { threshold: 0.7 },
-    )
+      { threshold: 0.7 }
+    );
 
-    const sections = document.querySelectorAll("section[id]")
-    sections.forEach((section) => observer.observe(section))
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
 
     return () => {
-      sections.forEach((section) => observer.unobserve(section))
-    }
-  }, [])
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
 
   const navLinks = [
     { href: "#home", label: "Home" },
     { href: "#features", label: "Features" },
     { href: "#testimonials", label: "Testimonials" },
     { href: "#", label: "Pricing" },
-  ]
+  ];
 
   return (
     <header
@@ -67,8 +67,14 @@ const Header = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="relative overflow-hidden rounded-lg">
-              <motion.div whileHover={{ scale: 1.05 }} >
-                <Image src="/cvai.png" alt="CV_AI" width={50} height={50} className="object-contain" />
+              <motion.div whileHover={{ scale: 1.05 }}>
+                <Image
+                  src="/cvai.png"
+                  alt="CV_AI"
+                  width={50}
+                  height={50}
+                  className="object-contain"
+                />
               </motion.div>
             </div>
             <motion.span
@@ -76,7 +82,7 @@ const Header = () => {
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <Link href="/">CV-AI</Link>
+              <Link href="/">Resume AI</Link>
             </motion.span>
           </motion.div>
 
@@ -92,7 +98,9 @@ const Header = () => {
                 {link.label}
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 bg-[#ff6600] transition-all duration-300 ${
-                    activeLink === link.href.substring(1) ? "w-full" : "w-0 group-hover:w-full"
+                    activeLink === link.href.substring(1)
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
                   }`}
                 />
               </Link>
@@ -103,15 +111,21 @@ const Header = () => {
           <div className="flex items-center gap-3">
             {/* Auth Buttons */}
             <div className="hidden sm:flex items-center gap-4">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
                   variant="ghost"
                   className="text-[#ff6600] hover:bg-[#ff6600]/10 hover:text-[#ff6600] transition-all duration-200"
                 >
-                  Log in
+                  <Link href={"https://app.cvai.dev/dashboard"}>Log In</Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
                   style={{
                     background: "linear-gradient(to right, #ff6600, #ff8533)",
@@ -121,7 +135,9 @@ const Header = () => {
                   }}
                   className="hover:opacity-90 transition-all duration-200"
                 >
-                  Get Started
+                  <Link href={"https://app.cvai.dev/dashboard"}>
+                    Get Started
+                  </Link>
                 </Button>
               </motion.div>
             </div>
@@ -158,8 +174,8 @@ const Header = () => {
                     href={link.href}
                     className="py-3 px-4 text-[#b0b0b0] hover:text-[#ff6600] hover:bg-[#ff6600]/5 rounded-md transition-colors duration-200"
                     onClick={() => {
-                      setActiveLink(link.href.substring(1))
-                      setMobileMenuOpen(false)
+                      setActiveLink(link.href.substring(1));
+                      setMobileMenuOpen(false);
                     }}
                   >
                     {link.label}
@@ -171,7 +187,7 @@ const Header = () => {
                   variant="ghost"
                   className="w-full justify-start text-[#b0b0b0] hover:text-[#ff6600] hover:bg-[#ff6600]/10"
                 >
-                  Log in
+                  <Link href={"https://app.cvai.dev/dashboard"}>Log In</Link>
                 </Button>
                 <Button
                   style={{
@@ -181,7 +197,7 @@ const Header = () => {
                   }}
                   className="w-full hover:opacity-90 transition-all duration-200"
                 >
-                  Get Started
+                  <Link href={"https://app.cvai.dev/dashboard"}>Get Started</Link>
                 </Button>
               </div>
             </div>
@@ -189,8 +205,7 @@ const Header = () => {
         )}
       </AnimatePresence>
     </header>
-  )
-}
+  );
+};
 
-export default Header
-
+export default Header;

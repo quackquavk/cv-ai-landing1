@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button"; // Adjust the import path as necessary
 import { Sparkles, Play } from "lucide-react"; // Ensure these icons are available
+import Link from "next/link";
 
 const Hero = ({ isLoading, router }) => {
   const containerVariants = {
@@ -84,7 +85,8 @@ const Hero = ({ isLoading, router }) => {
                 disabled={isLoading}
               >
                 <span className="relative z-10 flex items-center justify-center gap-2 ">
-                  Get Started <Sparkles className="h-5 w-5" />
+                  <Link href="https://app.cvai.dev">Get Started</Link>
+                  <Sparkles className="h-5 w-5" />
                 </span>
               </Button>
 
@@ -107,9 +109,11 @@ const Hero = ({ isLoading, router }) => {
               variants={itemVariants}
               className="mt-8 text-gray-400 flex items-center justify-center gap-2"
             >
-              <span>No credit card required</span>
+
               <span className="mx-2">•</span>
-              <span>Free 14-day trial</span>
+              <span className="mx-2">Free for now.</span>
+              <span className="mx-2">•</span>
+              
             </motion.div>
           </motion.div>
         </motion.div>

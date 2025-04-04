@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Quote, Star } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Quote, Star } from "lucide-react";
 
 // Animation variants
 const containerVariants = {
@@ -12,12 +12,16 @@ const containerVariants = {
       delayChildren: 0.2,
     },
   },
-}
+};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-}
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 const testimonialVariants = {
   enter: (direction) => ({
@@ -43,7 +47,7 @@ const testimonialVariants = {
     width: "100%", // Ensure full width
     transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
   }),
-}
+};
 
 // Testimonial data
 const testimonials = [
@@ -54,7 +58,7 @@ const testimonials = [
     company: "TalentBridge Inc.",
     avatar: "/sarah.jpg",
     content:
-      "CV-AI has revolutionized our hiring process. We’ve cut candidate screening time by 60%, allowing us to focus on top talent faster.",
+      "Resume AI has revolutionized our hiring process. We’ve cut candidate screening time by 60%, allowing us to focus on top talent faster.",
     rating: 5,
   },
   {
@@ -64,7 +68,7 @@ const testimonials = [
     company: "Innovate Solutions",
     avatar: "/michael.jpg",
     content:
-      "I was skeptical at first, but CV-AI’s candidate matching is incredibly accurate. It feels like having an AI recruiter working 24/7 for us.",
+      "I was skeptical at first, but Resume AI’s candidate matching is incredibly accurate. It feels like having an AI recruiter working 24/7 for us.",
     rating: 5,
   },
   {
@@ -84,47 +88,53 @@ const testimonials = [
     company: "GlobalHire",
     avatar: "/david.jpg",
     content:
-      "CV-AI takes the guesswork out of recruitment. It quickly filters top candidates, making our decision-making process much smoother.",
+      "Resume AI takes the guesswork out of recruitment. It quickly filters top candidates, making our decision-making process much smoother.",
     rating: 5,
   },
 ];
 
-
 const cn = (...classes) => {
-  return classes.filter(Boolean).join(" ")
-}
+  return classes.filter(Boolean).join(" ");
+};
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [direction, setDirection] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying) return
+    if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
-      setDirection(1)
-      setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1))
-    }, 3000)
+      setDirection(1);
+      setCurrentIndex((prevIndex) =>
+        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
 
-    return () => clearInterval(interval)
-  }, [isAutoPlaying])
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
 
   const goToTestimonial = (index) => {
-    setDirection(index > currentIndex ? 1 : -1)
-    setIsAutoPlaying(false)
-    setCurrentIndex(index)
-  }
+    setDirection(index > currentIndex ? 1 : -1);
+    setIsAutoPlaying(false);
+    setCurrentIndex(index);
+  };
 
   // Generate star rating
   const renderStars = (rating) => {
     return Array(5)
       .fill(0)
       .map((_, i) => (
-        <Star key={i} className={`w-5 h-5 ${i < rating ? "text-[#ff6600] fill-[#ff6600]" : "text-gray-400"}`} />
-      ))
-  }
+        <Star
+          key={i}
+          className={`w-5 h-5 ${
+            i < rating ? "text-[#ff6600] fill-[#ff6600]" : "text-gray-400"
+          }`}
+        />
+      ));
+  };
 
   return (
     <motion.section
@@ -142,21 +152,29 @@ export default function Testimonials() {
         <div className="absolute top-[20%] right-[5%] w-[30%] h-[40%] rounded-full bg-[#ff9d4d]/5 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6">
+      <div
+        className="relative z-10 container mx-auto px-6
+      
+      "
+      >
         {/* Section header */}
-        <motion.div variants={itemVariants} className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+        <motion.div
+          variants={itemVariants}
+          className="text-center max-w-3xl mx-auto mb-20 space-y-4"
+        >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
             What Our <span className="text-[#ff6600]">Users</span> Are Saying
           </h2>
           <p className="text-xl text-gray-400 mt-4 max-w-2xl mx-auto">
-            Join thousands of content creators who have revolutionized their content strategy
+            Resume AI helps recruiters identify and connect with ideal
+            candidates by leveraging AI-driven talent matching technology.
           </p>
         </motion.div>
 
         {/* Testimonial carousel */}
         <div className="relative max-w-4xl mx-auto">
           {/* Add a fixed height container to prevent layout shifts */}
-          <div className="relative" style={{  height: "auto" ,minHeight: "300px" , maxHeight: "500px" }}>
+          <div className="relative" style={{ height: "450px" }}>
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -183,7 +201,10 @@ export default function Testimonials() {
                           <div className="relative p-1 rounded-full bg-gradient-to-br from-[#ff6600] to-[#ff9d4d]">
                             <div className="p-0.5 rounded-full bg-black/80 backdrop-blur-sm">
                               <img
-                                src={testimonials[currentIndex].avatar || "/placeholder.svg"}
+                                src={
+                                  testimonials[currentIndex].avatar ||
+                                  "/placeholder.svg"
+                                }
                                 alt={testimonials[currentIndex].name}
                                 className="w-20 h-20 rounded-full object-cover"
                               />
@@ -192,12 +213,20 @@ export default function Testimonials() {
                         </div>
 
                         <div className="mt-2">
-                          <h4 className="font-bold text-xl text-white">{testimonials[currentIndex].name}</h4>
-                          <p className="text-gray-400">{testimonials[currentIndex].role}</p>
-                          <p className="text-[#ff6600] font-medium">{testimonials[currentIndex].company}</p>
+                          <h4 className="font-bold text-xl text-white">
+                            {testimonials[currentIndex].name}
+                          </h4>
+                          <p className="text-gray-400">
+                            {testimonials[currentIndex].role}
+                          </p>
+                          <p className="text-[#ff6600] font-medium">
+                            {testimonials[currentIndex].company}
+                          </p>
                         </div>
 
-                        <div className="flex space-x-1 mt-2">{renderStars(testimonials[currentIndex].rating)}</div>
+                        <div className="flex space-x-1 mt-2">
+                          {renderStars(testimonials[currentIndex].rating)}
+                        </div>
                       </div>
 
                       {/* Testimonial content */}
@@ -224,7 +253,9 @@ export default function Testimonials() {
                 onClick={() => goToTestimonial(index)}
                 className={cn(
                   "relative h-2 rounded-full transition-all duration-500 overflow-hidden",
-                  index === currentIndex ? "w-10 bg-[#ff6600]" : "w-2 bg-white/20 hover:bg-white/30",
+                  index === currentIndex
+                    ? "w-10 bg-[#ff6600]"
+                    : "w-2 bg-white/20 hover:bg-white/30"
                 )}
                 aria-label={`Go to testimonial ${index + 1}`}
               >
@@ -233,7 +264,11 @@ export default function Testimonials() {
                     className="absolute inset-0 bg-[#ff6600]/60"
                     initial={{ x: "-100%" }}
                     animate={{ x: "0%" }}
-                    transition={{ duration: 6, ease: "linear", repeat: isAutoPlaying ? Number.POSITIVE_INFINITY : 0 }}
+                    transition={{
+                      duration: 6,
+                      ease: "linear",
+                      repeat: isAutoPlaying ? Number.POSITIVE_INFINITY : 0,
+                    }}
                   />
                 )}
               </button>
@@ -248,7 +283,7 @@ export default function Testimonials() {
                 "text-xs font-medium px-3 py-1 rounded-full transition-all duration-300",
                 isAutoPlaying
                   ? "bg-[#ff6600]/10 text-[#ff6600] hover:bg-[#ff6600]/20"
-                  : "bg-white/10 text-gray-400 hover:bg-white/20",
+                  : "bg-white/10 text-gray-400 hover:bg-white/20"
               )}
             >
               {isAutoPlaying ? "Auto-playing" : "Paused"}
@@ -257,5 +292,5 @@ export default function Testimonials() {
         </div>
       </div>
     </motion.section>
-  )
+  );
 }

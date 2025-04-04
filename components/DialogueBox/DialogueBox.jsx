@@ -44,7 +44,7 @@ function DialogueBox({ variant, handleDialogue, image, sidebar }) {
               </h1>
               <h1>
                 {sidebar
-                  ? 'Please Register or SignIn to use all the features of Rebuzz AI'
+                  ? 'Please Register or SignIn to use all the features of Resume AI'
                   : 'Too many generations,please try again later or get started from'}
                 <span>&nbsp;</span>
                 {sidebar && <br />}
