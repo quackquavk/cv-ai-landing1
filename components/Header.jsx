@@ -43,10 +43,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#features", label: "Features" },
-    { href: "#testimonials", label: "Testimonials" },
-    { href: "#", label: "Pricing" },
+    { href: "/#home", label: "Home" },
+    { href: "/#features", label: "Features" },
+    { href: "/#testimonials", label: "Testimonials" },
+    { href: "/#pricing", label: "Pricing" },
   ];
 
   return (

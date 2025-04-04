@@ -71,28 +71,6 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [isSubscribing, setIsSubscribing] = useState(false);
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setIsSubscribing(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubscribing(false);
-      setSubscribed(true);
-      setEmail("");
-
-      // Reset success message after 3 seconds
-      setTimeout(() => {
-        setSubscribed(false);
-      }, 3000);
-    }, 1000);
-  };
-
   return (
     <motion.footer
       variants={containerVariants}
@@ -230,19 +208,19 @@ export default function Footer() {
 
           <motion.div variants={itemVariants} className="flex gap-6 text-sm">
             <a
-              href="#"
+              href="/policy"
               className="text-gray-400 hover:text-white transition-colors duration-300"
             >
               Privacy Policy
             </a>
             <a
-              href="#"
+              href="/tos"
               className="text-gray-400 hover:text-white transition-colors duration-300"
             >
               Terms of Service
             </a>
             <a
-              href="#"
+              href="/cookies"
               className="text-gray-400 hover:text-white transition-colors duration-300"
             >
               Cookies
