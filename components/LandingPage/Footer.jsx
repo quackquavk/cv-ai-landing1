@@ -42,15 +42,15 @@ const footerLinks = [
       { name: "Brandbuilder", href: "https://brandbuilder.com.np" },
     ],
   },
-  {
-    title: "Resources",
-    links: [
-      { name: "Blog", href: "#" },
-      { name: "Content Library", href: "#" },
-      { name: "Tutorials", href: "#" },
-      { name: "Case Studies", href: "#" },
-    ],
-  },
+  // {
+  //   title: "Resources",
+  //   links: [
+  //     { name: "Blog", href: "#" },
+  //     { name: "Content Library", href: "#" },
+  //     { name: "Tutorials", href: "#" },
+  //     { name: "Case Studies", href: "#" },
+  //   ],
+  // },
   {
     title: "Company",
     links: [

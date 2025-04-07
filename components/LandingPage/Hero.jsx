@@ -26,7 +26,10 @@ const Hero = ({ isLoading, router }) => {
   };
 
   return (
-    <section id="home" className="relative z-10 container mx-auto px-2 md:px-6 flex flex-col items-center justify-center min-h-[90vh] -mt-16 bg-black">
+    <section
+      id="home"
+      className="relative z-10 container mx-auto px-2 md:px-6 flex flex-col items-center justify-center min-h-[90vh] -mt-16 bg-black"
+    >
       <div className="max-w-2xl w-full space-y-8 text-center">
         <motion.div
           initial="hidden"
@@ -90,30 +93,29 @@ const Hero = ({ isLoading, router }) => {
                 </span>
               </Button>
 
-              <Button
-                onClick={() => router.push("/demo")}
-                variant="outline"
-                className="relative px-8 py-6 text-lg font-medium rounded-lg 
+              <Link href="https://youtu.be/9QQ4uInOI_0" target="_blank">
+                <Button
+                  variant="outline"
+                  className="relative px-8 py-6 text-lg font-medium rounded-lg 
                   border-2 border-gray-700 hover:border-[#ff6600]/70
                   transition-all duration-300 ease-out text-white 
                   hover:bg-[#ff6600]/10"
-                disabled={isLoading}
-              >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Watch Demo <Play className="h-5 w-5" />
-                </span>
-              </Button>
+                  disabled={isLoading}
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Watch Demo <Play className="h-5 w-5" />
+                  </span>
+                </Button>
+              </Link>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
               className="mt-8 text-gray-400 flex items-center justify-center gap-2"
             >
-
               <span className="mx-2">•</span>
               <span className="mx-2">Free for now.</span>
               <span className="mx-2">•</span>
-              
             </motion.div>
           </motion.div>
         </motion.div>

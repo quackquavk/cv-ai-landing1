@@ -46,7 +46,7 @@ const Header = () => {
     { href: "/#home", label: "Home" },
     { href: "/#features", label: "Features" },
     { href: "/#testimonials", label: "Testimonials" },
-    { href: "/#pricing", label: "Pricing" },
+    { href: "https://app.cvai.dev", label: "Pricing" },
   ];
 
   return (
