@@ -1,0 +1,140 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight, Clock } from "lucide-react";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+const blogPosts = [
+  {
+    title: "Why You're Not Landing a Developer Job (And How to Fix It)",
+    excerpt:
+      "78% of junior developer resumes never reach human recruiters. Discover the real reasons your applications disappear and how 3 developers went from 150+ rejections to multiple offers.",
+    category: "Career Development",
+    readTime: "15 min read",
+    slug: "/blog/junior-developer-not-getting-interviews",
+  },
+  {
+    title: "The Hidden Job Market: Offshore Opportunities",
+    excerpt:
+      "Unlock global remote opportunities with 2-3x higher salaries. Learn how semantic AI matching connects you with companies hiring worldwide.",
+    category: "Remote Work",
+    readTime: "12 min read",
+    slug: "/blog/hidden-job-market-offshore-opportunities",
+  },
+  {
+    title: "Software Developer Job Opportunities with AI Matching",
+    excerpt:
+      "Traditional job boards trap you in keyword hell. Discover how semantic AI understands your actual capabilities and matches you with roles that value skills over arbitrary requirements.",
+    category: "AI & Technology",
+    readTime: "10 min read",
+    slug: "/blog/software-developer-job-opportunities-ai-matching",
+  },
+];
+
+const BlogShowcase = () => {
+  return (
+    <section className="relative py-20 bg-black">
+      <div className="container mx-auto px-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {/* Section Header */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
+              Latest Insights
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Expert advice on landing your dream developer job and navigating
+              the modern job market
+            </p>
+          </motion.div>
+
+          {/* Blog Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="group relative"
+              >
+                <Link href={post.slug}>
+                  <div className="h-full bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-[#ff6600]/20 rounded-2xl p-6 hover:border-[#ff6600]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#ff6600]/10 cursor-pointer">
+                    {/* Category Badge */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-semibold text-[#ff6600] bg-[#ff6600]/10 px-3 py-1 rounded-full">
+                        {post.category}
+                      </span>
+                      <div className="flex items-center gap-1 text-gray-500 text-sm">
+                        <Clock size={14} />
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ff6600] transition-colors duration-300 line-clamp-2">
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+
+                    {/* Read More Link */}
+                    <div className="flex items-center gap-2 text-[#ff6600] font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                      <span>Read More</span>
+                      <ArrowRight
+                        size={16}
+                        className="group-hover:translate-x-1 transition-transform duration-300"
+                      />
+                    </div>
+
+                    {/* Decorative Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#ff6600]/0 via-[#ff6600]/0 to-[#ff6600]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* View All Link */}
+          {/* <motion.div variants={itemVariants} className="text-center mt-12">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-lg border border-[#ff6600]/30 hover:border-[#ff6600] hover:bg-[#ff6600]/10 transition-all duration-300"
+            >
+              <span>View All Articles</span>
+              <ArrowRight size={18} />
+            </Link>
+          </motion.div> */}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default BlogShowcase;

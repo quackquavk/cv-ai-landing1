@@ -16,6 +16,8 @@ import Pricing from "./Pricing";
 import Footer from "./Footer";
 import Hero from "./Hero";
 import PartnersShowcase from "./Partners";
+import BlogShowcase from "./BlogShowcase";
+import FAQ from "./FAQ";
 
 function LandingPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -127,8 +129,6 @@ function LandingPage() {
   useEffect(() => {
     fetchAllIdeas();
   }, [fetchAllIdeas]);
-
-
 
   const handleVote = async (id) => {
     if (!user) {
@@ -291,7 +291,10 @@ function LandingPage() {
         error={error}
         onFeatureSubmit={fetchAllIdeas}
       />
+
       <Testimonials />
+      <BlogShowcase />
+      <FAQ />
       <Footer />
       <Toaster />
     </motion.div>
