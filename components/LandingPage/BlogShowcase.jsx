@@ -27,6 +27,14 @@ const itemVariants = {
 
 const blogPosts = [
   {
+    title: "AI Resume Builder: Create ATS-Optimized Resumes in Minutes",
+    excerpt:
+      "Stop losing to ATS systems. Build professional resumes with 5 customizable templates, real-time preview, and instant PDF export. Stand out from 250+ applicants per job posting.",
+    category: "Resume Building",
+    readTime: "8 min read",
+    slug: "/blog/ai-resume-builder-guide",
+  },
+  {
     title: "Why You're Not Landing a Developer Job (And How to Fix It)",
     excerpt:
       "78% of junior developer resumes never reach human recruiters. Discover the real reasons your applications disappear and how 3 developers went from 150+ rejections to multiple offers.",
@@ -41,14 +49,6 @@ const blogPosts = [
     category: "Remote Work",
     readTime: "12 min read",
     slug: "/blog/hidden-job-market-offshore-opportunities",
-  },
-  {
-    title: "Software Developer Job Opportunities with AI Matching",
-    excerpt:
-      "Traditional job boards trap you in keyword hell. Discover how semantic AI understands your actual capabilities and matches you with roles that value skills over arbitrary requirements.",
-    category: "AI & Technology",
-    readTime: "10 min read",
-    slug: "/blog/software-developer-job-opportunities-ai-matching",
   },
 ];
 
