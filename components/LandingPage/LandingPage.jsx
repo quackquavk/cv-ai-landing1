@@ -18,6 +18,7 @@ import Hero from "./Hero";
 import PartnersShowcase from "./Partners";
 import BlogShowcase from "./BlogShowcase";
 import FAQ from "./FAQ";
+import VideoShowcase from "./VideoShowcase";
 
 function LandingPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -278,6 +279,7 @@ function LandingPage() {
       <Header />
       <Hero isLoading={isLoading} router={router} />
       <PartnersShowcase className="-mt-25 z-50" />
+      <VideoShowcase />
       <Features
         ideas={sampleIdeas.ideas}
         inProgressIdeas={sampleIdeas.inProgress}
