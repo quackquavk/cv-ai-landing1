@@ -33,6 +33,20 @@ const itemVariants = {
 // Footer navigation links
 const footerLinks = [
   {
+    title: "Products",
+    links: [
+      { name: "AI Resume Builder", href: "/ai-resume-builder" },
+      {
+        name: "LinkedIn Auto Apply",
+        href: "https://app.cvai.dev/dashboard/candidate",
+      },
+      {
+        name: "Candidate Search",
+        href: "https://app.cvai.dev/dashboard/candidate",
+      },
+    ],
+  },
+  {
     title: "Affiliates",
     links: [
       { name: "Rebuzz AI", href: "https://rebuzzai.com" },
@@ -163,16 +177,20 @@ export default function Footer() {
             >
               <h4 className="text-lg font-medium">{section.title}</h4>
               <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-300"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
+                {section.links.map((link) => {
+                  const isExternal = link.href.startsWith("http");
+                  return (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        className="text-gray-400 hover:text-white transition-colors duration-300"
+                        {...(isExternal && { target: "_blank" })}
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
           ))}
