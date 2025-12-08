@@ -183,7 +183,7 @@ export default function AIResumeBuilderPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="https://app.cvai.dev/dashboard/candidate">
+              <Link href="https://app.cvai.dev/dashboard/resumes">
                 <Button className="px-8 py-6 text-lg font-semibold bg-[#ff6600] hover:bg-[#ff6600]/90 text-white rounded-lg shadow-lg shadow-orange-500/25 transition-all duration-300">
                   <Sparkles className="w-5 h-5 mr-2" />
                   Build Your Resume Free
@@ -348,7 +348,7 @@ export default function AIResumeBuilderPage() {
             </div>
 
             <motion.div variants={itemVariants} className="text-center mt-12">
-              <Link href="https://app.cvai.dev/dashboard/candidate">
+              <Link href="https://app.cvai.dev/dashboard/resumes">
                 <Button className="px-8 py-6 text-lg font-semibold bg-[#ff6600] hover:bg-[#ff6600]/90 text-white rounded-lg shadow-lg shadow-orange-500/25 transition-all duration-300">
                   Start Building Now
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -497,7 +497,7 @@ export default function AIResumeBuilderPage() {
                 builder to land interviews and get hired. Start creating your
                 professional resume today – it's completely free.
               </p>
-              <Link href="https://app.cvai.dev/dashboard/candidate">
+              <Link href="https://app.cvai.dev/dashboard/resumes">
                 <Button className="px-10 py-6 text-xl font-semibold bg-[#ff6600] hover:bg-[#ff6600]/90 text-white rounded-lg shadow-lg shadow-orange-500/25 transition-all duration-300">
                   <Sparkles className="w-6 h-6 mr-2" />
                   Create Your Free Resume
