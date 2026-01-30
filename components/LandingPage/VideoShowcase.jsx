@@ -8,7 +8,7 @@ function VideoShowcase() {
   const videoId = "ki520C8GJqo";
 
   return (
-    <section className="relative py-24 px-4 overflow-hidden">
+    <section className="relative py-24 px-4 overflow-hidden " id="how-it-works">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/50 to-black" />
 

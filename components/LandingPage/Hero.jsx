@@ -93,7 +93,7 @@ const Hero = ({ isLoading, router }) => {
                 </span>
               </Button>
 
-              <Link href="https://youtu.be/9QQ4uInOI_0" target="_blank">
+              <Link href="#how-it-works" target="_blank">
                 <Button
                   variant="outline"
                   className="relative px-8 py-6 text-lg font-medium rounded-lg 
