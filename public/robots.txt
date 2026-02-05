@@ -1,0 +1,31 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /auth/
+Disallow: /api/
+
+# GPTBot
+User-agent: GPTBot
+Allow: /
+
+# ChatGPT-User
+User-agent: ChatGPT-User
+Allow: /
+
+# Google-Extended
+User-agent: Google-Extended
+Allow: /
+
+# anthropic-ai
+User-agent: anthropic-ai
+Allow: /
+
+# Claude-Web
+User-agent: Claude-Web
+Allow: /
+
+# Host
+Host: https://cvai.dev
+
+# Sitemaps
+Sitemap: https://cvai.dev/sitemap.xml

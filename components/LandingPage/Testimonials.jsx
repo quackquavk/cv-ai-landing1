@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, Star } from "lucide-react";
+import Image from "next/image";
 
 // Animation variants
 const containerVariants = {
@@ -200,13 +201,15 @@ export default function Testimonials() {
                           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#ff6600] to-[#ff9d4d] blur-md opacity-30 scale-110" />
                           <div className="relative p-1 rounded-full bg-gradient-to-br from-[#ff6600] to-[#ff9d4d]">
                             <div className="p-0.5 rounded-full bg-black/80 backdrop-blur-sm">
-                              <img
+                              <Image
                                 src={
                                   testimonials[currentIndex].avatar ||
                                   "/placeholder.svg"
                                 }
                                 alt={testimonials[currentIndex].name}
-                                className="w-20 h-20 rounded-full object-cover"
+                                width={80}
+                                height={80}
+                                className="rounded-full object-cover"
                               />
                             </div>
                           </div>

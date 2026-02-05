@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/LandingPage/Footer";
 import Link from "next/link";
+import AuthorCard, {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+} from "@/components/blog/AuthorCard";
+import RelatedArticles from "@/components/blog/RelatedArticles";
 
 // Animation variants
 const containerVariants = {
@@ -21,6 +26,64 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+// Article metadata
+const articleData = {
+  title:
+    "The Hidden Job Market: Why Offshore Opportunities Could Triple Your Career Options",
+  description:
+    "Discover why 70% of jobs are never advertised and how offshore opportunities can triple your career options. Learn to access the hidden global job market.",
+  publishedDate: "2025-12-03",
+  updatedDate: "2026-02-05",
+  url: "https://cvai.dev/blog/hidden-job-market-offshore-opportunities",
+};
+
+const articleSchema = generateArticleSchema(articleData);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "https://cvai.dev" },
+  { name: "Blog", url: "https://cvai.dev/blog" },
+  { name: "Hidden Job Market Guide", url: articleData.url },
+]);
+
+// FAQ Schema for Hidden Job Market Blog Post
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is the hidden job market?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The hidden job market consists of job opportunities that are never publicly advertised, representing approximately 70% of all available positions. These roles are filled through networking, internal promotions, referrals, or direct recruitment by companies. Companies prefer this approach for cost efficiency, quality hires, speed, and confidentiality in sensitive roles.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How can offshore opportunities triple my career options?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Offshore opportunities expand your job market from local/national to global. Instead of competing for 50-100 positions in your local market, you can access 5,000-10,000+ positions globally through remote work. This removes geographic constraints, provides geographic arbitrage (earning high-market salaries while living in lower-cost regions), reduces competition, and gives you access to premium markets and industries that may not exist locally.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What industries offer the most offshore remote opportunities?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Technology and software development lead with 25% projected growth by 2031, followed by data analysis and business intelligence (38% increase in remote postings), digital marketing, customer success, and creative services. The remote work economy is projected to add $2.6 trillion annually to global GDP by 2030.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Are offshore remote jobs legitimate and stable?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, offshore remote work is a rapidly growing sector projected to add $2.6 trillion to global GDP by 2030. Major companies increasingly hire across borders, with 82% of cross-border hires in 2023 being remote roles. The trend is supported by improved technology, legal frameworks for international employment, and business cost savings averaging $11,000 per remote employee annually.",
+      },
+    },
+  ],
+};
+
 const HiddenJobMarketBlogPost = () => {
   return (
     <motion.div
@@ -29,6 +92,27 @@ const HiddenJobMarketBlogPost = () => {
       animate="visible"
       className="min-h-screen bg-black text-white relative"
     >
+      {/* Article Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+      {/* Breadcrumb Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      {/* FAQ Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
       <Header />
 
       {/* Blog Post Container */}
@@ -40,13 +124,13 @@ const HiddenJobMarketBlogPost = () => {
               The Hidden Job Market: Why Offshore Opportunities Could Triple
               Your Career Options
             </h1>
-            <div className="flex items-center gap-4 text-gray-400 text-sm">
-              <time dateTime="2025-12-03">December 3, 2025</time>
-              <span>•</span>
-              <span>Career Development</span>
-              <span>•</span>
-              <span>8 min read</span>
-            </div>
+            {/* Author Card with dates */}
+            <AuthorCard
+              publishedDate={articleData.publishedDate}
+              updatedDate={articleData.updatedDate}
+              readTime="8 min read"
+              category="Career Development"
+            />
           </motion.header>
 
           {/* Introduction */}
@@ -643,36 +727,8 @@ const HiddenJobMarketBlogPost = () => {
           </motion.section>
 
           {/* Related Articles */}
-          <motion.section variants={itemVariants} className="mb-12">
-            <h2 className="text-2xl font-bold mb-6 text-white">
-              Related Articles
-            </h2>
-            <div className="grid gap-4">
-              <Link
-                href="/blog/junior-developer-not-getting-interviews"
-                className="block bg-[#0a0a0a]/40 border border-[#ff6600]/10 rounded-lg p-4 hover:border-[#ff6600]/30 transition-colors"
-              >
-                <span className="text-[#ff6600] hover:text-[#ff6600]/80">
-                  Why are junior developers not getting interviews? →
-                </span>
-              </Link>
-              <Link
-                href="/blog/software-developer-job-opportunities-ai-matching"
-                className="block bg-[#0a0a0a]/40 border border-[#ff6600]/10 rounded-lg p-4 hover:border-[#ff6600]/30 transition-colors"
-              >
-                <span className="text-[#ff6600] hover:text-[#ff6600]/80">
-                  Software developer job opportunities →
-                </span>
-              </Link>
-              {/* <Link
-                href="#"
-                className="block bg-[#0a0a0a]/40 border border-[#ff6600]/10 rounded-lg p-4 hover:border-[#ff6600]/30 transition-colors"
-              >
-                <span className="text-[#ff6600] hover:text-[#ff6600]/80">
-                  Cross-Border Hiring Trends: What Job Seekers Need to Know →
-                </span>
-              </Link> */}
-            </div>
+          <motion.section variants={itemVariants}>
+            <RelatedArticles currentSlug="hidden-job-market-offshore-opportunities" />
           </motion.section>
         </div>
       </article>

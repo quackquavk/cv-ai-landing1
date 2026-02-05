@@ -68,6 +68,8 @@ const footerLinks = [
   {
     title: "Company",
     links: [
+      { name: "About Us", href: "/about" },
+      { name: "Blog", href: "/blog/ai-resume-builder-guide" },
       { name: "mail@rebuzzllc.com", href: "mailto:mail@rebuzzllc.com" },
       { name: "+1 929 483 3345", href: "tel:+19294833345" },
       { name: "Delaware, USA", href: "#" },

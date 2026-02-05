@@ -17,7 +17,27 @@ export const metadata = {
     title: "Hidden Job Market: Triple Your Career with Offshore Jobs",
     description:
       "Discover why 70% of jobs are never advertised and how offshore opportunities can triple your career options.",
-    url: "https://resumeai.com/blog/hidden-job-market-offshore-opportunities",
+    url: "https://cvai.dev/blog/hidden-job-market-offshore-opportunities",
+    siteName: "ResumeAI",
+    images: [
+      {
+        url: "/resume-builder-hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Hidden Job Market and Offshore Opportunities Guide",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hidden Job Market: Triple Your Career with Offshore Jobs",
+    description:
+      "Discover why 70% of jobs are never advertised and how offshore opportunities can triple your career options.",
+    images: ["/resume-builder-hero.png"],
+  },
+  alternates: {
+    canonical:
+      "https://cvai.dev/blog/hidden-job-market-offshore-opportunities",
   },
 };
 

@@ -28,46 +28,37 @@ const candidateFAQs = [
   {
     question: "Is ResumeAI free to use?",
     answer:
-      "Yes, uploading your resume and creating your profile is completely free for candidates.",
+      "Yes, uploading your resume and creating your profile is completely free for candidates. You can build professional, ATS-optimized resumes without any cost using our AI-powered resume builder. Free users get access to all 5 professional templates, real-time preview, and can create up to 5 resumes. Premium features are available for users who need unlimited resumes and advanced AI-powered content suggestions, but the core functionality remains free forever. We believe everyone deserves access to powerful career tools regardless of their financial situation.",
   },
   {
     question: "What happens to my resume after I upload it?",
     answer:
-      "Your resume is parsed into a structured format and stored securely. Recruiters can search for candidates matching their requirements, and you'll be notified when there's a potential match.",
+      "Your resume is parsed into a structured format using our advanced AI technology and stored securely with industry-standard encryption. Our semantic AI analyzes your skills, experience, and qualifications to understand the true depth of your capabilities—not just keywords. Recruiters using our platform can then search for candidates matching their requirements using semantic search technology, which understands context and meaning. When there's a potential match between your profile and a job opportunity, you'll receive a notification. Your data is never sold to third parties, and you maintain full control over your profile visibility.",
   },
   {
     question: "What file formats do you accept?",
     answer:
-      "We accept PDF, DOC, and DOCX formats. For best results, use a clean, well-formatted resume.",
+      "We accept PDF, DOC, and DOCX formats for resume uploads. PDF format typically provides the most consistent parsing results across our AI systems because it preserves formatting reliably. For best results, use a clean, well-formatted resume without complex tables, graphics, or unusual fonts that might confuse parsing algorithms. Avoid putting important information in headers, footers, or text boxes, as these can sometimes be missed by document parsers. If you're unsure about your format, our resume builder can help you create a perfectly optimized document from scratch.",
   },
-  
   {
     question: "Can I update my resume and profile information later?",
     answer:
-      "Absolutely! You can update your resume, salary expectations, availability, and other details anytime through your dashboard.",
+      "Absolutely! You can update your resume, salary expectations, availability, and other profile details anytime through your dashboard. We actually recommend keeping your profile current to improve your visibility to recruiters and receive more relevant job matches. When you update your information, our AI re-analyzes your profile to ensure you're being matched with the most suitable opportunities. There's no limit to how many times you can update your profile, and changes are reflected immediately in our search system.",
   },
   {
     question: "What information should I include in my profile?",
     answer:
-      "Beyond your resume, add your expected salary range, availability (immediate, 2 weeks notice, etc.), preferred work arrangements, and any specific requirements you have.",
+      "Beyond your resume, we recommend adding your expected salary range (helps filter for roles within your target compensation), availability status (immediate, 2 weeks notice, 1 month notice, etc.), preferred work arrangements (remote, hybrid, on-site), location preferences including willingness to relocate, and any specific requirements you have for your next role. The more complete your profile, the better our semantic AI can match you with suitable opportunities. You can also add links to your portfolio, GitHub, LinkedIn, or other professional profiles to showcase your work.",
   },
   {
     question: "Is my data secure and private?",
     answer:
-      "Yes, your data is encrypted and stored securely. Only verified recruiters on our platform can access candidate profiles.",
+      "Yes, your data is encrypted and stored securely using industry-standard security protocols including AES-256 encryption at rest and TLS 1.3 for data in transit. Only verified recruiters on our platform can access candidate profiles, and they must agree to our terms of service regarding data usage. You have full control over your profile visibility and can choose to hide your profile from search results at any time. We never sell your personal information to third parties or use it for advertising purposes. You can also request a complete deletion of your data at any time through your account settings.",
   },
-];
-
-const generalFAQs = [
   {
     question: "How does semantic search work?",
     answer:
-      "Unlike traditional keyword matching, our semantic search understands the meaning and context of skills and experience, so recruiters find better matches even if exact keywords don't match.",
-  },
-  {
-    question: "Can I delete my profile anytime?",
-    answer:
-      "Yes, you have full control over your data and can delete your profile at any time.",
+      "Unlike traditional keyword matching that only finds exact text matches, our semantic search uses advanced AI to understand the meaning and context of skills and experience. For example, it recognizes that 'built REST APIs' relates to 'backend development,' 'microservices architecture,' and 'API design'—even if those exact words don't appear on your resume. This means recruiters find better matches based on actual capabilities rather than keyword stuffing, and candidates get discovered for opportunities they're genuinely qualified for. Our semantic AI also understands skill relationships, so experience with React implies knowledge of JavaScript, component-based architecture, and frontend development.",
   },
 ];
 

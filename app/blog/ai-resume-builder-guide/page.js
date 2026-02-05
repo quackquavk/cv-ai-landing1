@@ -4,6 +4,12 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/LandingPage/Footer";
 import Link from "next/link";
+import AuthorCard, {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+} from "@/components/blog/AuthorCard";
+import RelatedArticles from "@/components/blog/RelatedArticles";
+import ComparisonTable from "@/components/blog/ComparisonTable";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -15,6 +21,23 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+// Article metadata
+const articleData = {
+  title: "AI Resume Builder: Create ATS-Optimized Resumes That Actually Get Interviews",
+  description:
+    "Learn how to build professional, ATS-friendly resumes with AI assistance. 5 customizable templates, real-time preview, and instant PDF export.",
+  publishedDate: "2025-12-06",
+  updatedDate: "2026-02-05",
+  url: "https://cvai.dev/blog/ai-resume-builder-guide",
+};
+
+const articleSchema = generateArticleSchema(articleData);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "https://cvai.dev" },
+  { name: "Blog", url: "https://cvai.dev/blog" },
+  { name: "AI Resume Builder Guide", url: articleData.url },
+]);
+
 const AIResumeBuilderBlogPost = () => {
   return (
     <motion.div
@@ -23,6 +46,20 @@ const AIResumeBuilderBlogPost = () => {
       animate="visible"
       className="min-h-screen bg-black text-white relative"
     >
+      {/* Article Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+      {/* Breadcrumb Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       <Header />
 
       <article className="relative py-20">
@@ -33,13 +70,13 @@ const AIResumeBuilderBlogPost = () => {
               AI Resume Builder: Create ATS-Optimized Resumes That Actually Get
               Interviews
             </h1>
-            <div className="flex items-center gap-4 text-gray-400 text-sm">
-              <time dateTime="2025-12-06">December 6, 2025</time>
-              <span>•</span>
-              <span>Resume Building</span>
-              <span>•</span>
-              <span>8 min read</span>
-            </div>
+            {/* Author Card with dates */}
+            <AuthorCard
+              publishedDate={articleData.publishedDate}
+              updatedDate={articleData.updatedDate}
+              readTime="8 min read"
+              category="Resume Building"
+            />
           </motion.header>
 
           {/* Hook */}
@@ -449,6 +486,11 @@ const AIResumeBuilderBlogPost = () => {
             </div>
           </motion.section>
 
+          {/* Comparison Table */}
+          <motion.section variants={itemVariants} className="mb-12">
+            <ComparisonTable showCTA={false} />
+          </motion.section>
+
           {/* CTA */}
           <motion.section variants={itemVariants} className="mb-12">
             <div className="bg-gradient-to-r from-[#ff6600]/20 to-[#ff6600]/10 border border-[#ff6600]/30 rounded-xl p-8 text-center">
@@ -470,6 +512,11 @@ const AIResumeBuilderBlogPost = () => {
                 included
               </p>
             </div>
+          </motion.section>
+
+          {/* Related Articles */}
+          <motion.section variants={itemVariants}>
+            <RelatedArticles currentSlug="ai-resume-builder-guide" />
           </motion.section>
         </div>
       </article>

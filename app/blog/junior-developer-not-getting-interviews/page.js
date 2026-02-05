@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/LandingPage/Footer";
 import Link from "next/link";
+import AuthorCard, {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+} from "@/components/blog/AuthorCard";
+import RelatedArticles from "@/components/blog/RelatedArticles";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -15,6 +20,80 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+// Article metadata
+const articleData = {
+  title:
+    "Case Study: Why You're Not Landing a Developer Job (And How 3 Junior Devs Finally Broke Through)",
+  description:
+    "78% of junior dev resumes never reach recruiters. Learn why 3 developers went from 150+ rejections to multiple offers using semantic AI matching.",
+  publishedDate: "2025-12-03",
+  updatedDate: "2026-02-05",
+  url: "https://cvai.dev/blog/junior-developer-not-getting-interviews",
+};
+
+const articleSchema = generateArticleSchema(articleData);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "https://cvai.dev" },
+  { name: "Blog", url: "https://cvai.dev/blog" },
+  { name: "Junior Developer Interview Guide", url: articleData.url },
+]);
+
+// FAQ Schema for Junior Developer Blog Post
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Why am I not getting interviews as a junior developer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "78% of junior developer resumes are filtered out by ATS systems before reaching recruiters. Common issues include poor resume formatting that breaks ATS parsing, keyword mismatches between your resume and job descriptions, applying to wrong-fit roles with senior requirements labeled as 'junior,' and being limited to oversaturated local markets instead of remote opportunities with less competition.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How can bootcamp graduates compete with CS degree holders?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Focus on demonstrating technical capability through projects rather than credentials. Semantic AI matching platforms evaluate your actual skills and project complexity, not just educational background. Showcase concrete technical achievements with quantifiable impact in your resume. Describe what you built, the technologies used, and the problems solved rather than just listing coursework.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What's the difference between traditional ATS and semantic AI matching?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Traditional ATS matches exact keywords robotically - if the job says 'React.js' and your resume says 'React,' you might not match. Semantic AI understands context and meaning, recognizing that 'built REST APIs' relates to 'backend development,' 'microservices,' and 'API architecture.' This results in 3-4x more relevant job matches for candidates because the AI understands the relationships between skills and technologies.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much more can I earn with remote roles vs. local positions?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Developers in emerging markets typically see 150-260% salary increases when moving from local to global remote roles. For example, a developer earning $18K locally in Bangalore could earn $65-75K in a remote US/EU position with identical skills and responsibilities. This geographic arbitrage allows you to earn salaries from high-paying markets while living in lower-cost regions.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I optimize my resume for ATS systems?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Use standard section headers (Skills, Experience, Projects) instead of creative alternatives. Create a dedicated skills section at the top that AI systems scan first. Avoid tables, columns, headers/footers, and complex formatting that break ATS parsing. Use simple fonts and clear hierarchy. Describe technical achievements with specific technologies and quantifiable impact. This increases parsing accuracy by 40% or more.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What if I don't have 2+ years of experience for junior roles?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Many 'junior' roles have inflated requirements - they're often mid-level positions with junior salaries. Semantic AI platforms match based on actual technical capability, not arbitrary years. Intensive bootcamp projects or self-taught portfolio work demonstrating real skills can match or exceed traditional 2-year experience in value. Focus on showcasing what you've built and the complexity of your projects.",
+      },
+    },
+  ],
+};
+
 const JuniorDeveloperBlogPost = () => {
   return (
     <motion.div
@@ -23,6 +102,27 @@ const JuniorDeveloperBlogPost = () => {
       animate="visible"
       className="min-h-screen bg-black text-white relative"
     >
+      {/* Article Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+      {/* Breadcrumb Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      {/* FAQ Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
       <Header />
 
       <article className="relative py-20">
@@ -33,13 +133,13 @@ const JuniorDeveloperBlogPost = () => {
               Case Study: Why You're Not Landing a Developer Job (And How 3
               Junior Devs Finally Broke Through)
             </h1>
-            <div className="flex items-center gap-4 text-gray-400 text-sm">
-              <time dateTime="2025-12-03">December 3, 2025</time>
-              <span>•</span>
-              <span>Career Development</span>
-              <span>•</span>
-              <span>15 min read</span>
-            </div>
+            {/* Author Card with dates */}
+            <AuthorCard
+              publishedDate={articleData.publishedDate}
+              updatedDate={articleData.updatedDate}
+              readTime="15 min read"
+              category="Career Development"
+            />
           </motion.header>
 
           {/* Hook */}
@@ -843,6 +943,11 @@ const JuniorDeveloperBlogPost = () => {
                 </p>
               </div>
             </div>
+          </motion.section>
+
+          {/* Related Articles */}
+          <motion.section variants={itemVariants}>
+            <RelatedArticles currentSlug="junior-developer-not-getting-interviews" />
           </motion.section>
         </div>
       </article>

@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/LandingPage/Footer";
 import {
@@ -28,6 +29,131 @@ const containerVariants = {
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+// FAQ Schema for AI Resume Builder Page
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Is this AI resume builder really free?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes! Our free AI resume builder lets you create and download professional resumes at no cost. We believe everyone deserves access to powerful resume tools. You can create up to 5 resumes with access to all templates. Premium users enjoy unlimited resumes and advanced features like AI-powered content suggestions.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What makes this the best AI resume builder?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our AI CV maker uses advanced language models to generate impactful content, optimize for ATS systems, and provide intelligent suggestions based on your industry and experience level. Unlike basic templates, our AI resume builder actively helps write your content, suggests improvements, and ensures your resume is optimized for both ATS and human recruiters.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Will my resume pass ATS systems?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Absolutely. Every resume created with our online AI resume builder is automatically optimized for Applicant Tracking Systems with proper formatting, keywords, and structure. Our templates are tested against major ATS systems including Workday, Greenhouse, Lever, and Taleo. We use clean HTML structure, standard fonts, and proper heading hierarchy to ensure maximum compatibility.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I use this AI CV maker on mobile?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes! Our resume maker AI is fully responsive and works seamlessly on desktop, tablet, and mobile devices. You can create, edit, and download your resume from any device with an internet connection.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How is this different from other resume builders?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Unlike basic templates, our AI resume builder actively helps write your content, suggests improvements, and ensures your resume is optimized for both ATS and human recruiters. Our semantic AI understands the context of your experience and generates professional, achievement-focused bullet points that highlight your value to potential employers.",
+      },
+    },
+  ],
+};
+
+// HowTo Schema for AI Resume Builder Page
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Build an ATS-Friendly Resume with AI in 2026",
+  description:
+    "Learn how to create a professional, ATS-optimized resume using AI technology in just 3 simple steps. This guide shows you how to build a resume that passes Applicant Tracking Systems and impresses hiring managers.",
+  image: "https://cvai.dev/resume-builder-hero.png",
+  totalTime: "PT10M",
+  estimatedCost: {
+    "@type": "MonetaryAmount",
+    currency: "USD",
+    value: "0",
+  },
+  tool: [
+    {
+      "@type": "HowToTool",
+      name: "ResumeAI Resume Builder",
+    },
+  ],
+  step: [
+    {
+      "@type": "HowToStep",
+      name: "Upload or Start Fresh",
+      text: "Begin by importing your existing resume or starting from scratch. Our AI CV maker guides you through every section with intelligent prompts. You can upload PDF, DOC, or DOCX files, and our AI will automatically parse your information into editable sections.",
+      image: "https://cvai.dev/resume-builder-hero.png",
+      url: "https://app.cvai.dev/dashboard/resumes",
+    },
+    {
+      "@type": "HowToStep",
+      name: "AI Enhancement",
+      text: "Let the AI resume builder optimize your content with powerful, achievement-focused language. Our semantic AI analyzes your experience and generates professional bullet points that highlight your impact. The AI ensures proper keyword optimization for ATS systems while maintaining natural, human-readable content.",
+      image: "https://cvai.dev/resume-builder-hero.png",
+      url: "https://app.cvai.dev/dashboard/resumes",
+    },
+    {
+      "@type": "HowToStep",
+      name: "Customize and Download",
+      text: "Choose from 5 professionally designed templates (Classic, Modern, Minimal, Professional, Creative), customize colors and fonts to match your personal brand, and download your ATS-friendly resume instantly as a perfectly formatted PDF. All templates are tested against major ATS systems including Workday, Greenhouse, Lever, and Taleo.",
+      image: "https://cvai.dev/resume-builder-hero.png",
+      url: "https://app.cvai.dev/dashboard/resumes",
+    },
+  ],
+};
+
+// Product Schema for AI Resume Builder
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "ResumeAI - Free AI Resume Builder",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web Browser",
+  description:
+    "Free AI-powered resume builder that creates ATS-optimized resumes. Features 5 professional templates, real-time AI content suggestions, and instant PDF export.",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    ratingCount: "10000",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  featureList: [
+    "AI-powered content generation",
+    "ATS optimization",
+    "5 professional templates",
+    "Real-time preview",
+    "Instant PDF export",
+    "Mobile responsive",
+  ],
 };
 
 const features = [
@@ -145,6 +271,27 @@ const faqs = [
 export default function AIResumeBuilderPage() {
   return (
     <main className="min-h-screen bg-black text-white">
+      {/* FAQ Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
+      {/* HowTo Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(howToSchema),
+        }}
+      />
+      {/* Product Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema),
+        }}
+      />
       <Header />
 
       {/* Hero Section */}
@@ -211,11 +358,14 @@ export default function AIResumeBuilderPage() {
             className="mt-16 max-w-4xl mx-auto"
           >
             <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-[#ff6600]/10">
-              <img
+              <Image
                 src="/resume-builder-hero.png"
                 alt="AI Resume Builder Interface - Create professional ATS-optimized resumes with our free AI CV maker"
+                width={1200}
+                height={800}
                 className="w-full h-auto"
-                loading="eager"
+                priority
+                quality={90}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
             </div>

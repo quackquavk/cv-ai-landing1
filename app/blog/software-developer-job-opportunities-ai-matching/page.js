@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/LandingPage/Footer";
 import Link from "next/link";
+import AuthorCard, {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+} from "@/components/blog/AuthorCard";
+import RelatedArticles from "@/components/blog/RelatedArticles";
 
 // Animation variants
 const containerVariants = {
@@ -21,6 +26,24 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+// Article metadata
+const articleData = {
+  title:
+    "Case Study: How Software Developers Can Access 3x More Opportunities Through AI-Powered Job Matching",
+  description:
+    "Discover how software developers access 3x more job opportunities through AI-powered semantic matching. Real case studies show 68% average salary increases.",
+  publishedDate: "2025-12-03",
+  updatedDate: "2026-02-05",
+  url: "https://cvai.dev/blog/software-developer-job-opportunities-ai-matching",
+};
+
+const articleSchema = generateArticleSchema(articleData);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "https://cvai.dev" },
+  { name: "Blog", url: "https://cvai.dev/blog" },
+  { name: "Software Developer Job Opportunities", url: articleData.url },
+]);
+
 const SoftwareDeveloperOpportunitiesBlogPost = () => {
   return (
     <motion.div
@@ -29,6 +52,20 @@ const SoftwareDeveloperOpportunitiesBlogPost = () => {
       animate="visible"
       className="min-h-screen bg-black text-white relative"
     >
+      {/* Article Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+      {/* Breadcrumb Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       <Header />
 
       {/* Blog Post Container */}
@@ -40,13 +77,13 @@ const SoftwareDeveloperOpportunitiesBlogPost = () => {
               Case Study: How Software Developers Can Access 3x More
               Opportunities Through AI-Powered Job Matching
             </h1>
-            <div className="flex items-center gap-4 text-gray-400 text-sm">
-              <time dateTime="2025-12-03">December 3, 2025</time>
-              <span>•</span>
-              <span>Career Development</span>
-              <span>•</span>
-              <span>12 min read</span>
-            </div>
+            {/* Author Card with dates */}
+            <AuthorCard
+              publishedDate={articleData.publishedDate}
+              updatedDate={articleData.updatedDate}
+              readTime="12 min read"
+              category="Career Development"
+            />
           </motion.header>
 
           {/* Introduction */}
@@ -1265,6 +1302,11 @@ const SoftwareDeveloperOpportunitiesBlogPost = () => {
               Last updated: December 2025
             </p>
           </motion.div>
+
+          {/* Related Articles */}
+          <motion.section variants={itemVariants}>
+            <RelatedArticles currentSlug="software-developer-job-opportunities-ai-matching" />
+          </motion.section>
         </div>
       </article>
 
