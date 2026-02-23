@@ -403,7 +403,7 @@ function LandingPage() {
         onFeatureSubmit={fetchAllIdeas}
       />
 
-      <Testimonials />
+      {/* <Testimonials /> */}
       <DataInsights />
       <BlogShowcase />
       <FAQ />
