@@ -9,17 +9,30 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     setMounted(true);
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    // Check initial preference
     const stored = localStorage.getItem("theme");
     if (stored) {
       setTheme(stored);
-    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      setTheme("light");
+    } else {
+      setTheme(mediaQuery.matches ? "dark" : "light");
     }
+
+    // Listen for system theme changes
+    const handleChange = (e) => {
+      // Only auto-switch if the user hasn't explicitly set a preference
+      if (!localStorage.getItem("theme")) {
+        setTheme(e.matches ? "dark" : "light");
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem("theme", theme);
       if (theme === "dark") {
         document.documentElement.classList.add("dark");
       } else {
@@ -29,7 +42,11 @@ export const ThemeProvider = ({ children }) => {
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    setTheme((prev) => {
+      const newTheme = prev === "dark" ? "light" : "dark";
+      localStorage.setItem("theme", newTheme); // Explicitly save user preference on toggle
+      return newTheme;
+    });
   };
 
   const value = {
@@ -39,9 +56,7 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
 
