@@ -8,13 +8,16 @@ function VideoShowcase() {
   const videoId = "ki520C8GJqo";
 
   return (
-    <section className="relative py-24 px-4 overflow-hidden bg-background" id="how-it-works">
+    <section
+      className="relative py-24 px-4 overflow-hidden bg-background"
+      id="how-it-works"
+    >
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/50 to-background" />
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/50 to-background" /> */}
 
       {/* Ambient glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-accent/10 blur-[120px] rounded-full" />
-      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-accent/5 blur-[100px] rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] dark:bg-accent/10 blur-[120px] rounded-full" />
+      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] dark:bg-accent/5 blur-[100px] rounded-full" />
 
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
@@ -33,13 +36,12 @@ function VideoShowcase() {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-foreground">
-              Watch How It Works
-            </span>
+            <span className="text-foreground">Watch How It Works</span>
           </h2>
 
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Discover how Resume AI transforms candidate search with semantic search and AI-powered matching.
+            Discover how Resume AI transforms candidate search with semantic
+            search and AI-powered matching.
           </p>
         </motion.div>
 
@@ -52,10 +54,10 @@ function VideoShowcase() {
           className="relative group"
         >
           {/* Decorative border glow */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-accent/50 via-accent/30 to-accent/50 rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+          <div className="absolute -inset-1 dark:bg-gradient-to-r dark:from-accent/50 dark:via-accent/30 dark:to-accent/50 rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
 
           {/* Main video wrapper */}
-          <div className="relative bg-gradient-to-b from-muted/80 to-muted rounded-2xl p-1 backdrop-blur-sm border border-border">
+          <div className="relative bg-muted dark:bg-gradient-to-b dark:from-muted/80 dark:to-muted rounded-2xl p-1 backdrop-blur-sm border border-border">
             <div className="relative aspect-video rounded-xl overflow-hidden bg-background">
               {!isPlaying ? (
                 /* Thumbnail with play button overlay */
@@ -70,8 +72,7 @@ function VideoShowcase() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover/play:scale-105"
                   />
 
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                  {/* Overlay gradient removed completely */}
 
                   {/* Play button */}
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -82,7 +83,7 @@ function VideoShowcase() {
                     >
                       {/* Animated ring */}
                       <div
-                        className="absolute inset-0 bg-accent/30 rounded-full animate-ping"
+                        className="absolute inset-0 dark:bg-accent/30 rounded-full animate-ping"
                         style={{ animationDuration: "2s" }}
                       />
 
@@ -134,15 +135,25 @@ function VideoShowcase() {
         >
           {[
             { title: "AI-Powered", description: "Semantic Resume Search" },
-            { title: "Real Candidates", description: "Real candidates, not fake profiles" },
-            { title: "Faster Hiring", description: "Faster hiring, less time spent" },
+            {
+              title: "Real Candidates",
+              description: "Real candidates, not fake profiles",
+            },
+            {
+              title: "Faster Hiring",
+              description: "Faster hiring, less time spent",
+            },
           ].map((feature, index) => (
             <div
               key={index}
               className="text-center p-4 bg-muted/5 rounded-xl border border-border backdrop-blur-sm hover:bg-muted/10 transition-colors duration-300"
             >
-              <h3 className="text-foreground font-semibold mb-1">{feature.title}</h3>
-              <p className="text-muted-foreground text-sm">{feature.description}</p>
+              <h3 className="text-foreground font-semibold mb-1">
+                {feature.title}
+              </h3>
+              <p className="text-muted-foreground text-sm">
+                {feature.description}
+              </p>
             </div>
           ))}
         </motion.div>
