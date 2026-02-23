@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 // Sample partners data - replace with your actual partners
 const partners = [
@@ -34,21 +34,20 @@ const partners = [
     name: "Nvidia",
     logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg",
   },
-]
-
+];
 
 export default function PartnersShowcase({ className }) {
   // Double the partners array to create a seamless loop
-  const doubledPartners = [...partners, ...partners]
+  const doubledPartners = [...partners, ...partners];
 
   return (
     <section
-      className={`relative h-[25vh] overflow-hidden bg-black ${className}`}
+      className={`relative h-[25vh] overflow-hidden bg-background ${className}`}
     >
       <div className="relative h-full flex items-center">
         {/* Gradient overlays for fade effect */}
-        <div className="absolute top-0 left-0 w-[10%] md:w-[80%] h-full bg-gradient-to-r from-black  to-black/10 z-10" />
-        <div className="absolute top-0 right-0 w-[10%] md:w-[50%] h-full bg-gradient-to-l from-black  to-transparent z-10" />
+        <div className="absolute top-0 left-0 w-[10%] md:w-[80%] h-full bg-gradient-to-r from-background  to-background/10 z-10" />
+        <div className="absolute top-0 right-0 w-[10%] md:w-[50%] h-full bg-gradient-to-l from-background  to-transparent z-10" />
 
         {/* Scrolling logos */}
         <motion.div
@@ -63,10 +62,13 @@ export default function PartnersShowcase({ className }) {
           }}
         >
           {doubledPartners.map((partner, index) => (
-            <div key={`${partner.id}-${index}`} className="flex-shrink-0 h-12 flex items-center justify-center">
+            <div
+              key={`${partner.id}-${index}`}
+              className="flex-shrink-0 h-12 flex items-center justify-center"
+            >
               <div className="w-[160px] h-12 flex items-center justify-center group">
                 <div
-                  className="w-full h-full flex items-center justify-center transition-all duration-300 group-hover:bg-[#ff6600]"
+                  className="w-full h-full flex items-center justify-center transition-all duration-300 bg-none bg-foreground dark:bg-gradient-to-r dark:from-foreground/40 dark:via-foreground dark:to-foreground/40 group-hover:!bg-none group-hover:!bg-accent"
                   style={{
                     WebkitMaskImage: `url(${partner.logo})`,
                     maskImage: `url(${partner.logo})`,
@@ -76,16 +78,13 @@ export default function PartnersShowcase({ className }) {
                     maskRepeat: "no-repeat",
                     WebkitMaskPosition: "center",
                     maskPosition: "center",
-                    background: "linear-gradient(90deg, rgb(229, 231, 235) 0%, white 50%, rgb(229, 231, 235) 100%)",
                   }}
-                >
-                </div>
+                ></div>
               </div>
             </div>
           ))}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

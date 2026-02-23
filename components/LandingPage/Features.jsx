@@ -130,7 +130,7 @@ const Features = ({
     if (isLoading) {
       return (
         <div className="flex items-center justify-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#ff6600]"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-accent"></div>
         </div>
       );
     }
@@ -147,10 +147,10 @@ const Features = ({
       activeTab === "ideas"
         ? ideas
         : activeTab === "in-progress"
-        ? inProgressIdeas
-        : activeTab === "archive"
-        ? archivedIdeas
-        : launchedIdeas;
+          ? inProgressIdeas
+          : activeTab === "archive"
+            ? archivedIdeas
+            : launchedIdeas;
 
     return (
       <IdeasGrid
@@ -175,22 +175,18 @@ const Features = ({
       className="relative z-10 min-h-[80vh] "
       id="features"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-transparent pointer-events-none"></div>
 
       <div className="w-[95vw] lg:w-[80vw] mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">
             Feature Roadmap
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-6">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-6">
             Track, vote, and suggest new features for our platform
           </p>
           {!user ? (
-            <Button
-              style={{color: "white"}}
-              onClick={handleLogin}
-              className="px-6 py-3 text-sm font-medium rounded-lg bg-gradient-to-r from-[#ff6600] to-[#ff8533] hover:opacity-90 transition-opacity duration-300 mb-8 text-white"
-            >
+            <Button className="px-6 py-3 text-sm font-medium rounded-lg bg-gradient-to-r from-accent to-[#ff8533] text-white hover:opacity-90 transition-opacity duration-300 mb-8">
               <FaGoogle className="w-4 h-4 mr-2 inline-block" />
               Sign in to Vote & Suggest
             </Button>

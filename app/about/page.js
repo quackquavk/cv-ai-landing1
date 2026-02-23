@@ -133,7 +133,7 @@ export default function AboutPage() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="min-h-screen bg-black text-white relative"
+      className="min-h-screen bg-background text-foreground relative"
     >
       {/* Organization Schema JSON-LD */}
       <script
@@ -146,23 +146,26 @@ export default function AboutPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#ff6600]/10 via-transparent to-transparent" />
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#ff6600]/20 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/10 via-transparent to-transparent" />
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px]" />
 
         <motion.div
           variants={containerVariants}
           className="relative z-10 container mx-auto px-6"
         >
-          <motion.div variants={itemVariants} className="max-w-4xl mx-auto text-center">
+          <motion.div
+            variants={itemVariants}
+            className="max-w-4xl mx-auto text-center"
+          >
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
                 Building the Future of
               </span>
               <br />
-              <span className="text-[#ff6600]">Career Connections</span>
+              <span className="text-accent">Career Connections</span>
             </h1>
 
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               ResumeAI combines advanced AI technology with deep recruitment
               expertise to help job seekers land their dream roles and
               recruiters find exceptional talent.
@@ -177,12 +180,14 @@ export default function AboutPage() {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="text-center p-6 bg-[#0a0a0a]/60 border border-[#ff6600]/20 rounded-xl"
+                className="text-center p-6 bg-muted/60 border border-accent/20 rounded-xl"
               >
-                <div className="text-3xl md:text-4xl font-bold text-[#ff6600] mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-accent mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
+                <div className="text-muted-foreground text-sm">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </motion.div>
@@ -198,14 +203,14 @@ export default function AboutPage() {
           >
             <motion.div variants={itemVariants} className="mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
-                <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
                   Our Story
                 </span>
               </h2>
-              <div className="space-y-6 text-gray-300 leading-relaxed">
+              <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
                   ResumeAI was born from a simple frustration:{" "}
-                  <strong className="text-white">
+                  <strong className="text-foreground">
                     qualified candidates were being rejected by robots before
                     humans ever saw their applications
                   </strong>
@@ -222,7 +227,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   That's why we built ResumeAI—a platform that uses{" "}
-                  <strong className="text-white">
+                  <strong className="text-foreground">
                     semantic AI technology
                   </strong>{" "}
                   to understand the real meaning behind skills and experience.
@@ -246,16 +251,16 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values Section */}
-      <section className="py-20 bg-gradient-to-b from-transparent via-[#ff6600]/5 to-transparent">
+      <section className="py-20 bg-gradient-to-b from-transparent via-accent/5 to-transparent">
         <div className="container mx-auto px-6">
           <motion.div variants={containerVariants}>
             <motion.div variants={itemVariants} className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
                   Our Values
                 </span>
               </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 The principles that guide everything we build
               </p>
             </motion.div>
@@ -265,15 +270,15 @@ export default function AboutPage() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="p-6 bg-[#0a0a0a]/60 border border-[#ff6600]/10 rounded-xl hover:border-[#ff6600]/30 transition-all duration-300"
+                  className="p-6 bg-muted/60 border border-accent/10 rounded-xl hover:border-accent/30 transition-all duration-300"
                 >
-                  <div className="w-14 h-14 bg-[#ff6600]/10 rounded-xl flex items-center justify-center text-[#ff6600] mb-4">
+                  <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4">
                     {value.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">
                     {value.title}
                   </h3>
-                  <p className="text-gray-400">{value.description}</p>
+                  <p className="text-muted-foreground">{value.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -287,11 +292,11 @@ export default function AboutPage() {
           <motion.div variants={containerVariants}>
             <motion.div variants={itemVariants} className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
                   Our Expertise
                 </span>
               </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Deep knowledge across the recruitment and AI landscape
               </p>
             </motion.div>
@@ -301,12 +306,12 @@ export default function AboutPage() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="p-6 bg-[#0a0a0a]/60 border border-[#ff6600]/10 rounded-xl"
+                  className="p-6 bg-muted/60 border border-accent/10 rounded-xl"
                 >
-                  <h3 className="text-xl font-semibold mb-3 text-[#ff6600]">
+                  <h3 className="text-xl font-semibold mb-3 text-accent">
                     {item.area}
                   </h3>
-                  <p className="text-gray-400">{item.description}</p>
+                  <p className="text-muted-foreground">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -319,21 +324,25 @@ export default function AboutPage() {
         <div className="container mx-auto px-6">
           <motion.div
             variants={itemVariants}
-            className="max-w-4xl mx-auto text-center p-12 bg-gradient-to-r from-[#ff6600]/20 to-[#ff6600]/10 border border-[#ff6600]/30 rounded-3xl"
+            className="max-w-4xl mx-auto text-center p-12 bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30 rounded-3xl"
           >
-            <Mail className="w-12 h-12 text-[#ff6600] mx-auto mb-6" />
-            <h2 className="text-3xl font-bold mb-4 text-white">Get in Touch</h2>
-            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+            <Mail className="w-12 h-12 text-accent mx-auto mb-6" />
+            <h2 className="text-3xl font-bold mb-4 text-foreground">
+              Get in Touch
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
               Have questions about ResumeAI? Want to partner with us? We'd love
               to hear from you.
             </p>
             <a
               href="mailto:mail@rebuzzllc.com"
-              className="inline-block bg-[#ff6600] hover:bg-[#ff6600]/90 text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
+              className="inline-block bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
             >
               Contact Us
             </a>
-            <p className="text-gray-500 text-sm mt-4">mail@rebuzzllc.com</p>
+            <p className="text-muted-foreground text-sm mt-4">
+              mail@rebuzzllc.com
+            </p>
           </motion.div>
         </div>
       </section>

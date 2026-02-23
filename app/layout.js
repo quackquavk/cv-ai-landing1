@@ -1,5 +1,6 @@
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { Toaster } from "@/components/ui/toaster";
 import { Poppins } from "next/font/google";
 
@@ -131,7 +132,7 @@ const softwareSchema = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <script
           type="application/ld+json"
@@ -154,8 +155,10 @@ export default function RootLayout({ children }) {
       </head>
       <body className={` ${poppins.variable} `}>
         <AuthProvider>
-          <Toaster />
-          {children}
+          <ThemeProvider>
+            <Toaster />
+            {children}
+          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>

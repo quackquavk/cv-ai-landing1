@@ -110,7 +110,7 @@ export default function Testimonials() {
     const interval = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prevIndex) =>
-        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1,
       );
     }, 3000);
 
@@ -131,7 +131,7 @@ export default function Testimonials() {
         <Star
           key={i}
           className={`w-5 h-5 ${
-            i < rating ? "text-[#ff6600] fill-[#ff6600]" : "text-gray-400"
+            i < rating ? "text-accent fill-accent" : "text-muted-foreground/40"
           }`}
         />
       ));
@@ -144,13 +144,13 @@ export default function Testimonials() {
       whileInView="show"
       id="testimonials"
       viewport={{ once: false }}
-      className="py-[140px] relative overflow-hidden bg-black text-white"
+      className="py-[140px] relative overflow-hidden bg-background text-foreground"
     >
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden ">
-        <div className="absolute -top-[30%] -left-[10%] w-[50%] h-[70%] rounded-full bg-[#ff6600]/5 blur-[120px]" />
-        <div className="absolute -bottom-[30%] -right-[10%] w-[50%] h-[70%] rounded-full bg-[#ff6600]/5 blur-[120px]" />
-        <div className="absolute top-[20%] right-[5%] w-[30%] h-[40%] rounded-full bg-[#ff9d4d]/5 blur-[100px]" />
+        <div className="absolute -top-[30%] -left-[10%] w-[50%] h-[70%] rounded-full bg-accent/5 blur-[120px]" />
+        <div className="absolute -bottom-[30%] -right-[10%] w-[50%] h-[70%] rounded-full bg-accent/5 blur-[120px]" />
+        <div className="absolute top-[20%] right-[5%] w-[30%] h-[40%] rounded-full bg-accent/5 blur-[100px]" />
       </div>
 
       <div
@@ -163,10 +163,10 @@ export default function Testimonials() {
           variants={itemVariants}
           className="text-center max-w-3xl mx-auto mb-20 space-y-4"
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
-            What Our <span className="text-[#ff6600]">Users</span> Are Saying
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            What Our <span className="text-accent">Users</span> Are Saying
           </h2>
-          <p className="text-xl text-gray-400 mt-4 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground mt-4 max-w-2xl mx-auto">
             Resume AI helps recruiters identify and connect with ideal
             candidates by leveraging AI-driven talent matching technology.
           </p>
@@ -186,21 +186,21 @@ export default function Testimonials() {
                 exit="exit"
                 className="relative"
               >
-                <div className="relative rounded-2xl overflow-hidden backdrop-blur-sm bg-white/5 border border-white/10 shadow-xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#ff6600]/5 to-transparent opacity-80" />
+                <div className="relative rounded-2xl overflow-hidden backdrop-blur-sm bg-muted/30 border border-accent/10 shadow-xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-80" />
 
                   {/* Decorative elements */}
-                  <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-[#ff6600]/10 blur-3xl" />
-                  <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-[#ff9d4d]/10 blur-3xl" />
+                  <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-accent/10 blur-3xl" />
+                  <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-accent/5 blur-3xl" />
 
                   <div className="relative p-8 md:p-12">
                     <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
                       {/* Avatar and info */}
                       <div className="flex flex-col items-center text-center md:text-left md:items-start space-y-4">
                         <div className="relative">
-                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#ff6600] to-[#ff9d4d] blur-md opacity-30 scale-110" />
-                          <div className="relative p-1 rounded-full bg-gradient-to-br from-[#ff6600] to-[#ff9d4d]">
-                            <div className="p-0.5 rounded-full bg-black/80 backdrop-blur-sm">
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent to-accent/70 blur-md opacity-30 scale-110" />
+                          <div className="relative p-1 rounded-full bg-gradient-to-br from-accent to-accent/70">
+                            <div className="p-0.5 rounded-full bg-background/80 backdrop-blur-sm">
                               <Image
                                 src={
                                   testimonials[currentIndex].avatar ||
@@ -216,13 +216,13 @@ export default function Testimonials() {
                         </div>
 
                         <div className="mt-2">
-                          <h4 className="font-bold text-xl text-white">
+                          <h4 className="font-bold text-xl text-foreground">
                             {testimonials[currentIndex].name}
                           </h4>
-                          <p className="text-gray-400">
+                          <p className="text-muted-foreground">
                             {testimonials[currentIndex].role}
                           </p>
-                          <p className="text-[#ff6600] font-medium">
+                          <p className="text-accent font-medium">
                             {testimonials[currentIndex].company}
                           </p>
                         </div>
@@ -234,9 +234,9 @@ export default function Testimonials() {
 
                       {/* Testimonial content */}
                       <div className="flex-1 relative">
-                        <Quote className="absolute -top-2 -left-2 w-10 h-10 text-[#ff6600] opacity-20" />
+                        <Quote className="absolute -top-2 -left-2 w-10 h-10 text-accent opacity-20" />
                         <div className="relative">
-                          <p className="text-lg md:text-xl leading-relaxed pt-6 text-gray-200 font-medium">
+                          <p className="text-lg md:text-xl leading-relaxed pt-6 text-foreground font-medium">
                             {testimonials[currentIndex].content}
                           </p>
                         </div>
@@ -257,14 +257,14 @@ export default function Testimonials() {
                 className={cn(
                   "relative h-2 rounded-full transition-all duration-500 overflow-hidden",
                   index === currentIndex
-                    ? "w-10 bg-[#ff6600]"
-                    : "w-2 bg-white/20 hover:bg-white/30"
+                    ? "w-10 bg-accent"
+                    : "w-2 bg-muted-foreground/20 hover:bg-muted-foreground/30",
                 )}
                 aria-label={`Go to testimonial ${index + 1}`}
               >
                 {index === currentIndex && (
                   <motion.div
-                    className="absolute inset-0 bg-[#ff6600]/60"
+                    className="absolute inset-0 bg-accent/60"
                     initial={{ x: "-100%" }}
                     animate={{ x: "0%" }}
                     transition={{
@@ -285,8 +285,8 @@ export default function Testimonials() {
               className={cn(
                 "text-xs font-medium px-3 py-1 rounded-full transition-all duration-300",
                 isAutoPlaying
-                  ? "bg-[#ff6600]/10 text-[#ff6600] hover:bg-[#ff6600]/20"
-                  : "bg-white/10 text-gray-400 hover:bg-white/20"
+                  ? "bg-accent/10 text-accent hover:bg-accent/20"
+                  : "bg-muted/10 text-muted-foreground hover:bg-muted/20",
               )}
             >
               {isAutoPlaying ? "Auto-playing" : "Paused"}

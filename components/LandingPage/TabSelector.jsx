@@ -7,10 +7,10 @@ const TabSelector = ({ activeTab, setActiveTab, tabData,isAdmin }) => {
       <Tabs className="w-full mt-5" value={activeTab}>
         <div className="w-full flex justify-between lg:flex-row flex-col items-center">
           <TabsHeader
-            className="rounded-none border-b  border-gray-500 bg-transparent p-0 h-16"
+            className="rounded-none border-b border-border bg-transparent p-0 h-16"
             indicatorProps={{
               className:
-                "bg-transparent border-b-2 border-[#ff6600] shadow-none rounded-none",
+                "bg-transparent border-b-2 border-accent shadow-none rounded-none",
             }}
           >
             {tabData.map(({ label, value }) => (
@@ -20,8 +20,8 @@ const TabSelector = ({ activeTab, setActiveTab, tabData,isAdmin }) => {
                 onClick={() => setActiveTab(value)}
                 className={`text-base hover:cursor-pointer px-5 ml-2 whitespace-nowrap ${
                   activeTab === value
-                    ? "font-bold text-[#ff6600]"
-                    : "text-white"
+                    ? "font-bold text-accent"
+                    : "text-foreground"
                 } ${label === "Archive" && !isAdmin ? "hidden" : ""}`}
               >
                 {label}

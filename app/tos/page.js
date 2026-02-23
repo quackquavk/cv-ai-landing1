@@ -83,23 +83,23 @@ const TermsOfServicePage = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="min-h-screen bg-black text-white relative"
+      className="min-h-screen bg-background text-foreground relative"
     >
       <Header />
       
       {/* Terms of Service Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-black" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background" />
         
         <div className="relative z-10 container mx-auto px-6 max-w-4xl">
           <motion.div 
             variants={itemVariants}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-gray-200 to-foreground bg-clip-text text-transparent dark:from-white dark:via-gray-200 dark:to-white">
               Terms of Service
             </h1>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Last Updated: 04/04/2025
             </p>
           </motion.div>
@@ -114,10 +114,10 @@ const TermsOfServicePage = () => {
               <motion.div 
                 key={index}
                 variants={itemVariants}
-                className="bg-[#0a0a0a]/40 backdrop-blur-sm border border-[#ff6600]/10 rounded-xl p-8 shadow-lg"
+                className="bg-muted/40 backdrop-blur-sm border border-accent/10 rounded-xl p-8 shadow-lg"
               >
-                <h2 className="text-2xl font-semibold mb-4 text-[#ff6600]">{section.title}</h2>
-                <p className="text-gray-300 leading-relaxed">{section.content}</p>
+                <h2 className="text-2xl font-semibold mb-4 text-accent">{section.title}</h2>
+                <p className="text-muted-foreground leading-relaxed">{section.content}</p>
               </motion.div>
             ))}
           </div>

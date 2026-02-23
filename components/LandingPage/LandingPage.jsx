@@ -20,9 +20,9 @@ import VideoShowcase from "./VideoShowcase";
 // Lazy load below-fold components for better performance
 const Testimonials = dynamic(() => import("./Testimonials"), {
   loading: () => (
-    <div className="py-20 bg-black">
+    <div className="py-20 bg-background">
       <div className="container mx-auto px-6 text-center">
-        <div className="animate-pulse bg-gray-800 h-64 rounded-xl" />
+        <div className="animate-pulse bg-muted h-64 rounded-xl" />
       </div>
     </div>
   ),
@@ -30,9 +30,9 @@ const Testimonials = dynamic(() => import("./Testimonials"), {
 
 const DataInsights = dynamic(() => import("./DataInsights"), {
   loading: () => (
-    <div className="py-20 bg-black">
+    <div className="py-20 bg-background">
       <div className="container mx-auto px-6 text-center">
-        <div className="animate-pulse bg-gray-800 h-64 rounded-xl" />
+        <div className="animate-pulse bg-muted h-64 rounded-xl" />
       </div>
     </div>
   ),
@@ -40,9 +40,9 @@ const DataInsights = dynamic(() => import("./DataInsights"), {
 
 const BlogShowcase = dynamic(() => import("./BlogShowcase"), {
   loading: () => (
-    <div className="py-20 bg-black">
+    <div className="py-20 bg-background">
       <div className="container mx-auto px-6 text-center">
-        <div className="animate-pulse bg-gray-800 h-48 rounded-xl" />
+        <div className="animate-pulse bg-muted h-48 rounded-xl" />
       </div>
     </div>
   ),
@@ -50,9 +50,9 @@ const BlogShowcase = dynamic(() => import("./BlogShowcase"), {
 
 const FAQ = dynamic(() => import("./FAQ"), {
   loading: () => (
-    <div className="py-20 bg-black">
+    <div className="py-20 bg-background">
       <div className="container mx-auto px-6 text-center">
-        <div className="animate-pulse bg-gray-800 h-64 rounded-xl" />
+        <div className="animate-pulse bg-muted h-64 rounded-xl" />
       </div>
     </div>
   ),
@@ -376,7 +376,7 @@ function LandingPage() {
     <motion.div
       variants={containerVariants}
       animate="visible"
-      className="min-h-screen bg-black text-white relative "
+      className="min-h-screen bg-background text-foreground relative "
     >
       {/* FAQ Schema JSON-LD */}
       <script

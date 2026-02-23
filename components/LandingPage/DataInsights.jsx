@@ -1,14 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  TrendingUp,
-  Users,
-  Target,
-  Globe,
-  Zap,
-  BarChart3,
-} from "lucide-react";
+import { TrendingUp, Users, Target, Globe, Zap, BarChart3 } from "lucide-react";
 import Link from "next/link";
 
 const containerVariants = {
@@ -54,8 +47,7 @@ const researchData = {
     {
       stat: "7 sec",
       label: "Recruiter Scan Time",
-      description:
-        "Average time recruiters spend on initial resume review",
+      description: "Average time recruiters spend on initial resume review",
       icon: <Zap className="w-6 h-6" />,
       source: "Eye-tracking study, industry research",
     },
@@ -115,7 +107,7 @@ export const datasetSchema = {
 
 const DataInsights = () => {
   return (
-    <section id="research" className="relative py-20 bg-black">
+    <section id="research" className="relative py-20 bg-background">
       {/* Dataset Schema */}
       <script
         type="application/ld+json"
@@ -133,13 +125,13 @@ const DataInsights = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-[#ff6600] bg-[#ff6600]/10 rounded-full border border-[#ff6600]/20">
+            <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-accent bg-accent/10 rounded-full border border-accent/20">
               Original Research
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
               The State of AI Resume Building 2026
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Data-driven insights from analyzing 50,000+ job applications and
               surveying thousands of job seekers and recruiters
             </p>
@@ -151,23 +143,25 @@ const DataInsights = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-[#0a0a0a]/60 border border-[#ff6600]/10 rounded-xl p-6 hover:border-[#ff6600]/30 transition-all duration-300"
+                className="bg-muted/60 border border-accent/10 rounded-xl p-6 hover:border-accent/30 transition-all duration-300"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 bg-[#ff6600]/10 rounded-xl flex items-center justify-center text-[#ff6600]">
+                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent">
                     {finding.icon}
                   </div>
-                  <span className="text-4xl font-bold text-[#ff6600]">
+                  <span className="text-4xl font-bold text-accent">
                     {finding.stat}
                   </span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">
+                <h3 className="text-xl font-semibold text-foreground mb-2">
                   {finding.label}
                 </h3>
-                <p className="text-gray-400 text-sm mb-3">
+                <p className="text-muted-foreground text-sm mb-3">
                   {finding.description}
                 </p>
-                <p className="text-gray-500 text-xs italic">{finding.source}</p>
+                <p className="text-muted-foreground/60 text-xs italic">
+                  {finding.source}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -177,11 +171,11 @@ const DataInsights = () => {
             variants={itemVariants}
             className="max-w-3xl mx-auto text-center"
           >
-            <div className="bg-[#0a0a0a]/40 border border-[#ff6600]/10 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">
+            <div className="bg-muted/40 border border-accent/10 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-foreground mb-3">
                 Methodology
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 {researchData.methodology}
               </p>
             </div>
@@ -189,12 +183,12 @@ const DataInsights = () => {
 
           {/* CTA */}
           <motion.div variants={itemVariants} className="text-center mt-12">
-            <p className="text-gray-400 mb-4">
+            <p className="text-muted-foreground mb-4">
               Ready to beat the statistics and land more interviews?
             </p>
             <Link
               href="https://app.cvai.dev/dashboard/resumes"
-              className="inline-block bg-[#ff6600] hover:bg-[#ff6600]/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+              className="inline-block bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
             >
               Build Your Resume with AI
             </Link>

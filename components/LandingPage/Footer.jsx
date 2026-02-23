@@ -93,9 +93,9 @@ export default function Footer() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="bg-black text-white relative border-t border-white/10"
+      className="bg-background text-foreground relative border-t border-border"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-black" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background" />
 
       {/* Main footer content */}
       <div className="relative z-10 container mx-auto px-6 pt-16 pb-8">
@@ -113,12 +113,12 @@ export default function Footer() {
                 height={50}
                 className="object-contain mr-2"
               />
-              <span className="text-2xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
+              <span className="text-2xl font-bold text-foreground">
                 Resume AI
               </span>
             </div>
 
-            <p className="text-gray-400 max-w-md">
+            <p className="text-muted-foreground max-w-md">
               AI-powered candidate sourcing to help recruiters find, assess, and
               connect with top talent faster—all with just a click.
             </p>
@@ -185,7 +185,7 @@ export default function Footer() {
                     <li key={link.name}>
                       <a
                         href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors duration-300"
+                        className="text-muted-foreground hover:text-foreground transition-colors duration-300"
                         {...(isExternal && { target: "_blank" })}
                       >
                         {link.name}
@@ -201,7 +201,7 @@ export default function Footer() {
         {/* Divider */}
         <motion.div
           variants={itemVariants}
-          className="border-t border-white/10 my-8"
+          className="border-t border-border my-8"
         />
 
         {/* Bottom section with social links and copyright */}
@@ -214,7 +214,7 @@ export default function Footer() {
                   key={social.name}
                   href={social.href}
                   aria-label={social.name}
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-border hover:border-accent/40 hover:bg-accent/5 transition-all duration-300"
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -222,26 +222,29 @@ export default function Footer() {
             })}
           </motion.div>
 
-          <motion.div variants={itemVariants} className="text-gray-400 text-sm">
+          <motion.div
+            variants={itemVariants}
+            className="text-muted-foreground text-sm"
+          >
             &copy; {new Date().getFullYear()} Resume AI. All rights reserved.
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex gap-6 text-sm">
             <a
               href="/policy"
-              className="text-gray-400 hover:text-white transition-colors duration-300"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
               Privacy Policy
             </a>
             <a
               href="/tos"
-              className="text-gray-400 hover:text-white transition-colors duration-300"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
               Terms of Service
             </a>
             <a
               href="/cookies"
-              className="text-gray-400 hover:text-white transition-colors duration-300"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
               Cookies
             </a>

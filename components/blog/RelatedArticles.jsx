@@ -55,28 +55,28 @@ const RelatedArticles = ({ currentSlug, title = "Continue Reading" }) => {
   const relatedArticles = getRelatedArticles(currentSlug);
 
   return (
-    <section className="py-12 border-t border-[#ff6600]/20">
-      <h2 className="text-2xl font-bold mb-8 text-white">{title}</h2>
+    <section className="py-12 border-t border-accent/20">
+      <h2 className="text-2xl font-bold mb-8 text-foreground">{title}</h2>
       <div className="grid md:grid-cols-3 gap-6">
         {relatedArticles.map((article) => (
           <Link
             key={article.slug}
             href={`/blog/${article.slug}`}
-            className="group block bg-[#0a0a0a]/60 border border-[#ff6600]/10 rounded-xl p-6 hover:border-[#ff6600]/40 transition-all duration-300"
+            className="group block bg-muted/30 border border-accent/10 rounded-xl p-6 hover:border-accent/40 transition-all duration-300"
           >
-            <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
-              <span className="text-[#ff6600]">{article.category}</span>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+              <span className="text-accent">{article.category}</span>
               <span>•</span>
               <Clock className="w-3 h-3" />
               <span>{article.readTime}</span>
             </div>
-            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-[#ff6600] transition-colors line-clamp-2">
+            <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-accent transition-colors line-clamp-2">
               {article.title}
             </h3>
-            <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+            <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
               {article.description}
             </p>
-            <span className="inline-flex items-center text-[#ff6600] text-sm font-medium group-hover:gap-2 transition-all">
+            <span className="inline-flex items-center text-accent text-sm font-medium group-hover:gap-2 transition-all">
               Read more <ArrowRight className="w-4 h-4 ml-1" />
             </span>
           </Link>
@@ -94,7 +94,7 @@ export const InlineArticleLink = ({ slug, children }) => {
   return (
     <Link
       href={`/blog/${slug}`}
-      className="text-[#ff6600] hover:text-[#ff6600]/80 underline underline-offset-2 transition-colors"
+      className="text-accent hover:text-accent/80 underline underline-offset-2 transition-colors"
     >
       {children || article.title}
     </Link>

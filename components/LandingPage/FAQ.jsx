@@ -66,13 +66,13 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
   return (
     <motion.div
       variants={itemVariants}
-      className="bg-[#0a0a0a]/40 border border-[#ff6600]/10 rounded-xl overflow-hidden hover:border-[#ff6600]/30 transition-colors duration-300"
+      className="bg-muted/40 border border-accent/10 rounded-xl overflow-hidden hover:border-accent/30 transition-colors duration-300"
     >
       <button
         onClick={onClick}
         className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
       >
-        <h3 className="text-lg font-semibold text-white group-hover:text-[#ff6600] transition-colors duration-300 pr-4">
+        <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-300 pr-4">
           {question}
         </h3>
         <motion.div
@@ -80,7 +80,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
           transition={{ duration: 0.3 }}
           className="flex-shrink-0"
         >
-          <ChevronDown className="text-[#ff6600]" size={20} />
+          <ChevronDown className="text-accent" size={20} />
         </motion.div>
       </button>
 
@@ -93,7 +93,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-5 text-gray-300 leading-relaxed">
+            <div className="px-6 pb-5 text-muted-foreground leading-relaxed">
               {answer}
             </div>
           </motion.div>
@@ -111,7 +111,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="relative py-20 bg-black">
+    <section className="relative py-20 bg-background">
       <div className="container mx-auto px-6">
         <motion.div
           variants={containerVariants}
@@ -121,10 +121,10 @@ const FAQ = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
               Frequently Asked Questions
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Everything you need to know about ResumeAI
             </p>
           </motion.div>
@@ -169,18 +169,18 @@ const FAQ = () => {
             {/* CTA Section */}
             <motion.div
               variants={itemVariants}
-              className="mt-12 text-center bg-gradient-to-r from-[#ff6600]/20 to-[#ff6600]/10 border border-[#ff6600]/30 rounded-xl p-8"
+              className="mt-12 text-center bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30 rounded-xl p-8"
             >
-              <h3 className="text-2xl font-bold text-white mb-3">
+              <h3 className="text-2xl font-bold text-foreground mb-3">
                 Still have questions?
               </h3>
-              <p className="text-gray-300 mb-6">
+              <p className="text-muted-foreground mb-6">
                 Can't find the answer you're looking for? Feel free to reach out
                 to our team.
               </p>
               <a
                 href="mailto:mail@rebuzzllc.com"
-                className="inline-block bg-[#ff6600] hover:bg-[#ff6600]/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300"
+                className="inline-block bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300"
               >
                 Contact Support
               </a>

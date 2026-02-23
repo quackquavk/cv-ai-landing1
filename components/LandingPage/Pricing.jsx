@@ -117,7 +117,7 @@ export default function Pricing() {
       whileInView="show"
       id="pricing"
       viewport={{ once: false }}
-      className="py-20 bg-black text-white relative"
+      className="py-20 bg-background text-foreground relative"
     >
       <div className="absolute inset-0 " />
 
@@ -127,10 +127,10 @@ export default function Pricing() {
           variants={itemVariants}
           className="text-center max-w-3xl mx-auto mb-16 space-y-4"
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-300">
+          <p className="text-xl text-muted-foreground">
             Choose the plan that's right for your content strategy
           </p>
 
@@ -140,8 +140,8 @@ export default function Pricing() {
               onClick={() => setBillingPeriod("month")}
               className={`px-4 py-2 rounded-lg transition-all duration-300 ${
                 billingPeriod === "month"
-                  ? "bg-[#ff6600] text-white"
-                  : "bg-black border border-white/20 text-white hover:border-white/40"
+                  ? "bg-accent text-white"
+                  : "bg-background border border-border text-foreground hover:border-accent/40"
               }`}
             >
               Monthly
@@ -150,8 +150,8 @@ export default function Pricing() {
               onClick={() => setBillingPeriod("year")}
               className={`px-4 py-2 rounded-lg transition-all duration-300 ${
                 billingPeriod === "year"
-                  ? "bg-[#ff6600] text-white"
-                  : "bg-black border border-white/20 text-white hover:border-white/40"
+                  ? "bg-accent text-white"
+                  : "bg-background border border-border text-foreground hover:border-accent/40"
               }`}
             >
               Yearly <span className="text-xs font-medium ml-1">Save 20%</span>
@@ -168,23 +168,23 @@ export default function Pricing() {
               whileHover="hover"
               custom={index}
               className={`relative rounded-xl overflow-hidden border ${
-                plan.highlighted ? "border-[#ff6600]" : "border-white/20"
-              } bg-black p-8 flex flex-col h-full`}
+                plan.highlighted ? "border-accent" : "border-border"
+              } bg-card p-8 flex flex-col h-full`}
             >
               {plan.highlighted && (
-                <div className="absolute top-0 left-0 right-0 bg-[#ff6600] text-white text-center py-1 text-sm font-medium">
+                <div className="absolute top-0 left-0 right-0 bg-accent text-white text-center py-1 text-sm font-medium">
                   Most Popular
                 </div>
               )}
 
               <div className="mb-6">
                 <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-gray-400 mb-4">{plan.description}</p>
+                <p className="text-muted-foreground mb-4">{plan.description}</p>
                 <div className="flex items-baseline">
                   <span className="text-4xl font-bold">
                     ${getPrice(plan.price)}
                   </span>
-                  <span className="text-gray-400 ml-2">
+                  <span className="text-muted-foreground ml-2">
                     /{billingPeriod === "month" ? "month" : "year"}
                   </span>
                 </div>
@@ -193,18 +193,18 @@ export default function Pricing() {
               <ul className="space-y-3 mb-8 flex-grow">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start">
-                    <Check className="w-5 h-5 text-[#ff6600] mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-400">{feature}</span>
+                    <Check className="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <button
                 className={`relative px-6 py-3 text-lg font-medium rounded-lg 
-                  transition-all duration-300 ease-out text-white ${
+                  transition-all duration-300 ease-out text-foreground ${
                     plan.highlighted
-                      ? "hover:bg-[#ff6600cf] bg-[#ff6600] shadow-md shadow-[#000000] border-b-2 border-[#b1591e]"
-                      : "bg-black border border-white/20 hover:border-white/50"
+                      ? "hover:bg-accent/90 bg-accent text-white shadow-md shadow-accent/20"
+                      : "bg-background border border-border hover:border-accent/50"
                   }`}
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
@@ -222,16 +222,16 @@ export default function Pricing() {
           className="mt-20 text-center max-w-3xl mx-auto hidden"
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <HelpCircle className="w-5 h-5 text-[#ff6600]" />
+            <HelpCircle className="w-5 h-5 text-accent" />
             <h3 className="text-2xl font-bold">Need help choosing?</h3>
           </div>
-          <p className="text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             Our team is ready to answer any questions you might have about our
             plans.
           </p>
-          <button 
+          <button
             className="relative px-6 py-4 text-md font-medium rounded-lg 
-              transition-all duration-300 ease-out text-white bg-black border border-white/20 hover:border-white/50"
+              transition-all duration-300 ease-out text-foreground bg-background border border-border hover:border-accent/50"
           >
             <span className="relative z-10">Contact Support</span>
           </button>

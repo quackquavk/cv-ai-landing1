@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  ThumbsUp,
-  Calendar,
-  Trash2,
-  ArchiveIcon,
-  Pencil,
-} from "lucide-react";
+import { ThumbsUp, Calendar, Trash2, ArchiveIcon, Pencil } from "lucide-react";
 import { format } from "date-fns";
 import {
   Select,
@@ -122,11 +116,11 @@ const ProspectCard = ({
     <>
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="group bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 hover:border-white/20 transition-all duration-300 flex flex-col h-full"
+        className="group bg-card backdrop-blur-sm border border-border rounded-xl p-4 sm:p-6 hover:border-accent/50 transition-all duration-300 flex flex-col h-full"
       >
         <div className="flex-grow">
           <div className="flex items-start justify-between mb-3">
-            <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-[#FF6600] transition-colors">
+            <h3 className="text-lg sm:text-xl font-semibold text-card-foreground group-hover:text-accent transition-colors">
               {prospect.title}
             </h3>
             <div className="flex items-center gap-2">
@@ -156,12 +150,12 @@ const ProspectCard = ({
                 <Select
                   value={prospect.status}
                   onValueChange={handleStatusChange}
-                  className="bg-black/50 border-white/20 text-white text-sm"
+                  className="bg-background border-border text-foreground text-sm"
                 >
-                  <SelectTrigger className="w-[100px] h-8 bg-black/50 border-white/20 text-white text-sm">
+                  <SelectTrigger className="w-[100px] h-8 bg-background border-border text-foreground text-sm">
                     <SelectValue placeholder="Change status" />
                   </SelectTrigger>
-                  <SelectContent className="bg-black/95 border-white/20 text-white">
+                  <SelectContent className="bg-popover border-border text-popover-foreground">
                     <SelectItem value="idea">Idea</SelectItem>
                     <SelectItem value="in_progress">In Progress</SelectItem>
                     <SelectItem value="launched">Launched</SelectItem>
@@ -171,7 +165,7 @@ const ProspectCard = ({
                 <Button
                   onClick={() => handleArchiveUndo(prospect.id)}
                   variant="outline"
-                  className="bg-transparent border border-white/20 text-white hover:text-white hover:bg-white/10"
+                  className="bg-transparent border border-border text-foreground hover:text-foreground hover:bg-accent/10"
                 >
                   Undo Archive
                 </Button>
@@ -180,7 +174,7 @@ const ProspectCard = ({
               )}
             </div>
           </div>
-          <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
             {prospect.createdAt && (
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
@@ -191,18 +185,18 @@ const ProspectCard = ({
             )}
           </div>
           <div className="relative">
-            <p className="text-gray-400 mb-4 sm:mb-6 line-clamp-[8] sm:line-clamp-[12] text-sm leading-relaxed">
+            <p className="text-muted-foreground mb-4 sm:mb-6 line-clamp-[8] sm:line-clamp-[12] text-sm leading-relaxed">
               {prospect.description}
             </p>
           </div>
         </div>
         <button
           onClick={handleVoteClick}
-          className={`group/button w-full mt-4 pt-4 border-t border-white/10 flex items-center justify-between px-4 py-3 rounded-lg
+          className={`group/button w-full mt-4 pt-4 border-t border-border flex items-center justify-between px-4 py-3 rounded-lg
             transition-all duration-300 ${
               prospect.has_upvoted
-                ? "bg-[#FF6600]/10"
-                : "bg-white/5 hover:bg-white/10"
+                ? "bg-accent/10"
+                : "bg-muted/50 hover:bg-muted"
             }`}
           aria-label={`Vote for ${prospect.title}`}
         >
@@ -211,14 +205,16 @@ const ProspectCard = ({
               <ThumbsUp
                 size={20}
                 strokeWidth={2.5}
-                stroke={prospect.has_upvoted ? "transparent" : "white"}
-                fill={prospect.has_upvoted ? "#FF6600" : "transparent"}
-                className="transition-transform group-hover/button:scale-110"
+                stroke={prospect.has_upvoted ? "transparent" : "currentColor"}
+                fill={
+                  prospect.has_upvoted ? "var(--color-accent)" : "transparent"
+                }
+                className="transition-transform group-hover/button:scale-110 text-muted-foreground group-hover/button:text-foreground"
               />
             </div>
             <span
               className={`font-medium transition-colors ${
-                prospect.has_upvoted ? "text-[#FF6600]" : ""
+                prospect.has_upvoted ? "text-accent" : ""
               }`}
             >
               {prospect.has_upvoted ? "Voted" : "Vote"}
@@ -227,7 +223,7 @@ const ProspectCard = ({
           <div className="flex items-center">
             <span
               className={`font-medium ${
-                prospect.has_upvoted ? "text-[#FF6600]" : "text-white"
+                prospect.has_upvoted ? "text-accent" : "text-foreground"
               }`}
             >
               {prospect.upvotes}
@@ -236,12 +232,12 @@ const ProspectCard = ({
         </button>
       </motion.div>
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="sm:max-w-[425px] bg-black/95 border border-white/10 text-white">
+        <DialogContent className="sm:max-w-[425px] bg-background border border-border text-foreground">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold text-white">
+            <DialogTitle className="text-xl font-bold text-foreground">
               Confirm {prospect.status === "archived" ? "Delete" : "Archive"}
             </DialogTitle>
-            <DialogDescription className="text-gray-400">
+            <DialogDescription className="text-muted-foreground">
               Are you sure you want to{" "}
               {prospect.status === "archived" ? "delete" : "archive"} "
               {prospect.title}"? This action cannot be undone.
@@ -251,13 +247,13 @@ const ProspectCard = ({
             <Button
               variant="outline"
               onClick={() => setIsDeleteDialogOpen(false)}
-              className="bg-transparent border border-white/20 text-white hover:bg-white/10"
+              className="bg-transparent border border-border text-foreground hover:bg-muted"
             >
               Cancel
             </Button>
             <Button
               onClick={handleConfirmDelete}
-              className="bg-red-500 text-white hover:bg-red-600"
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
               {prospect.status === "archived" ? "Delete" : "Archive"}
             </Button>
@@ -266,7 +262,7 @@ const ProspectCard = ({
       </Dialog>
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent
-          className="sm:max-w-[500px] bg-black/95 border border-white/50 text-white"
+          className="sm:max-w-[500px] bg-background border border-border text-foreground"
           role="dialog"
           aria-labelledby="dialog-title"
           aria-describedby="dialog-description"
@@ -274,13 +270,13 @@ const ProspectCard = ({
           <DialogHeader>
             <DialogTitle
               id="dialog-title"
-              className="text-2xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent"
+              className="text-2xl font-bold text-foreground"
             >
               Edit Idea
             </DialogTitle>
             <DialogDescription
               id="dialog-description"
-              className="text-gray-400"
+              className="text-muted-foreground"
             >
               Modify the details of your idea below.
             </DialogDescription>
@@ -298,7 +294,7 @@ const ProspectCard = ({
             <div className="space-y-2">
               <label
                 htmlFor="title"
-                className="text-sm font-medium text-gray-200"
+                className="text-sm font-medium text-foreground"
               >
                 Feature Title
               </label>
@@ -307,7 +303,7 @@ const ProspectCard = ({
                 id="title"
                 value={editTitle}
                 onChange={(e) => setEditTitle(e.target.value)}
-                className="w-full px-4 py-3 bg-black/50 border border-white/30 rounded-lg focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-accent transition-colors"
                 placeholder="Enter feature title"
                 required
               />
@@ -315,7 +311,7 @@ const ProspectCard = ({
             <div className="space-y-2">
               <label
                 htmlFor="description"
-                className="text-sm font-medium text-gray-200"
+                className="text-sm font-medium text-foreground"
               >
                 Description
               </label>
@@ -323,7 +319,7 @@ const ProspectCard = ({
                 id="description"
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
-                className="w-full px-4 py-3 bg-black/50 border border-white/30 rounded-lg focus:outline-none transition-colors min-h-[120px] resize-none"
+                className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-accent transition-colors min-h-[120px] resize-none"
                 placeholder="Describe your feature idea in detail..."
                 required
               />
@@ -333,13 +329,13 @@ const ProspectCard = ({
                 type="button"
                 variant="outline"
                 onClick={() => setIsEditDialogOpen(false)}
-                className="px-4 py-2 border bg-black border-white/10 text-white hover:bg-black hover:text-white transition-colors"
+                className="px-4 py-2 border bg-background border-border text-foreground hover:bg-muted transition-colors"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="px-4 py-2 bg-[#ff6600] text-white hover:bg-[#ff6600]/90 transition-colors"
+                className="px-4 py-2 bg-accent text-white hover:bg-accent/90 transition-colors"
               >
                 Save
               </Button>

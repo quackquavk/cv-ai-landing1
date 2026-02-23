@@ -25,32 +25,32 @@ const AuthorCard = ({
   const author = authors[authorId] || authors.resumeai;
 
   return (
-    <div className="border-t border-b border-[#ff6600]/20 py-6 my-8">
+    <div className="border-t border-b border-accent/20 py-6 my-8">
       <div className="flex items-start gap-4">
         <Image
           src={author.image}
           alt={author.name}
           width={56}
           height={56}
-          className="rounded-full border-2 border-[#ff6600]/30 object-cover"
+          className="rounded-full border-2 border-accent/30 object-cover"
         />
         <div className="flex-1">
           <div className="flex flex-wrap items-center gap-2 mb-1">
-            <span className="font-semibold text-white">{author.name}</span>
-            <span className="text-gray-500">•</span>
-            <span className="text-gray-400 text-sm">{author.role}</span>
+            <span className="font-semibold text-foreground">{author.name}</span>
+            <span className="text-muted-foreground">•</span>
+            <span className="text-muted-foreground text-sm">{author.role}</span>
           </div>
-          <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+          <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
             {author.bio}
           </p>
-          <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
             <time dateTime={publishedDate}>
               Published: {formatDate(publishedDate)}
             </time>
             {updatedDate && (
               <>
                 <span>•</span>
-                <time dateTime={updatedDate} className="text-[#ff6600]">
+                <time dateTime={updatedDate} className="text-accent">
                   Updated: {formatDate(updatedDate)}
                 </time>
               </>

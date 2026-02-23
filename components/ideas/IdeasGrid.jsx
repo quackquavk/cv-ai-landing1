@@ -21,7 +21,7 @@ const IdeasGrid = ({
         exit={{ opacity: 0 }}
         className='text-center py-8'
       >
-        <p className='text-gray-400'>No ideas available at the moment.</p>
+        <p className='text-muted-foreground'>No ideas available at the moment.</p>
       </motion.div>
     );
   }

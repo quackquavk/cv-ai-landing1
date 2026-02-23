@@ -54,7 +54,7 @@ const blogPosts = [
 
 const BlogShowcase = () => {
   return (
-    <section className="relative py-20 bg-black">
+    <section className="relative py-20 bg-background">
       <div className="container mx-auto px-6">
         <motion.div
           variants={containerVariants}
@@ -64,10 +64,10 @@ const BlogShowcase = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
               Latest Insights
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Expert advice on landing your dream developer job and navigating
               the modern job market
             </p>
@@ -82,30 +82,30 @@ const BlogShowcase = () => {
                 className="group relative"
               >
                 <Link href={post.slug}>
-                  <div className="h-full bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-[#ff6600]/20 rounded-2xl p-6 hover:border-[#ff6600]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#ff6600]/10 cursor-pointer">
+                  <div className="h-full bg-gradient-to-br from-muted to-muted/50 border border-accent/20 rounded-2xl p-6 hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 cursor-pointer">
                     {/* Category Badge */}
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-semibold text-[#ff6600] bg-[#ff6600]/10 px-3 py-1 rounded-full">
+                      <span className="text-xs font-semibold text-accent bg-accent/10 px-3 py-1 rounded-full">
                         {post.category}
                       </span>
-                      <div className="flex items-center gap-1 text-gray-500 text-sm">
+                      <div className="flex items-center gap-1 text-muted-foreground text-sm">
                         <Clock size={14} />
                         <span>{post.readTime}</span>
                       </div>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ff6600] transition-colors duration-300 line-clamp-2">
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300 line-clamp-2">
                       {post.title}
                     </h3>
 
                     {/* Excerpt */}
-                    <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3">
                       {post.excerpt}
                     </p>
 
                     {/* Read More Link */}
-                    <div className="flex items-center gap-2 text-[#ff6600] font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                    <div className="flex items-center gap-2 text-accent font-semibold text-sm group-hover:gap-3 transition-all duration-300">
                       <span>Read More</span>
                       <ArrowRight
                         size={16}
@@ -114,7 +114,7 @@ const BlogShowcase = () => {
                     </div>
 
                     {/* Decorative Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#ff6600]/0 via-[#ff6600]/0 to-[#ff6600]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent/0 via-accent/0 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
                 </Link>
               </motion.div>

@@ -35,7 +35,7 @@ const FeatureIcon = ({ value }) => {
   if (value === "limited") {
     return <Minus className="w-5 h-5 text-yellow-500" />;
   }
-  return <span className="text-white font-medium">{value}</span>;
+  return <span className="text-foreground font-medium">{value}</span>;
 };
 
 // Comparison Table Schema for SEO
@@ -50,10 +50,10 @@ export const comparisonSchema = {
 const ComparisonTable = ({ showCTA = true }) => {
   return (
     <div className="my-12">
-      <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">
+      <h2 className="text-2xl md:text-3xl font-bold mb-2 text-foreground">
         How ResumeAI Compares to Alternatives
       </h2>
-      <p className="text-gray-400 mb-8">
+      <p className="text-muted-foreground mb-8">
         See how our AI resume builder stacks up against other popular tools in 2026.
       </p>
 
@@ -61,26 +61,26 @@ const ComparisonTable = ({ showCTA = true }) => {
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
-            <tr className="border-b border-[#ff6600]/20">
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">
+            <tr className="border-b border-accent/20">
+              <th className="text-left py-4 px-4 text-muted-foreground font-medium">
                 Feature
               </th>
               <th className="text-center py-4 px-4">
-                <span className="text-[#ff6600] font-bold">ResumeAI</span>
+                <span className="text-accent font-bold">ResumeAI</span>
               </th>
-              <th className="text-center py-4 px-4 text-white">Rezi.ai</th>
-              <th className="text-center py-4 px-4 text-white">Jobscan</th>
-              <th className="text-center py-4 px-4 text-white">Teal HQ</th>
+              <th className="text-center py-4 px-4 text-foreground">Rezi.ai</th>
+              <th className="text-center py-4 px-4 text-foreground">Jobscan</th>
+              <th className="text-center py-4 px-4 text-foreground">Teal HQ</th>
             </tr>
           </thead>
           <tbody>
             {comparisonData.features.map((feature, index) => (
               <tr
                 key={index}
-                className="border-b border-white/5 hover:bg-white/5 transition-colors"
+                className="border-b border-border/50 hover:bg-muted/5 transition-colors"
               >
-                <td className="py-4 px-4 text-gray-300">{feature.name}</td>
-                <td className="py-4 px-4 text-center bg-[#ff6600]/5">
+                <td className="py-4 px-4 text-foreground">{feature.name}</td>
+                <td className="py-4 px-4 text-center bg-accent/5">
                   <div className="flex justify-center">
                     <FeatureIcon value={feature.resumeai} />
                   </div>
@@ -103,33 +103,33 @@ const ComparisonTable = ({ showCTA = true }) => {
               </tr>
             ))}
             {/* Pricing Row */}
-            <tr className="border-t-2 border-[#ff6600]/30">
-              <td className="py-4 px-4 text-white font-semibold">Free Tier</td>
-              <td className="py-4 px-4 text-center bg-[#ff6600]/5 text-[#ff6600] font-medium">
+            <tr className="border-t-2 border-accent/30">
+              <td className="py-4 px-4 text-foreground font-semibold">Free Tier</td>
+              <td className="py-4 px-4 text-center bg-accent/5 text-accent font-medium">
                 {comparisonData.pricing.resumeai.free}
               </td>
-              <td className="py-4 px-4 text-center text-gray-400">
+              <td className="py-4 px-4 text-center text-muted-foreground">
                 {comparisonData.pricing.rezi.free}
               </td>
-              <td className="py-4 px-4 text-center text-gray-400">
+              <td className="py-4 px-4 text-center text-muted-foreground">
                 {comparisonData.pricing.jobscan.free}
               </td>
-              <td className="py-4 px-4 text-center text-gray-400">
+              <td className="py-4 px-4 text-center text-muted-foreground">
                 {comparisonData.pricing.teal.free}
               </td>
             </tr>
             <tr>
-              <td className="py-4 px-4 text-white font-semibold">Paid Plan</td>
-              <td className="py-4 px-4 text-center bg-[#ff6600]/5 text-[#ff6600] font-medium">
+              <td className="py-4 px-4 text-foreground font-semibold">Paid Plan</td>
+              <td className="py-4 px-4 text-center bg-accent/5 text-accent font-medium">
                 {comparisonData.pricing.resumeai.paid}
               </td>
-              <td className="py-4 px-4 text-center text-gray-400">
+              <td className="py-4 px-4 text-center text-muted-foreground">
                 {comparisonData.pricing.rezi.paid}
               </td>
-              <td className="py-4 px-4 text-center text-gray-400">
+              <td className="py-4 px-4 text-center text-muted-foreground">
                 {comparisonData.pricing.jobscan.paid}
               </td>
-              <td className="py-4 px-4 text-center text-gray-400">
+              <td className="py-4 px-4 text-center text-muted-foreground">
                 {comparisonData.pricing.teal.paid}
               </td>
             </tr>
@@ -142,25 +142,25 @@ const ComparisonTable = ({ showCTA = true }) => {
         {comparisonData.features.slice(0, 6).map((feature, index) => (
           <div
             key={index}
-            className="bg-[#0a0a0a]/60 border border-[#ff6600]/10 rounded-lg p-4"
+            className="bg-muted/30 border border-accent/10 rounded-lg p-4"
           >
-            <h4 className="text-white font-medium mb-3">{feature.name}</h4>
+            <h4 className="text-foreground font-medium mb-3">{feature.name}</h4>
             <div className="grid grid-cols-2 gap-2 text-sm">
               <div className="flex items-center gap-2">
                 <FeatureIcon value={feature.resumeai} />
-                <span className="text-[#ff6600]">ResumeAI</span>
+                <span className="text-accent">ResumeAI</span>
               </div>
               <div className="flex items-center gap-2">
                 <FeatureIcon value={feature.rezi} />
-                <span className="text-gray-400">Rezi.ai</span>
+                <span className="text-muted-foreground">Rezi.ai</span>
               </div>
               <div className="flex items-center gap-2">
                 <FeatureIcon value={feature.jobscan} />
-                <span className="text-gray-400">Jobscan</span>
+                <span className="text-muted-foreground">Jobscan</span>
               </div>
               <div className="flex items-center gap-2">
                 <FeatureIcon value={feature.teal} />
-                <span className="text-gray-400">Teal HQ</span>
+                <span className="text-muted-foreground">Teal HQ</span>
               </div>
             </div>
           </div>
@@ -168,7 +168,7 @@ const ComparisonTable = ({ showCTA = true }) => {
       </div>
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-6 mt-6 text-sm text-gray-400">
+      <div className="flex flex-wrap gap-6 mt-6 text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
           <Check className="w-4 h-4 text-green-500" />
           <span>Full support</span>
@@ -185,16 +185,16 @@ const ComparisonTable = ({ showCTA = true }) => {
 
       {/* CTA */}
       {showCTA && (
-        <div className="mt-8 p-6 bg-gradient-to-r from-[#ff6600]/20 to-[#ff6600]/10 border border-[#ff6600]/30 rounded-xl text-center">
-          <h3 className="text-xl font-bold text-white mb-2">
+        <div className="mt-8 p-6 bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30 rounded-xl text-center">
+          <h3 className="text-xl font-bold text-foreground mb-2">
             Ready to try the most feature-complete free resume builder?
           </h3>
-          <p className="text-gray-300 mb-4">
+          <p className="text-muted-foreground mb-4">
             Join 10,000+ job seekers who chose ResumeAI for semantic job matching.
           </p>
           <Link
             href="https://app.cvai.dev/dashboard/resumes"
-            className="inline-block bg-[#ff6600] hover:bg-[#ff6600]/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+            className="inline-block bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
           >
             Build Your Resume Free
           </Link>

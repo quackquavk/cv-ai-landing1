@@ -270,7 +270,7 @@ const faqs = [
 
 export default function AIResumeBuilderPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-background text-foreground">
       {/* FAQ Schema JSON-LD */}
       <script
         type="application/ld+json"
@@ -296,9 +296,9 @@ export default function AIResumeBuilderPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#ff6600]/10 via-transparent to-transparent" />
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#ff6600]/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#ff6600]/10 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/10 via-transparent to-transparent" />
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px]" />
 
         <motion.div
           variants={containerVariants}
@@ -310,28 +310,31 @@ export default function AIResumeBuilderPage() {
             variants={itemVariants}
             className="max-w-4xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-[#ff6600] bg-[#ff6600]/10 rounded-full border border-[#ff6600]/20">
+            <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-accent bg-accent/10 rounded-full border border-accent/20">
               #1 AI Resume Builder
             </span>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
                 Free AI Resume Builder
               </span>
               <br />
-              <span className="text-[#ff6600]">That Gets You Hired</span>
+              <span className="text-accent">That Gets You Hired</span>
             </h1>
 
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Create professional, ATS-optimized resumes in minutes with our
-              <strong className="text-white"> best AI resume builder</strong>.
-              Join thousands who've landed their dream jobs with our{" "}
-              <strong className="text-white">AI CV maker</strong>.
+              <strong className="text-foreground">
+                {" "}
+                best AI resume builder
+              </strong>
+              . Join thousands who've landed their dream jobs with our{" "}
+              <strong className="text-foreground">AI CV maker</strong>.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="https://app.cvai.dev/dashboard/resumes">
-                <Button className="px-8 py-6 text-lg font-semibold bg-[#ff6600] hover:bg-[#ff6600]/90 text-white rounded-lg shadow-lg shadow-orange-500/25 transition-all duration-300">
+                <Button className="px-8 py-6 text-lg font-semibold bg-accent hover:bg-accent/90 text-white rounded-lg shadow-lg shadow-accent/25 transition-all duration-300">
                   <Sparkles className="w-5 h-5 mr-2" />
                   Build Your Resume Free
                 </Button>
@@ -339,14 +342,14 @@ export default function AIResumeBuilderPage() {
               <Link href="#how-it-works">
                 <Button
                   variant="outline"
-                  className="px-8 py-6 text-lg font-semibold border-gray-700 hover:border-[#ff6600]/50 text-white rounded-lg transition-all duration-300"
+                  className="px-8 py-6 text-lg font-semibold border-border hover:border-accent/50 text-foreground rounded-lg transition-all duration-300"
                 >
                   See How It Works
                 </Button>
               </Link>
             </div>
 
-            <p className="mt-6 text-gray-500 text-sm">
+            <p className="mt-6 text-muted-foreground text-sm">
               ✓ No credit card required &nbsp; ✓ Free forever &nbsp; ✓
               ATS-optimized
             </p>
@@ -357,7 +360,7 @@ export default function AIResumeBuilderPage() {
             variants={itemVariants}
             className="mt-16 max-w-4xl mx-auto"
           >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-[#ff6600]/10">
+            <div className="relative rounded-2xl overflow-hidden border border-border shadow-2xl shadow-accent/10">
               <Image
                 src="/resume-builder-hero.png"
                 alt="AI Resume Builder Interface - Create professional ATS-optimized resumes with our free AI CV maker"
@@ -374,34 +377,34 @@ export default function AIResumeBuilderPage() {
       </section>
 
       {/* Trust Badges */}
-      <section className="py-12 border-y border-white/10">
+      <section className="py-12 border-y border-border">
         <div className="container mx-auto px-6">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center items-center gap-8 text-gray-400"
+            className="flex flex-wrap justify-center items-center gap-8 text-muted-foreground"
           >
             <motion.div
               variants={itemVariants}
               className="flex items-center gap-2"
             >
-              <CheckCircle className="w-5 h-5 text-[#ff6600]" />
+              <CheckCircle className="w-5 h-5 text-accent" />
               <span>10,000+ Resumes Created</span>
             </motion.div>
             <motion.div
               variants={itemVariants}
               className="flex items-center gap-2"
             >
-              <Star className="w-5 h-5 text-[#ff6600]" />
+              <Star className="w-5 h-5 text-accent" />
               <span>4.9/5 User Rating</span>
             </motion.div>
             <motion.div
               variants={itemVariants}
               className="flex items-center gap-2"
             >
-              <Target className="w-5 h-5 text-[#ff6600]" />
+              <Target className="w-5 h-5 text-accent" />
               <span>95% ATS Pass Rate</span>
             </motion.div>
           </motion.div>
@@ -420,11 +423,11 @@ export default function AIResumeBuilderPage() {
             <motion.div variants={itemVariants} className="text-center mb-16">
               <h2
                 id="features-heading"
-                className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+                className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent"
               >
                 Why Choose Our AI Resume Builder?
               </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Our online AI resume builder combines cutting-edge AI technology
                 with proven resume best practices.
               </p>
@@ -435,15 +438,15 @@ export default function AIResumeBuilderPage() {
                 <motion.article
                   key={index}
                   variants={itemVariants}
-                  className="p-6 bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-2xl hover:border-[#ff6600]/30 transition-all duration-300"
+                  className="p-6 bg-gradient-to-br from-card to-transparent border border-border rounded-2xl hover:border-accent/30 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-[#ff6600]/10 rounded-xl flex items-center justify-center text-[#ff6600] mb-4">
+                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-400">{feature.description}</p>
+                  <p className="text-muted-foreground">{feature.description}</p>
                 </motion.article>
               ))}
             </div>
@@ -454,7 +457,7 @@ export default function AIResumeBuilderPage() {
       {/* How It Works */}
       <section
         id="how-it-works"
-        className="py-20 bg-gradient-to-b from-transparent via-[#ff6600]/5 to-transparent"
+        className="py-20 bg-gradient-to-b from-transparent via-accent/5 to-transparent"
         aria-labelledby="how-it-works-heading"
       >
         <div className="container mx-auto px-6">
@@ -467,11 +470,11 @@ export default function AIResumeBuilderPage() {
             <motion.div variants={itemVariants} className="text-center mb-16">
               <h2
                 id="how-it-works-heading"
-                className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+                className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent"
               >
                 Build Your Resume in 3 Easy Steps
               </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Our resume maker AI guides you through a simple process to
                 create a standout resume.
               </p>
@@ -482,16 +485,16 @@ export default function AIResumeBuilderPage() {
                 <motion.article
                   key={index}
                   variants={itemVariants}
-                  className="relative p-8 bg-black border border-white/10 rounded-2xl text-center"
+                  className="relative p-8 bg-card border border-border rounded-2xl text-center"
                 >
-                  <span className="text-6xl font-bold text-[#ff6600]/20 absolute top-4 left-6">
+                  <span className="text-6xl font-bold text-accent/20 absolute top-4 left-6">
                     {step.number}
                   </span>
                   <div className="relative z-10 pt-8">
-                    <h3 className="text-xl font-semibold mb-3 text-white">
+                    <h3 className="text-xl font-semibold mb-3 text-foreground">
                       {step.title}
                     </h3>
-                    <p className="text-gray-400">{step.description}</p>
+                    <p className="text-muted-foreground">{step.description}</p>
                   </div>
                 </motion.article>
               ))}
@@ -499,7 +502,7 @@ export default function AIResumeBuilderPage() {
 
             <motion.div variants={itemVariants} className="text-center mt-12">
               <Link href="https://app.cvai.dev/dashboard/resumes">
-                <Button className="px-8 py-6 text-lg font-semibold bg-[#ff6600] hover:bg-[#ff6600]/90 text-white rounded-lg shadow-lg shadow-orange-500/25 transition-all duration-300">
+                <Button className="px-8 py-6 text-lg font-semibold bg-accent hover:bg-accent/90 text-white rounded-lg shadow-lg shadow-accent/25 transition-all duration-300">
                   Start Building Now
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -521,11 +524,11 @@ export default function AIResumeBuilderPage() {
             <motion.div variants={itemVariants} className="text-center mb-16">
               <h2
                 id="testimonials-heading"
-                className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+                className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent"
               >
                 Loved by Job Seekers
               </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 See why thousands choose our free AI resume builder to land
                 their dream jobs.
               </p>
@@ -536,25 +539,25 @@ export default function AIResumeBuilderPage() {
                 <motion.blockquote
                   key={index}
                   variants={itemVariants}
-                  className="p-6 bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-2xl"
+                  className="p-6 bg-gradient-to-br from-card to-transparent border border-border rounded-2xl"
                 >
                   <div className="flex gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-5 h-5 text-[#ff6600] fill-[#ff6600]"
+                        className="w-5 h-5 text-accent fill-accent"
                       />
                     ))}
                   </div>
-                  <p className="text-gray-300 mb-4 italic">
+                  <p className="text-muted-foreground mb-4 italic">
                     "{testimonial.content}"
                   </p>
                   <footer>
                     <cite className="not-italic">
-                      <span className="font-semibold text-white block">
+                      <span className="font-semibold text-foreground block">
                         {testimonial.name}
                       </span>
-                      <span className="text-gray-500 text-sm">
+                      <span className="text-muted-foreground text-sm">
                         {testimonial.role}
                       </span>
                     </cite>
@@ -568,7 +571,7 @@ export default function AIResumeBuilderPage() {
 
       {/* FAQ Section */}
       <section
-        className="py-20 bg-gradient-to-b from-transparent via-[#ff6600]/5 to-transparent"
+        className="py-20 bg-gradient-to-b from-transparent via-accent/5 to-transparent"
         aria-labelledby="faq-heading"
       >
         <div className="container mx-auto px-6">
@@ -581,11 +584,11 @@ export default function AIResumeBuilderPage() {
             <motion.div variants={itemVariants} className="text-center mb-16">
               <h2
                 id="faq-heading"
-                className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+                className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent"
               >
                 Frequently Asked Questions
               </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Everything you need to know about our AI CV maker.
               </p>
             </motion.div>
@@ -595,13 +598,13 @@ export default function AIResumeBuilderPage() {
                 <motion.details
                   key={index}
                   variants={itemVariants}
-                  className="group p-6 bg-black border border-white/10 rounded-xl hover:border-[#ff6600]/30 transition-all duration-300"
+                  className="group p-6 bg-card border border-border rounded-xl hover:border-accent/30 transition-all duration-300"
                 >
                   <summary className="flex items-center justify-between cursor-pointer list-none">
-                    <h3 className="text-lg font-semibold text-white pr-4">
+                    <h3 className="text-lg font-semibold text-foreground pr-4">
                       {faq.question}
                     </h3>
-                    <span className="text-[#ff6600] group-open:rotate-180 transition-transform duration-300">
+                    <span className="text-accent group-open:rotate-180 transition-transform duration-300">
                       <svg
                         className="w-5 h-5"
                         fill="none"
@@ -617,7 +620,7 @@ export default function AIResumeBuilderPage() {
                       </svg>
                     </span>
                   </summary>
-                  <p className="mt-4 text-gray-400">{faq.answer}</p>
+                  <p className="mt-4 text-muted-foreground">{faq.answer}</p>
                 </motion.details>
               ))}
             </div>
@@ -633,27 +636,27 @@ export default function AIResumeBuilderPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center p-12 bg-gradient-to-r from-[#ff6600]/20 to-[#ff6600]/10 border border-[#ff6600]/30 rounded-3xl"
+            className="max-w-4xl mx-auto text-center p-12 bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30 rounded-3xl"
           >
             <motion.div variants={itemVariants}>
               <h2
                 id="cta-heading"
-                className="text-3xl md:text-4xl font-bold mb-4 text-white"
+                className="text-3xl md:text-4xl font-bold mb-4 text-foreground"
               >
                 Ready to Build Your Perfect Resume?
               </h2>
-              <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
                 Join thousands of job seekers who've used our best AI resume
                 builder to land interviews and get hired. Start creating your
                 professional resume today – it's completely free.
               </p>
               <Link href="https://app.cvai.dev/dashboard/resumes">
-                <Button className="px-10 py-6 text-xl font-semibold bg-[#ff6600] hover:bg-[#ff6600]/90 text-white rounded-lg shadow-lg shadow-orange-500/25 transition-all duration-300">
+                <Button className="px-10 py-6 text-xl font-semibold bg-accent hover:bg-accent/90 text-white rounded-lg shadow-lg shadow-accent/25 transition-all duration-300">
                   <Sparkles className="w-6 h-6 mr-2" />
                   Create Your Free Resume
                 </Button>
               </Link>
-              <p className="mt-4 text-gray-500 text-sm">
+              <p className="mt-4 text-muted-foreground text-sm">
                 No signup required • Export to PDF instantly
               </p>
             </motion.div>
