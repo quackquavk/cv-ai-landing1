@@ -57,7 +57,7 @@ const AddFeatureDialog = ({ onSubmit }) => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
-          className="group px-8 py-4 text-lg mx-auto font-medium rounded-lg border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 flex items-center gap-2 bg-gradient-to-r from-accent to-accent/80"
+          className="group px-8 py-4 text-lg mx-auto font-medium rounded-lg border-2 border-accent/20 text-white hover:opacity-90 transition-all duration-300 flex items-center gap-2 bg-gradient-to-r from-accent to-accent/80"
           aria-label="Add new feature"
         >
           <Plus className="w-5 h-5 transition-transform group-hover:rotate-90" />
