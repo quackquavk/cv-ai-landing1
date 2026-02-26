@@ -1,7 +1,10 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import InputLabel from "../ui/InputLabel";
+import { useTheme } from "@/context/ThemeContext";
 import {
   Calendar,
   ChevronRight,
@@ -87,6 +90,13 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const { isDark } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <motion.footer
       variants={containerVariants}
@@ -107,15 +117,19 @@ export default function Footer() {
           >
             <div className="flex items-center">
               <Image
-                src="/cvai.png"
-                alt="CV_AI"
-                width={50}
+                src={
+                  mounted
+                    ? isDark
+                      ? "/assets/resumeai_logo_white.webp"
+                      : "/assets/resumeai_logo_black.webp"
+                    : "/assets/resumeai_logo_white.webp"
+                }
+                alt="Resume AI"
+                width={150}
                 height={50}
-                className="object-contain mr-2"
+                className="object-contain"
+                priority
               />
-              <span className="text-2xl font-bold text-foreground">
-                Resume AI
-              </span>
             </div>
 
             <p className="text-muted-foreground max-w-md">

@@ -8,7 +8,7 @@ export const authors = {
     name: "ResumeAI Team",
     role: "Career Technology Experts",
     bio: "The ResumeAI team combines expertise in AI, recruitment technology, and career development to help job seekers land their dream roles. Our insights are based on analyzing thousands of successful job placements.",
-    image: "/cvai.png",
+    image: "/assets/resumeai_logo_square.webp",
     social: {
       website: "https://cvai.dev",
     },
@@ -104,7 +104,7 @@ export function generateArticleSchema({
       name: "ResumeAI",
       logo: {
         "@type": "ImageObject",
-        url: "https://cvai.dev/cvai.png",
+        url: "https://cvai.dev/assets/resumeai_logo_square.webp",
       },
     },
     datePublished: publishedDate,

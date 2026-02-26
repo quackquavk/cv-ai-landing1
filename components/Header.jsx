@@ -7,11 +7,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import { useTheme } from "@/context/ThemeContext";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const { isDark } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Handle scroll effect
   useEffect(() => {
@@ -67,24 +74,24 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="relative overflow-hidden rounded-lg">
+            <Link href="/" className="flex items-center gap-2">
               <motion.div whileHover={{ scale: 1.05 }}>
                 <Image
-                  src="/cvai.png"
-                  alt="CV_AI"
-                  width={50}
+                  src={
+                    mounted
+                      ? isDark
+                        ? "/assets/resumeai_logo_white.webp"
+                        : "/assets/resumeai_logo_black.webp"
+                      : "/assets/resumeai_logo_white.webp"
+                  }
+                  alt="Resume AI"
+                  width={150}
                   height={50}
                   className="object-contain"
+                  priority
                 />
               </motion.div>
-            </div>
-            <motion.span
-              className="font-bold text-xl text-foreground"
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <Link href="/">Resume AI</Link>
-            </motion.span>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}

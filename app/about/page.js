@@ -33,7 +33,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "ResumeAI",
   url: "https://cvai.dev",
-  logo: "https://cvai.dev/cvai.png",
+  logo: "https://cvai.dev/assets/resumeai_logo_square.webp",
   description:
     "ResumeAI is an AI-powered resume builder and candidate matching platform that uses semantic search technology to connect job seekers with opportunities and help recruiters find top talent faster.",
   foundingDate: "2025",
