@@ -566,7 +566,7 @@ const SoftwareDeveloperOpportunitiesBlogPost = () => {
               matching can unlock 3x more relevant job opportunities for you.
             </p>
             <Link
-              href="https://api.cvai.dev/dashboard"
+              href="https://app.cvai.dev/dashboard"
               className="inline-block bg-accent hover:bg-accent/90 text-foreground font-semibold px-8 py-3 rounded-lg transition-colors"
             >
               Get Started Free
@@ -1192,7 +1192,7 @@ const SoftwareDeveloperOpportunitiesBlogPost = () => {
                 caps limiting your earning potential.
               </p>
               <Link
-                href="https://api.cvai.dev/dashboard"
+                href="https://app.cvai.dev/dashboard"
                 className="inline-block bg-accent hover:bg-accent/90 text-foreground font-semibold px-8 py-3 rounded-lg transition-colors"
               >
                 Get Started with ResumeAI →

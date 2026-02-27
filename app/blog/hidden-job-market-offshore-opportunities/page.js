@@ -666,7 +666,7 @@ const HiddenJobMarketBlogPost = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="https://api.cvai.dev/dashboard"
+                href="https://app.cvai.dev/dashboard"
                 className="bg-accent hover:bg-accent/90 text-foreground font-semibold px-8 py-3 rounded-lg transition-colors"
               >
                 Upload Your Resume Now
