@@ -20,7 +20,6 @@ const Header = () => {
     setMounted(true);
   }, []);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -29,7 +28,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle intersection observer for active link
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -59,15 +57,14 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "py-3 backdrop-blur-2xl bg-background/40 border-b border-accent/10 shadow-sm"
-          : "py-5 backdrop-blur-md bg-background/80 border-b border-accent/10"
+          ? "py-3 backdrop-blur-2xl bg-background/60 border-b border-foreground/[0.06] shadow-lg shadow-background/20"
+          : "py-5 backdrop-blur-md bg-background/40 border-b border-transparent"
       }`}
     >
       <div className="container mx-auto px-2 md:px-4 max-w-[80vw]">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <motion.div
             className="flex items-center gap-3"
             initial={{ opacity: 0, y: -10 }}
@@ -94,18 +91,17 @@ const Header = () => {
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 ml-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="group relative py-2 text-muted-foreground hover:text-accent transition-colors duration-200"
+                className="group relative py-2 text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium tracking-wide"
                 onClick={() => setActiveLink(link.href.substring(1))}
               >
                 {link.label}
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 h-[2px] brand-gradient-bg transition-all duration-300 ${
                     activeLink === link.href.substring(1)
                       ? "w-full"
                       : "w-0 group-hover:w-full"
@@ -115,18 +111,16 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Actions */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            {/* Auth Buttons */}
-            <div className="hidden sm:flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-3">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
                   variant="ghost"
-                  className="text-accent hover:bg-accent/10 hover:text-accent transition-all duration-200"
+                  className="text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-300 font-medium"
                 >
                   <Link href={"https://app.cvai.dev/dashboard"}>Log In</Link>
                 </Button>
@@ -135,7 +129,7 @@ const Header = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-gradient-to-r from-accent to-[#ff8533] border-accent text-white shadow-[0_4px_14px_rgba(255,102,0,0.25)] hover:opacity-90 transition-all duration-200">
+                <Button className="brand-gradient-bg text-white font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:brightness-110 transition-all duration-300 border-0">
                   <Link href={"https://app.cvai.dev/dashboard"}>
                     Get Started
                   </Link>
@@ -143,7 +137,6 @@ const Header = () => {
               </motion.div>
             </div>
 
-            {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="icon"
@@ -157,7 +150,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -165,7 +157,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-lg border-b border-accent/10"
+            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-2xl border-b border-foreground/[0.06]"
           >
             <div className="container mx-auto px-4 py-5 flex flex-col gap-4 max-w-[80vw]">
               <nav className="flex flex-col gap-3">
@@ -173,7 +165,7 @@ const Header = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="py-3 px-4 text-muted-foreground hover:text-accent hover:bg-accent/5 rounded-md transition-colors duration-200"
+                    className="py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-foreground/5 rounded-lg transition-colors duration-300 font-medium"
                     onClick={() => {
                       setActiveLink(link.href.substring(1));
                       setMobileMenuOpen(false);
@@ -183,14 +175,14 @@ const Header = () => {
                   </Link>
                 ))}
               </nav>
-              <div className="flex flex-col gap-3 mt-2 border-t border-accent/10 pt-4">
+              <div className="flex flex-col gap-3 mt-2 border-t border-foreground/[0.06] pt-4">
                 <Button
                   variant="ghost"
-                  className="w-full justify-start text-muted-foreground hover:text-accent hover:bg-accent/10"
+                  className="w-full justify-start text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                 >
                   <Link href={"https://app.cvai.dev/dashboard"}>Log In</Link>
                 </Button>
-                <Button className="w-full bg-gradient-to-r from-accent to-[#ff8533] border-accent text-white hover:opacity-90 transition-all duration-200">
+                <Button className="w-full brand-gradient-bg text-white font-semibold hover:brightness-110 transition-all duration-300 border-0">
                   <Link href={"https://app.cvai.dev/dashboard"}>
                     Get Started
                   </Link>

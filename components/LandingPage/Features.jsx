@@ -120,7 +120,6 @@ const Features = ({
     if (tab === "archive" && isAdmin && !archivedIdeas.length) {
       fetchArchivedIdeas();
     }
-    // Only notify parent of tab change
     if (onTabChange) {
       onTabChange(tab);
     }
@@ -172,21 +171,25 @@ const Features = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
-      className="relative z-10 min-h-[80vh] "
+      className="relative z-10 min-h-[80vh]"
       id="features"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-transparent pointer-events-none"></div>
+      {/* Subtle gradient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] brand-gradient-bg opacity-[0.04] blur-[100px] rounded-full pointer-events-none" />
 
       <div className="w-[95vw] lg:w-[80vw] mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">
-            Feature Roadmap
+          <span className="inline-block font-mono text-xs uppercase tracking-widest text-accent/70 mb-4">
+            // FEATURE ROADMAP
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-foreground tracking-tight">
+            Shape the <span className="brand-gradient-text">Future</span>
           </h2>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-6">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-8">
             Track, vote, and suggest new features for our platform
           </p>
           {!user ? (
-            <Button className="px-6 py-3 text-sm font-medium rounded-lg bg-gradient-to-r from-accent to-[#ff8533] text-white hover:opacity-90 transition-opacity duration-300 mb-8">
+            <Button className="px-6 py-3 text-sm font-semibold rounded-xl brand-gradient-bg text-white hover:brightness-110 transition-all duration-300 mb-8 border-0 shadow-lg shadow-accent/20">
               <FaGoogle className="w-4 h-4 mr-2 inline-block" />
               Sign in to Vote & Suggest
             </Button>

@@ -17,7 +17,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-// Original research data - "The State of AI Resume Building 2026"
 const researchData = {
   keyFindings: [
     {
@@ -73,7 +72,6 @@ const researchData = {
     January 2025 and January 2026. Salary data is normalized for remote positions accessible globally.`,
 };
 
-// Dataset Schema for SEO
 export const datasetSchema = {
   "@context": "https://schema.org",
   "@type": "Dataset",
@@ -107,14 +105,16 @@ export const datasetSchema = {
 
 const DataInsights = () => {
   return (
-    <section id="research" className="relative py-20 bg-background">
-      {/* Dataset Schema */}
+    <section id="research" className="relative py-24 bg-background overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(datasetSchema),
         }}
       />
+
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] brand-gradient-bg opacity-[0.04] blur-[150px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6">
         <motion.div
@@ -125,11 +125,14 @@ const DataInsights = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-accent bg-accent/10 rounded-full border border-accent/20">
-              Original Research
+            <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-accent/15 bg-accent/5 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full brand-gradient-bg" />
+              <span className="font-mono text-xs uppercase tracking-widest text-accent font-medium">
+                // ORIGINAL RESEARCH
+              </span>
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              The State of AI Resume Building 2026
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight">
+              The State of <span className="brand-gradient-text">AI Resume Building</span> 2026
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Data-driven insights from analyzing 50,000+ job applications and
@@ -143,13 +146,13 @@ const DataInsights = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-muted/60 border border-accent/10 rounded-xl p-6 hover:border-accent/30 transition-all duration-300"
+                className="glass-card rounded-xl p-6 hover:border-accent/25 transition-all duration-300 group"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-accent bg-accent/10 group-hover:bg-accent/15 transition-colors duration-300">
                     {finding.icon}
                   </div>
-                  <span className="text-4xl font-bold text-accent">
+                  <span className="text-4xl font-bold brand-gradient-text">
                     {finding.stat}
                   </span>
                 </div>
@@ -159,7 +162,7 @@ const DataInsights = () => {
                 <p className="text-muted-foreground text-sm mb-3">
                   {finding.description}
                 </p>
-                <p className="text-muted-foreground/60 text-xs italic">
+                <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground/50">
                   {finding.source}
                 </p>
               </motion.div>
@@ -171,7 +174,7 @@ const DataInsights = () => {
             variants={itemVariants}
             className="max-w-3xl mx-auto text-center"
           >
-            <div className="bg-muted/40 border border-accent/10 rounded-xl p-6">
+            <div className="glass-card rounded-xl p-6">
               <h3 className="text-lg font-semibold text-foreground mb-3">
                 Methodology
               </h3>
@@ -188,7 +191,7 @@ const DataInsights = () => {
             </p>
             <Link
               href="https://app.cvai.dev/dashboard/resumes"
-              className="inline-block bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+              className="inline-block brand-gradient-bg text-white font-semibold px-8 py-3 rounded-xl hover:brightness-110 transition-all duration-300 shadow-lg shadow-accent/20"
             >
               Build Your Resume with AI
             </Link>

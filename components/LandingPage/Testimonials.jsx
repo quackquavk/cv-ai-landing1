@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 import Image from "next/image";
 
-// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {
@@ -29,28 +28,27 @@ const testimonialVariants = {
     x: direction > 0 ? 80 : -80,
     opacity: 0,
     scale: 0.95,
-    position: "absolute", // Add absolute positioning
-    width: "100%", // Ensure full width
+    position: "absolute",
+    width: "100%",
   }),
   center: {
     x: 0,
     opacity: 1,
     scale: 1,
-    position: "relative", // Reset to relative when centered
-    width: "100%", // Ensure full width
+    position: "relative",
+    width: "100%",
     transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
   },
   exit: (direction) => ({
     x: direction < 0 ? 80 : -80,
-    opacity: 0, // Change to 0 to fade out completely
+    opacity: 0,
     scale: 0.95,
-    position: "absolute", // Add absolute positioning
-    width: "100%", // Ensure full width
+    position: "absolute",
+    width: "100%",
     transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
   }),
 };
 
-// Testimonial data
 const testimonials = [
   {
     id: 1,
@@ -59,7 +57,7 @@ const testimonials = [
     company: "TalentBridge Inc.",
     avatar: "/sarah.jpg",
     content:
-      "Resume AI has revolutionized our hiring process. We’ve cut candidate screening time by 60%, allowing us to focus on top talent faster.",
+      "Resume AI has revolutionized our hiring process. We've cut candidate screening time by 60%, allowing us to focus on top talent faster.",
     rating: 5,
   },
   {
@@ -69,7 +67,7 @@ const testimonials = [
     company: "Innovate Solutions",
     avatar: "/michael.jpg",
     content:
-      "I was skeptical at first, but Resume AI’s candidate matching is incredibly accurate. It feels like having an AI recruiter working 24/7 for us.",
+      "I was skeptical at first, but Resume AI's candidate matching is incredibly accurate. It feels like having an AI recruiter working 24/7 for us.",
     rating: 5,
   },
   {
@@ -79,7 +77,7 @@ const testimonials = [
     company: "TechTalent Hub",
     avatar: "/jessica.jpg",
     content:
-      "The AI-driven recommendations have helped us discover hidden talent we would’ve otherwise overlooked. Our hiring speed has doubled!",
+      "The AI-driven recommendations have helped us discover hidden talent we would've otherwise overlooked. Our hiring speed has doubled!",
     rating: 4,
   },
   {
@@ -103,7 +101,6 @@ export default function Testimonials() {
   const [direction, setDirection] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Auto-play functionality
   useEffect(() => {
     if (!isAutoPlaying) return;
 
@@ -123,7 +120,6 @@ export default function Testimonials() {
     setCurrentIndex(index);
   };
 
-  // Generate star rating
   const renderStars = (rating) => {
     return Array(5)
       .fill(0)
@@ -146,35 +142,33 @@ export default function Testimonials() {
       viewport={{ once: false }}
       className="py-[140px] relative overflow-hidden bg-background text-foreground"
     >
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden ">
-        <div className="absolute -top-[30%] -left-[10%] w-[50%] h-[70%] rounded-full bg-accent/5 blur-[120px]" />
-        <div className="absolute -bottom-[30%] -right-[10%] w-[50%] h-[70%] rounded-full bg-accent/5 blur-[120px]" />
-        <div className="absolute top-[20%] right-[5%] w-[30%] h-[40%] rounded-full bg-accent/5 blur-[100px]" />
+      {/* Background gradient blobs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-[30%] -left-[10%] w-[50%] h-[70%] rounded-full brand-gradient-bg opacity-[0.03] blur-[120px]" />
+        <div className="absolute -bottom-[30%] -right-[10%] w-[50%] h-[70%] rounded-full bg-accent-magenta opacity-[0.04] blur-[120px]" />
+        <div className="absolute top-[20%] right-[5%] w-[30%] h-[40%] rounded-full bg-accent opacity-[0.03] blur-[100px]" />
       </div>
 
-      <div
-        className="relative z-10 container mx-auto px-6
-      
-      "
-      >
+      <div className="relative z-10 container mx-auto px-6">
         {/* Section header */}
         <motion.div
           variants={itemVariants}
           className="text-center max-w-3xl mx-auto mb-20 space-y-4"
         >
+          <span className="inline-block font-mono text-xs uppercase tracking-widest text-accent/70 mb-2">
+            // TESTIMONIALS
+          </span>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            What Our <span className="text-accent">Users</span> Are Saying
+            What Our <span className="brand-gradient-text">Users</span> Are Saying
           </h2>
           <p className="text-xl text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Resume AI helps recruiters identify and connect with ideal
-            candidates by leveraging AI-driven talent matching technology.
+            ResumeAI helps recruiters identify and connect with ideal
+            candidates by leveraging AI-driven talent matching.
           </p>
         </motion.div>
 
         {/* Testimonial carousel */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Add a fixed height container to prevent layout shifts */}
           <div className="relative" style={{ height: "450px" }}>
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
@@ -186,21 +180,21 @@ export default function Testimonials() {
                 exit="exit"
                 className="relative"
               >
-                <div className="relative rounded-2xl overflow-hidden backdrop-blur-sm bg-muted/30 border border-accent/10 shadow-xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-80" />
+                <div className="relative rounded-2xl overflow-hidden glass-card shadow-xl">
+                  {/* Decorative gradient top border */}
+                  <div className="absolute top-0 left-0 right-0 h-px brand-gradient-bg opacity-40" />
 
-                  {/* Decorative elements */}
-                  <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-accent/10 blur-3xl" />
-                  <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-accent/5 blur-3xl" />
+                  <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full brand-gradient-bg opacity-[0.06] blur-3xl" />
+                  <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-accent-magenta opacity-[0.04] blur-3xl" />
 
                   <div className="relative p-8 md:p-12">
                     <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
                       {/* Avatar and info */}
                       <div className="flex flex-col items-center text-center md:text-left md:items-start space-y-4">
                         <div className="relative">
-                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent to-accent/70 blur-md opacity-30 scale-110" />
-                          <div className="relative p-1 rounded-full bg-gradient-to-br from-accent to-accent/70">
-                            <div className="p-0.5 rounded-full bg-background/80 backdrop-blur-sm">
+                          <div className="absolute inset-0 rounded-full brand-gradient-bg blur-md opacity-20 scale-110" />
+                          <div className="relative p-[2px] rounded-full brand-gradient-bg">
+                            <div className="p-0.5 rounded-full bg-background">
                               <Image
                                 src={
                                   testimonials[currentIndex].avatar ||
@@ -222,7 +216,7 @@ export default function Testimonials() {
                           <p className="text-muted-foreground">
                             {testimonials[currentIndex].role}
                           </p>
-                          <p className="text-accent font-medium">
+                          <p className="brand-gradient-text font-semibold">
                             {testimonials[currentIndex].company}
                           </p>
                         </div>
@@ -234,7 +228,7 @@ export default function Testimonials() {
 
                       {/* Testimonial content */}
                       <div className="flex-1 relative">
-                        <Quote className="absolute -top-2 -left-2 w-10 h-10 text-accent opacity-20" />
+                        <Quote className="absolute -top-2 -left-2 w-10 h-10 text-accent opacity-15" />
                         <div className="relative">
                           <p className="text-lg md:text-xl leading-relaxed pt-6 text-foreground font-medium">
                             {testimonials[currentIndex].content}
@@ -257,14 +251,14 @@ export default function Testimonials() {
                 className={cn(
                   "relative h-2 rounded-full transition-all duration-500 overflow-hidden",
                   index === currentIndex
-                    ? "w-10 bg-accent"
+                    ? "w-10 brand-gradient-bg"
                     : "w-2 bg-muted-foreground/20 hover:bg-muted-foreground/30",
                 )}
                 aria-label={`Go to testimonial ${index + 1}`}
               >
                 {index === currentIndex && (
                   <motion.div
-                    className="absolute inset-0 bg-accent/60"
+                    className="absolute inset-0 bg-foreground/20"
                     initial={{ x: "-100%" }}
                     animate={{ x: "0%" }}
                     transition={{
@@ -283,13 +277,13 @@ export default function Testimonials() {
             <button
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
               className={cn(
-                "text-xs font-medium px-3 py-1 rounded-full transition-all duration-300",
+                "font-mono text-[10px] uppercase tracking-widest font-medium px-4 py-1.5 rounded-full transition-all duration-300",
                 isAutoPlaying
                   ? "bg-accent/10 text-accent hover:bg-accent/20"
-                  : "bg-muted/10 text-muted-foreground hover:bg-muted/20",
+                  : "bg-muted text-muted-foreground hover:bg-muted/80",
               )}
             >
-              {isAutoPlaying ? "Auto-playing" : "Paused"}
+              {isAutoPlaying ? "[ AUTO-PLAYING ]" : "[ PAUSED ]"}
             </button>
           </div>
         </div>

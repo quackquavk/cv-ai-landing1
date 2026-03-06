@@ -2,12 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import InputLabel from "../ui/InputLabel";
 import { useTheme } from "@/context/ThemeContext";
 import {
-  Calendar,
-  ChevronRight,
   Facebook,
   Github,
   Instagram,
@@ -16,7 +12,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {
@@ -33,7 +28,6 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-// Footer navigation links
 const footerLinks = [
   {
     title: "Products",
@@ -59,15 +53,6 @@ const footerLinks = [
       { name: "Brandbuilder", href: "https://brandbuilder.com.np" },
     ],
   },
-  // {
-  //   title: "Resources",
-  //   links: [
-  //     { name: "Blog", href: "#" },
-  //     { name: "Content Library", href: "#" },
-  //     { name: "Tutorials", href: "#" },
-  //     { name: "Case Studies", href: "#" },
-  //   ],
-  // },
   {
     title: "Company",
     links: [
@@ -80,7 +65,6 @@ const footerLinks = [
   },
 ];
 
-// Social media links
 const socialLinks = [
   { name: "Twitter", icon: Twitter, href: "#" },
   { name: "Facebook", icon: Facebook, href: "#" },
@@ -103,11 +87,14 @@ export default function Footer() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="bg-background text-foreground relative border-t border-border"
+      className="bg-background text-foreground relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background" />
+      {/* Top gradient border */}
+      <div className="absolute top-0 left-0 right-0 h-px brand-gradient-bg opacity-20" />
 
-      {/* Main footer content */}
+      {/* Subtle background glow */}
+      <div className="absolute bottom-0 left-1/3 w-[400px] h-[200px] brand-gradient-bg opacity-[0.03] blur-[100px] rounded-full pointer-events-none" />
+
       <div className="relative z-10 container mx-auto px-6 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand section */}
@@ -132,56 +119,14 @@ export default function Footer() {
               />
             </div>
 
-            <p className="text-muted-foreground max-w-md">
-              AI-powered candidate sourcing to help recruiters find, assess, and
-              connect with top talent faster—all with just a click.
+            <p className="text-muted-foreground max-w-md leading-relaxed">
+              Precision-engineered AI for candidate sourcing. Find, assess, and
+              connect with top talent—all with just a click.
             </p>
 
-            {/* Newsletter subscription
-            <div className="pt-2">
-              <h4 className="text-lg font-medium mb-3">Stay updated</h4>
-              <form onSubmit={handleSubscribe} className="space-y-3">
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <InputLabel
-                    suppressHydrationWarning
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/40 hover:border-white/30 transition-colors"
-                    disabled={isSubscribing || subscribed}
-                  />
-                  <Button
-                    type="submit"
-                    className={`relative px-5 py-3 font-medium rounded-lg 
-                      transition-all duration-300 ease-out text-white
-                      ${
-                        isSubscribing || subscribed
-                          ? "bg-[#ff6600]/80"
-                          : "hover:bg-[#ff6600cf] bg-[#ff6600]"
-                      } 
-                      shadow-md shadow-[#000000] border-b-2 border-[#b1591e]`}
-                    disabled={isSubscribing || subscribed}
-                  >
-                    <span className="relative z-10 flex items-center justify-center gap-1">
-                      {isSubscribing ? (
-                        "Subscribing..."
-                      ) : subscribed ? (
-                        "Subscribed!"
-                      ) : (
-                        <>
-                          Subscribe
-                          <ChevronRight className="w-4 h-4" />
-                        </>
-                      )}
-                    </span>
-                  </Button>
-                </div>
-                <p className="text-xs text-gray-500">
-                  We respect your privacy. Unsubscribe at any time.
-                </p>
-              </form>
-            </div> */}
+            <span className="inline-block font-mono text-[10px] uppercase tracking-widest text-muted-foreground/50">
+              // BUILT WITH AI
+            </span>
           </motion.div>
 
           {/* Navigation links */}
@@ -191,15 +136,17 @@ export default function Footer() {
               key={section.title}
               className="space-y-4"
             >
-              <h4 className="text-lg font-medium">{section.title}</h4>
-              <ul className="space-y-2">
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+                {section.title}
+              </h4>
+              <ul className="space-y-2.5">
                 {section.links.map((link) => {
                   const isExternal = link.href.startsWith("http");
                   return (
                     <li key={link.name}>
                       <a
                         href={link.href}
-                        className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+                        className="text-muted-foreground hover:text-accent transition-colors duration-300 text-sm"
                         {...(isExternal && { target: "_blank" })}
                       >
                         {link.name}
@@ -212,15 +159,22 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Divider */}
+        {/* Divider with gradient */}
         <motion.div
           variants={itemVariants}
-          className="border-t border-border my-8"
-        />
+          className="relative my-8"
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full h-px bg-border" />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-32 h-px brand-gradient-bg opacity-30" />
+          </div>
+        </motion.div>
 
-        {/* Bottom section with social links and copyright */}
+        {/* Bottom section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <motion.div variants={itemVariants} className="flex gap-4">
+          <motion.div variants={itemVariants} className="flex gap-3">
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
@@ -228,9 +182,9 @@ export default function Footer() {
                   key={social.name}
                   href={social.href}
                   aria-label={social.name}
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-border hover:border-accent/40 hover:bg-accent/5 transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-foreground/[0.08] hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 text-muted-foreground hover:text-accent"
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4" />
                 </a>
               );
             })}
@@ -238,27 +192,27 @@ export default function Footer() {
 
           <motion.div
             variants={itemVariants}
-            className="text-muted-foreground text-sm"
+            className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60"
           >
-            &copy; {new Date().getFullYear()} Resume AI. All rights reserved.
+            &copy; {new Date().getFullYear()} ResumeAI. All rights reserved.
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex gap-6 text-sm">
             <a
               href="/policy"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+              className="text-muted-foreground hover:text-accent transition-colors duration-300"
             >
               Privacy Policy
             </a>
             <a
               href="/tos"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+              className="text-muted-foreground hover:text-accent transition-colors duration-300"
             >
               Terms of Service
             </a>
             <a
               href="/cookies"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+              className="text-muted-foreground hover:text-accent transition-colors duration-300"
             >
               Cookies
             </a>

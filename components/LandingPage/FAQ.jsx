@@ -62,19 +62,24 @@ const candidateFAQs = [
   },
 ];
 
-const FAQItem = ({ question, answer, isOpen, onClick }) => {
+const FAQItem = ({ question, answer, isOpen, onClick, index }) => {
   return (
     <motion.div
       variants={itemVariants}
-      className="bg-muted/40 border border-accent/10 rounded-xl overflow-hidden hover:border-accent/30 transition-colors duration-300"
+      className="glass-card rounded-xl overflow-hidden hover:border-accent/20 transition-all duration-300"
     >
       <button
         onClick={onClick}
         className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
       >
-        <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-300 pr-4">
-          {question}
-        </h3>
+        <div className="flex items-center gap-4">
+          <span className="font-mono text-[10px] text-accent/50 tracking-wider">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-300 pr-4">
+            {question}
+          </h3>
+        </div>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
@@ -93,7 +98,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-5 text-muted-foreground leading-relaxed">
+            <div className="px-6 pb-5 pl-16 text-muted-foreground leading-relaxed">
               {answer}
             </div>
           </motion.div>
@@ -111,7 +116,10 @@ const FAQ = () => {
   };
 
   return (
-    <section className="relative py-20 bg-background">
+    <section className="relative py-24 bg-background overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
+
       <div className="container mx-auto px-6">
         <motion.div
           variants={containerVariants}
@@ -121,8 +129,11 @@ const FAQ = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              Frequently Asked Questions
+            <span className="inline-block font-mono text-xs uppercase tracking-widest text-accent/70 mb-4">
+              // FAQ
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight">
+              Frequently Asked <span className="brand-gradient-text">Questions</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Everything you need to know about ResumeAI
@@ -130,11 +141,7 @@ const FAQ = () => {
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
-            {/* For Candidates Section */}
             <motion.div variants={itemVariants} className="mb-12">
-              {/* <h3 className="text-2xl font-bold text-[#ff6600] mb-6">
-                For Candidates
-              </h3> */}
               <div className="space-y-4">
                 {candidateFAQs.map((faq, index) => (
                   <FAQItem
@@ -143,47 +150,36 @@ const FAQ = () => {
                     answer={faq.answer}
                     isOpen={openIndex === `candidate-${index}`}
                     onClick={() => handleToggle(`candidate-${index}`)}
+                    index={index}
                   />
                 ))}
               </div>
             </motion.div>
 
-            {/* General Section */}
-            {/* <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold text-[#ff6600] mb-6">
-                General
-              </h3>
-              <div className="space-y-4">
-                {generalFAQs.map((faq, index) => (
-                  <FAQItem
-                    key={`general-${index}`}
-                    question={faq.question}
-                    answer={faq.answer}
-                    isOpen={openIndex === `general-${index}`}
-                    onClick={() => handleToggle(`general-${index}`)}
-                  />
-                ))}
-              </div>
-            </motion.div> */}
-
             {/* CTA Section */}
             <motion.div
               variants={itemVariants}
-              className="mt-12 text-center bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30 rounded-xl p-8"
+              className="mt-12 text-center relative overflow-hidden rounded-xl p-8"
             >
-              <h3 className="text-2xl font-bold text-foreground mb-3">
-                Still have questions?
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Can't find the answer you're looking for? Feel free to reach out
-                to our team.
-              </p>
-              <a
-                href="mailto:mail@rebuzzllc.com"
-                className="inline-block bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300"
-              >
-                Contact Support
-              </a>
+              {/* Gradient background for CTA */}
+              <div className="absolute inset-0 brand-gradient-bg opacity-10" />
+              <div className="absolute inset-0 glass-card" />
+
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold text-foreground mb-3">
+                  Still have questions?
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  Can't find the answer you're looking for? Feel free to reach out
+                  to our team.
+                </p>
+                <a
+                  href="mailto:mail@rebuzzllc.com"
+                  className="inline-block brand-gradient-bg text-white font-semibold px-8 py-3 rounded-xl hover:brightness-110 transition-all duration-300 shadow-lg shadow-accent/20"
+                >
+                  Contact Support
+                </a>
+              </div>
             </motion.div>
           </div>
         </motion.div>

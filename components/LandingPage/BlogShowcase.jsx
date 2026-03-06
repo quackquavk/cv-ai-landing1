@@ -54,7 +54,10 @@ const blogPosts = [
 
 const BlogShowcase = () => {
   return (
-    <section className="relative py-20 bg-background">
+    <section className="relative py-24 bg-background overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[300px] bg-accent-magenta opacity-[0.04] blur-[120px] rounded-full pointer-events-none" />
+
       <div className="container mx-auto px-6">
         <motion.div
           variants={containerVariants}
@@ -64,8 +67,11 @@ const BlogShowcase = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              Latest Insights
+            <span className="inline-block font-mono text-xs uppercase tracking-widest text-accent/70 mb-4">
+              // LATEST INSIGHTS
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight">
+              Data-Backed <span className="brand-gradient-text">Career Frameworks</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Expert advice on landing your dream developer job and navigating
@@ -82,10 +88,10 @@ const BlogShowcase = () => {
                 className="group relative"
               >
                 <Link href={post.slug}>
-                  <div className="h-full bg-gradient-to-br from-muted to-muted/50 border border-accent/20 rounded-2xl p-6 hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 cursor-pointer">
+                  <div className="h-full glass-card rounded-2xl p-6 hover:border-accent/25 transition-all duration-300 cursor-pointer">
                     {/* Category Badge */}
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-semibold text-accent bg-accent/10 px-3 py-1 rounded-full">
+                      <span className="font-mono text-[10px] uppercase tracking-widest font-medium text-accent bg-accent/10 px-3 py-1 rounded-full">
                         {post.category}
                       </span>
                       <div className="flex items-center gap-1 text-muted-foreground text-sm">
@@ -105,32 +111,18 @@ const BlogShowcase = () => {
                     </p>
 
                     {/* Read More Link */}
-                    <div className="flex items-center gap-2 text-accent font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                    <div className="flex items-center gap-2 brand-gradient-text font-semibold text-sm group-hover:gap-3 transition-all duration-300">
                       <span>Read More</span>
                       <ArrowRight
                         size={16}
-                        className="group-hover:translate-x-1 transition-transform duration-300"
+                        className="text-accent group-hover:translate-x-1 transition-transform duration-300"
                       />
                     </div>
-
-                    {/* Decorative Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent/0 via-accent/0 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
                 </Link>
               </motion.div>
             ))}
           </div>
-
-          {/* View All Link */}
-          {/* <motion.div variants={itemVariants} className="text-center mt-12">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-lg border border-[#ff6600]/30 hover:border-[#ff6600] hover:bg-[#ff6600]/10 transition-all duration-300"
-            >
-              <span>View All Articles</span>
-              <ArrowRight size={18} />
-            </Link>
-          </motion.div> */}
         </motion.div>
       </div>
     </section>
