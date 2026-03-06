@@ -48,6 +48,16 @@ const BlogShowcase = dynamic(() => import("./BlogShowcase"), {
   ),
 });
 
+const Pricing = dynamic(() => import("./Pricing"), {
+  loading: () => (
+    <div className="py-20 bg-background">
+      <div className="container mx-auto px-6 text-center">
+        <div className="animate-pulse bg-muted h-64 rounded-xl" />
+      </div>
+    </div>
+  ),
+});
+
 const FAQ = dynamic(() => import("./FAQ"), {
   loading: () => (
     <div className="py-20 bg-background">
@@ -406,6 +416,7 @@ function LandingPage() {
       {/* <Testimonials /> */}
       <DataInsights />
       <BlogShowcase />
+      <Pricing />
       <FAQ />
       <Footer />
       <Toaster />
