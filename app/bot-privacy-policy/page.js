@@ -40,7 +40,7 @@ const BotPrivacyPolicyPage = () => {
             variants={itemVariants}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground via-gray-200 to-foreground bg-clip-text text-transparent dark:from-white dark:via-gray-200 dark:to-white">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent dark:from-white dark:via-gray-200 dark:to-white">
               Browser Extension Privacy Policy
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
