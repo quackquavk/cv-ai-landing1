@@ -24,15 +24,15 @@ export function ATSVisualization() {
     { x: 60, y: 20, delay: 0 },
     { x: 100, y: 25, delay: 50 },
     { x: 140, y: 18, delay: 100 },
-    { x: 180, y: 22, delay: 150 },
-    { x: 220, y: 20, delay: 200 },
-    { x: 260, y: 24, delay: 250 },
-    { x: 300, y: 19, delay: 300 },
+    { x: 180, y: 22, delay: 0 },
+    { x: 220, y: 20, delay: 50 },
+    { x: 260, y: 24, delay: 100 },
+    { x: 300, y: 19, delay: 0 },
   ];
 
   return (
     <div
-      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900"
+      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -42,12 +42,12 @@ export function ATSVisualization() {
       {resumePositions.map((pos, i) => (
         <div
           key={i}
-          className="absolute transition-all duration-700"
+          className="absolute transition-all duration-[200ms]"
           style={{
             left: `${pos.x}px`,
             top: hovered ? `${pos.y + (i % 3) * 8}px` : `${pos.y}px`,
             transitionDelay: `${pos.delay}ms`,
-            transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)",
+            transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
             opacity: hovered ? 0.3 + (i % 3) * 0.2 : 1,
           }}
         >
@@ -72,11 +72,11 @@ export function ATSVisualization() {
 
       {/* Funnel */}
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-[200ms]"
         style={{
           width: hovered ? "200px" : "280px",
           height: hovered ? "90px" : "70px",
-          transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)",
+          transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
         }}
       >
         <svg width="100%" height="100%" viewBox="0 0 280 70" preserveAspectRatio="none">
@@ -116,12 +116,12 @@ export function ATSVisualization() {
 
       {/* Single resume passing through */}
       <div
-        className="absolute transition-all duration-700"
+        className="absolute transition-all duration-[250ms]"
         style={{
           left: hovered ? "50%" : "90%",
           top: hovered ? "55%" : "25%",
           transform: "translate(-50%, -50%)",
-          transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)",
+          transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
           transitionDelay: "200ms",
         }}
       >
@@ -178,7 +178,7 @@ export function NeuralNetworkVisualization() {
 
   return (
     <div
-      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-violet-50 to-indigo-50 dark:from-violet-950 dark:to-indigo-950"
+      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-950 dark:to-indigo-950"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -198,10 +198,10 @@ export function NeuralNetworkVisualization() {
                 stroke="#8b5cf6"
                 strokeWidth={hovered ? 1.5 : 0.75}
                 strokeOpacity={hovered ? 0.5 : 0.2}
-                className="transition-all duration-500"
+                className="transition-all duration-[200ms]"
                 style={{
-                  transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)",
-                  transitionDelay: `${(i + j) * 50}ms`
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  transitionDelay: `${(i + j) * 30}ms`
                 }}
               />
             ))
@@ -239,8 +239,8 @@ export function NeuralNetworkVisualization() {
                   r={size + 4}
                   fill="#8b5cf6"
                   opacity={hovered ? 0.3 : 0.15}
-                  className="transition-all duration-300"
-                  style={{ transitionDelay: `${i * 60}ms` }}
+                  className="transition-all duration-[150ms]"
+                  style={{ transitionDelay: `${i * 35}ms` }}
                 />
                 {/* Core */}
                 <circle
@@ -248,8 +248,8 @@ export function NeuralNetworkVisualization() {
                   cy={node.y}
                   r={size}
                   fill="#8b5cf6"
-                  className="transition-all duration-300"
-                  style={{ transitionDelay: `${i * 60}ms` }}
+                  className="transition-all duration-[150ms]"
+                  style={{ transitionDelay: `${i * 35}ms` }}
                 />
               </g>
             );
@@ -261,7 +261,7 @@ export function NeuralNetworkVisualization() {
 
       {/* 3.2x badge */}
       <div
-        className="absolute top-3 right-3 transition-all duration-500"
+        className="absolute top-3 right-3 transition-all duration-[150ms]"
         style={{
           transform: hovered ? "scale(1.1)" : "scale(1)",
           transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)"
@@ -286,14 +286,14 @@ export function SalaryVisualization() {
   const [hovered, setHovered] = useState(false);
   const bars = [
     { baseHeight: 35, baseY: 115, label: "$52K", delay: 0 },
-    { baseHeight: 50, baseY: 100, label: "$68K", delay: 60 },
-    { baseHeight: 65, baseY: 85, label: "$85K", delay: 120 },
-    { baseHeight: 80, baseY: 70, label: "$95K", delay: 180 },
+    { baseHeight: 50, baseY: 100, label: "$68K", delay: 25 },
+    { baseHeight: 65, baseY: 85, label: "$85K", delay: 50 },
+    { baseHeight: 80, baseY: 70, label: "$95K", delay: 75 },
   ];
 
   return (
     <div
-      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-b from-emerald-50 to-teal-50 dark:from-emerald-950 dark:to-teal-950"
+      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-b from-emerald-100 to-teal-100 dark:from-emerald-950 dark:to-teal-950"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -342,9 +342,9 @@ export function SalaryVisualization() {
                   height={targetHeight}
                   rx="4"
                   fill={fill}
-                  className="transition-all duration-500"
+                  className="transition-all duration-[200ms]"
                   style={{
-                    transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)",
+                    transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
                     transitionDelay: `${bar.delay}ms`
                   }}
                 />
@@ -353,10 +353,10 @@ export function SalaryVisualization() {
                   x="20"
                   y={targetY - 8}
                   textAnchor="middle"
-                  className="text-xs fill-emerald-700 dark:fill-emerald-300 font-semibold transition-all duration-500"
+                  className="text-xs dark:fill-emerald-300 fill-emerald-600 font-semibold transition-all duration-[150ms]"
                   style={{
-                    transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)",
-                    transitionDelay: `${bar.delay + 100}ms`,
+                    transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                    transitionDelay: `${bar.delay + 60}ms`,
                     opacity: hovered ? 1 : 0.7
                   }}
                 >
@@ -375,10 +375,10 @@ export function SalaryVisualization() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="transition-all duration-500"
+              className="transition-all duration-[200ms]"
               style={{
                 transform: hovered ? "translateY(-8px)" : "translateY(0)",
-                transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)"
+                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)"
               }}
             />
           </g>
@@ -410,7 +410,7 @@ export function ScanVisualization() {
 
   return (
     <div
-      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900"
+      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -426,7 +426,7 @@ export function ScanVisualization() {
             height="136"
             rx="4"
             fill="#e2e8f0"
-            className="dark:fill-zinc-800 transition-all duration-500"
+            className="dark:fill-zinc-800 fill-slate-300 transition-all duration-[200ms]"
             style={{ opacity: hovered ? 0.5 : 0.3 }}
           />
 
@@ -440,26 +440,26 @@ export function ScanVisualization() {
             fill="white"
             stroke="#cbd5e1"
             strokeWidth="1"
-            className="transition-all duration-300 dark:fill-zinc-100 dark:stroke-zinc-700"
+            className="transition-all duration-300 dark:fill-zinc-100 dark:stroke-zinc-700 fill-white stroke-slate-300"
           />
 
           {/* Document content */}
-          <g opacity={hovered ? 0.9 : 0.7} className="transition-opacity duration-500">
+          <g opacity={hovered ? 0.9 : 0.7} className="transition-opacity duration-[150ms]">
             {/* Header bar */}
-            <rect x="112" y="25" width="70" height="8" rx="2" fill="#64748b" className="dark:fill-zinc-400" />
+            <rect x="112" y="25" width="70" height="8" rx="2" fill="#64748b" className="dark:fill-zinc-400 fill-slate-500" />
             {/* Subtitle */}
-            <rect x="112" y="38" width="100" height="4" rx="1" fill="#94a3b8" className="dark:fill-zinc-500" />
-            <rect x="112" y="46" width="80" height="4" rx="1" fill="#94a3b8" className="dark:fill-zinc-500" />
+            <rect x="112" y="38" width="100" height="4" rx="1" fill="#94a3b8" className="dark:fill-zinc-500 fill-slate-400" />
+            <rect x="112" y="46" width="80" height="4" rx="1" fill="#94a3b8" className="dark:fill-zinc-500 fill-slate-400" />
             {/* Section */}
-            <rect x="112" y="60" width="45" height="5" rx="1" fill="#64748b" className="dark:fill-zinc-400" />
-            <rect x="112" y="70" width="116" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700" />
-            <rect x="112" y="78" width="100" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700" />
-            <rect x="112" y="86" width="110" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700" />
+            <rect x="112" y="60" width="45" height="5" rx="1" fill="#64748b" className="dark:fill-zinc-400 fill-slate-500" />
+            <rect x="112" y="70" width="116" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
+            <rect x="112" y="78" width="100" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
+            <rect x="112" y="86" width="110" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
             {/* Another section */}
-            <rect x="112" y="100" width="50" height="5" rx="1" fill="#64748b" className="dark:fill-zinc-400" />
-            <rect x="112" y="110" width="116" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700" />
-            <rect x="112" y="118" width="90" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700" />
-            <rect x="112" y="126" width="105" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700" />
+            <rect x="112" y="100" width="50" height="5" rx="1" fill="#64748b" className="dark:fill-zinc-400 fill-slate-500" />
+            <rect x="112" y="110" width="116" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
+            <rect x="112" y="118" width="90" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
+            <rect x="112" y="126" width="105" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
           </g>
 
           {/* Speed lines - horizontal streaks indicating quick movement */}
@@ -475,10 +475,10 @@ export function ScanVisualization() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 opacity={hovered ? 0.6 - i * 0.1 : 0}
-                className="transition-all duration-300"
+                className="transition-all duration-[150ms]"
                 style={{
-                  transitionDelay: `${i * 50}ms`,
-                  transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)"
+                  transitionDelay: `${i * 25}ms`,
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)"
                 }}
               />
             ))}
@@ -487,8 +487,8 @@ export function ScanVisualization() {
           {/* Focus brackets - corners indicating attention */}
           <g
             opacity={hovered ? 1 : 0}
-            className="transition-opacity duration-300"
-            style={{ transitionDelay: "100ms" }}
+            className="transition-opacity duration-[150ms]"
+            style={{ transitionDelay: "60ms" }}
           >
             {/* Top-left bracket */}
             <path d="M 95 20 L 95 30 M 95 20 L 105 20" stroke="#f59e0b" strokeWidth="2" fill="none" strokeLinecap="round" />
@@ -504,7 +504,7 @@ export function ScanVisualization() {
           <g
             transform="translate(252, 130)"
             opacity={hovered ? 0.8 : 0.4}
-            className="transition-all duration-300"
+            className="transition-all duration-[150ms]"
           >
             <ellipse cx="0" cy="0" rx="12" ry="7" fill="none" stroke="#f59e0b" strokeWidth="1.5" />
             <circle cx="0" cy="0" r="3" fill="#f59e0b" />
@@ -544,9 +544,9 @@ export function ScanVisualization() {
           strokeWidth="2"
           strokeDasharray="100"
           strokeDashoffset={hovered ? 0 : 100}
-          className="transition-all duration-700"
+          className="transition-all duration-[250ms]"
           style={{
-            transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)",
+            transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
             transform: "rotate(-90deg)",
             transformOrigin: "center"
           }}
@@ -567,7 +567,7 @@ export function ApplicationsVisualization() {
 
   return (
     <div
-      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950 dark:to-pink-950"
+      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-rose-100 to-pink-100 dark:from-rose-950 dark:to-pink-950"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -575,7 +575,7 @@ export function ApplicationsVisualization() {
 
       {/* 250+ badge - HTML for proper centering */}
       <div
-        className="absolute top-3 right-3 z-10 flex items-center justify-center rounded-full bg-pink-500 transition-all duration-300 shadow-lg"
+        className="absolute top-3 right-3 z-10 flex items-center justify-center rounded-full bg-pink-500 transition-all duration-[150ms] shadow-lg"
         style={{
           width: "55px",
           height: "26px",
@@ -619,17 +619,17 @@ export function ApplicationsVisualization() {
                   fill="url(#paperGrad)"
                   stroke="#cbd5e1"
                   strokeWidth="1"
-                  className="transition-all duration-500 dark:stroke-zinc-700"
+                  className="transition-all duration-[200ms] dark:stroke-zinc-700 stroke-slate-300"
                   style={{
-                    transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)",
-                    transitionDelay: `${i * 40}ms`
+                    transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                    transitionDelay: `${i * 25}ms`
                   }}
                 />
                 {/* Paper lines */}
-                <rect x="12" y="20" width="70" height="5" rx="1" fill="#cbd5e1" opacity="0.5" className="dark:fill-zinc-600" />
-                <rect x="12" y="32" width="85" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700" />
-                <rect x="12" y="42" width="75" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700" />
-                <rect x="12" y="52" width="80" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700" />
+                <rect x="12" y="20" width="70" height="5" rx="1" fill="#cbd5e1" opacity="0.5" className="dark:fill-zinc-600 fill-slate-400" />
+                <rect x="12" y="32" width="85" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-300" />
+                <rect x="12" y="42" width="75" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-300" />
+                <rect x="12" y="52" width="80" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-300" />
               </g>
             );
           })}
@@ -646,10 +646,10 @@ export function ApplicationsVisualization() {
               stroke="#ec4899"
               strokeWidth="1"
               strokeOpacity={hovered ? 0.8 : 0.4}
-              className="transition-all duration-300 dark:fill-zinc-100 dark:stroke-pink-400"
+              className="transition-all duration-[150ms] dark:fill-zinc-100 dark:stroke-pink-400 fill-white stroke-pink-300"
             />
-            <text x="37" y="14" textAnchor="middle" dominantBaseline="middle" fill="#ec4899" fontSize="10" fontWeight="500" className="dark:fill-pink-300">per job</text>
-            <text x="37" y="26" textAnchor="middle" dominantBaseline="middle" fill="#ec4899" fontSize="10" fontWeight="bold" className="dark:fill-pink-300">avg</text>
+            <text x="37" y="14" textAnchor="middle" dominantBaseline="middle" fill="#ec4899" fontSize="10" fontWeight="500" className="dark:fill-pink-300 fill-pink-600">per job</text>
+            <text x="37" y="26" textAnchor="middle" dominantBaseline="middle" fill="#ec4899" fontSize="10" fontWeight="bold" className="dark:fill-pink-300 fill-pink-600">avg</text>
           </g>
         </svg>
       </ScaleLayer>
@@ -679,7 +679,7 @@ export function RemoteVisualization() {
 
   return (
     <div
-      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950 dark:to-blue-950"
+      className="relative h-[180px] w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-cyan-100 to-blue-100 dark:from-cyan-950 dark:to-blue-950"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -687,7 +687,7 @@ export function RemoteVisualization() {
 
       {/* 48% badge - HTML for proper centering */}
       <div
-        className="absolute top-3 right-3 z-10 flex items-center justify-center rounded-full bg-teal-500 transition-all duration-300 shadow-lg"
+        className="absolute top-3 right-3 z-10 flex items-center justify-center rounded-full bg-teal-500 transition-all duration-[150ms] shadow-lg"
         style={{
           width: "50px",
           height: "24px",
@@ -760,10 +760,10 @@ export function RemoteVisualization() {
               stroke="#14b8a6"
               strokeWidth={hovered ? 1.5 : 1}
               strokeOpacity={hovered ? 0.6 : 0.3}
-              className="transition-all duration-500"
+              className="transition-all duration-[200ms]"
               style={{
-                transitionTimingFunction: "cubic-bezier(0.6, 0.6, 0, 1)",
-                transitionDelay: `${i * 80}ms`
+                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transitionDelay: `${i * 40}ms`
               }}
             />
           ))}
@@ -776,15 +776,15 @@ export function RemoteVisualization() {
                 cy={city.y}
                 r={city.connected ? (hovered ? 6 : 4) : 3}
                 fill={city.connected ? "#14b8a6" : "#94a3b8"}
-                className="transition-all duration-300"
-                style={{ transitionDelay: `${i * 50}ms` }}
+                className="transition-all duration-[150ms]"
+                style={{ transitionDelay: `${i * 30}ms` }}
               />
               {hovered && (
                 <text
                   x={city.x}
                   y={city.y - 10}
                   textAnchor="middle"
-                  className="text-[8px] fill-slate-600 dark:fill-slate-400 font-medium"
+                  className="text-[8px] fill-slate-600 dark:fill-slate-400 font-medium text-slate-600 dark:text-slate-300"
                 >
                   {city.label}
                 </text>

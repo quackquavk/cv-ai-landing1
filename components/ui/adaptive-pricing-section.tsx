@@ -64,16 +64,16 @@ const AdaptivePricingSection: React.FC<PricingComponentProps> = ({
             <Card
               key={index}
               className={cn(
-                "relative flex flex-col h-full transition-all duration-300 rounded-2xl",
+                "relative flex flex-col h-full transition-all duration-300 rounded-2xl backdrop-blur-sm",
                 tier.highlighted
-                  ? "bg-gradient-to-b from-card to-muted/30 shadow-lg md:scale-105 md:bottom-4 z-20"
-                  : "bg-card hover:bg-muted/20"
+                  ? "bg-gradient-to-b from-card/80 to-muted/30 shadow-lg md:scale-105 md:bottom-4 z-20 border border-border/50"
+                  : "bg-card/80 hover:bg-card border border-border hover:border-accent/50"
               )}
             >
               {/* Badge */}
               {tier.badge && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-amber-600 to-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md">
+                  <div className="bg-gradient-to-r from-amber-600 to-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md backdrop-blur-sm">
                     {tier.badge.text}
                   </div>
                 </div>
@@ -154,7 +154,7 @@ const AdaptivePricingSection: React.FC<PricingComponentProps> = ({
                     </Button>
                   )}
                   {tier.footerText && (
-                    <div className="text-center mt-6">
+                    <div className="text-center mt-6 backdrop-blur-sm">
                       <p className="text-xs text-muted-foreground font-light">
                         {tier.footerText}{' '}
                         {tier.footerLink && (

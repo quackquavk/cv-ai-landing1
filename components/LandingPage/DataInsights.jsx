@@ -11,6 +11,7 @@ import {
   CardTitle,
   CardVisual,
 } from "@/components/ui/animated-card-chart";
+import { springConfigs, staggerDelay } from "@/components/ui/animated-card-chart";
 import {
   ATSVisualization,
   NeuralNetworkVisualization,
@@ -24,13 +25,22 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: {
+      staggerChildren: 0.05,  // 50ms stagger (down from 100ms) — Apple-tight rhythm
+    },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 16, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      ...springConfigs.snappy,  // stiffness: 350, damping: 28
+    },
+  },
 };
 
 // Original research data - "The State of AI Resume Building 2026"
@@ -147,7 +157,7 @@ const DataInsights = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-50px" }}
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">

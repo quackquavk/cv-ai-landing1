@@ -56,6 +56,51 @@ const timing = {
 };
 
 // ============================================
+// SPRING CONFIGURATIONS - Apple-like physics
+// ============================================
+
+/**
+ * Spring configs tuned for Apple-like snappy animations:
+ * - snappy: stiffness=350, damping=28 — quick response with subtle overshoot
+ *   Use for: scale transforms, card hovers, badge pops
+ * - stiff: stiffness=400, damping=30, mass=0.8 — minimal overshoot, very fast
+ *   Use for: micro-interactions (150-250ms equivalent feel)
+ * - gentle: stiffness=200, damping=25, mass=1.2 — soft, natural settle
+ *   Use for: page-level entrances, large element reveals
+ */
+export const springConfigs = {
+  snappy: { type: "spring" as const, stiffness: 350, damping: 28, mass: 1 },
+  stiff: { type: "spring" as const, stiffness: 400, damping: 30, mass: 0.8 },
+  gentle: { type: "spring" as const, stiffness: 200, damping: 25, mass: 1.2 },
+};
+
+/**
+ * Timing presets in milliseconds for CSS transitions:
+ * - micro (120ms): ultra-fast for scale transforms (1.02-1.05 range)
+ * - snappy (200ms): standard hover micro-interactions (Apple standard)
+ * - standard (350ms): card entrance animations (replaces 500ms)
+ * - reveal (280ms): opacity and layer reveal transitions
+ */
+export const timingPresets = {
+  micro: 120,
+  snappy: 200,
+  standard: 350,
+  reveal: 280,
+};
+
+/**
+ * Stagger delay presets in milliseconds:
+ * - tight (40ms): Apple-style tight stagger for rapid-fire lists
+ * - standard (60ms): default stagger for card grids
+ * - relaxed (80ms): slower stagger for larger elements
+ */
+export const staggerDelay = {
+  tight: 40,
+  standard: 60,
+  relaxed: 80,
+};
+
+// ============================================
 // CARD COMPONENTS
 // ============================================
 
@@ -68,7 +113,7 @@ export function AnimatedCard({ className, ...props }: CardProps) {
       aria-labelledby="card-title"
       aria-describedby="card-description"
       className={cn(
-        "group/animated-card relative w-[356px] overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-900 dark:bg-black",
+        "group/animated-card relative w-[356px] overflow-hidden rounded-xl border border-border bg-card shadow-sm",
         className
       )}
       {...props}
@@ -81,7 +126,7 @@ export function CardBody({ className, ...props }: CardProps) {
     <div
       role="group"
       className={cn(
-        "flex flex-col space-y-1.5 border-t border-zinc-200 p-4 dark:border-zinc-900",
+        "flex flex-col space-y-1.5 border-t border-border p-4",
         className
       )}
       {...props}
@@ -95,7 +140,7 @@ export function CardTitle({ className, ...props }: CardTitleProps) {
   return (
     <h3
       className={cn(
-        "text-lg font-semibold leading-none tracking-tight text-black dark:text-white",
+        "text-lg font-semibold leading-none tracking-tight text-foreground",
         className
       )}
       {...props}
@@ -109,7 +154,7 @@ export function CardDescription({ className, ...props }: CardDescriptionProps) {
   return (
     <p
       className={cn(
-        "text-sm text-neutral-600 dark:text-neutral-400",
+        "text-sm text-muted-foreground",
         className
       )}
       {...props}
@@ -202,39 +247,16 @@ export function LinearRevealLayer({ color = "#8b5cf6", hovered = false, children
     <div
       className={cn(
         "absolute inset-0 z-[6] flex w-full items-center justify-center",
-        "transition-all duration-500",
+        "transition-all duration-[280ms]",
         hovered
           ? "translate-y-0 opacity-100"
           : "translate-y-full opacity-0"
       )}
       style={{
-        transitionTimingFunction: easing.smooth,
-        transitionDelay: "100ms"
+        transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        transitionDelay: "60ms"
       }}
     >
-      <svg
-        width="356"
-        height="180"
-        viewBox="0 0 356 180"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="absolute inset-0 h-full w-full"
-      >
-        <rect width="356" height="180" fill="url(#linear_grad)" />
-        <defs>
-          <linearGradient
-            id="linear_grad"
-            x1="178"
-            y1="0"
-            x2="178"
-            y2="180"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop offset="35%" stopColor={color} stopOpacity="0" />
-            <stop offset="100%" stopColor={color} stopOpacity="0.25" />
-          </linearGradient>
-        </defs>
-      </svg>
       {children && (
         <div className="absolute inset-0 z-[10]">
           {children}
@@ -259,16 +281,16 @@ export function TooltipLayer({ color = "#8b5cf6", hovered = false, children }: T
     <div
       className={cn(
         "absolute inset-0 z-[7] flex w-full items-start justify-center p-4",
-        "transition-all duration-500",
+        "transition-all duration-[200ms]",
         hovered
           ? "translate-y-0"
           : "translate-y-full"
       )}
-      style={{ transitionTimingFunction: easing.smooth, transitionDelay: "150ms" }}
+      style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)", transitionDelay: "100ms" }}
     >
       <div
         className={cn(
-          "rounded-md border border-zinc-200/50 bg-white/80 p-1.5 backdrop-blur-sm transition-opacity duration-500",
+          "rounded-md border border-zinc-200/50 bg-white/80 p-1.5 backdrop-blur-sm transition-opacity duration-[150ms]",
           hovered ? "opacity-100" : "opacity-0",
           "dark:border-zinc-800 dark:bg-black/80"
         )}
@@ -311,7 +333,7 @@ export function BadgeLayer({
         <div
           key={i}
           className={cn(
-            "flex shrink-0 items-center justify-center gap-1 rounded-full border border-zinc-200/50 bg-white/80 px-2 py-0.5 backdrop-blur-sm transition-opacity duration-300",
+            "flex shrink-0 items-center justify-center gap-1 rounded-full border border-zinc-200/50 bg-white/80 px-2 py-0.5 backdrop-blur-sm transition-opacity duration-[150ms]",
             hovered ? "opacity-0" : "opacity-100",
             "dark:border-zinc-700/50 dark:bg-black/80"
           )}
@@ -349,7 +371,7 @@ export function ScaleLayer({ hovered = false, scale = 1.15, children }: ScaleLay
       className="absolute inset-0 z-[3] flex items-center justify-center"
       style={{
         transform: hovered ? `scale(${scale})` : "scale(1)",
-        transition: "transform 500ms cubic-bezier(0.6, 0.6, 0, 1)",
+        transition: "transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1)",
       }}
     >
       {children}
@@ -418,10 +440,10 @@ export function BarChartLayer({
               rx="2"
               ry="2"
               fill={fillColor}
-              className="transition-all duration-500"
+              className="transition-all duration-[200ms]"
               style={{
-                transitionTimingFunction: easing.smooth,
-                transitionDelay: `${index * 30}ms`
+                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transitionDelay: `${index * 20}ms`
               }}
             />
           );
