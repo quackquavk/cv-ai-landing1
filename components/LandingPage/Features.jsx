@@ -181,7 +181,10 @@ const Features = ({
             Track, vote, and suggest new features for our platform
           </p>
           {!user ? (
-            <Button className="px-6 py-3 text-sm font-medium rounded-lg bg-gradient-to-r from-accent to-[#ff8533] text-white hover:opacity-90 transition-opacity duration-300 mb-8">
+            <Button
+              onClick={handleLogin}
+              className="px-6 py-3 text-sm font-medium rounded-lg bg-gradient-to-r from-accent to-[#ff8533] text-white hover:opacity-90 transition-opacity duration-300 mb-8"
+            >
               <FaGoogle className="w-4 h-4 mr-2 inline-block" />
               Sign in to Vote & Suggest
             </Button>
