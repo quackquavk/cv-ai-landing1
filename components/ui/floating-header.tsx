@@ -34,7 +34,7 @@ export function FloatingHeader() {
                 'bg-background/95 supports-[backdrop-filter]:bg-background/80 backdrop-blur-lg',
             )}
         >
-            <nav className="mx-auto flex items-center justify-between p-1.5">
+            <nav className="mx-auto flex items-center justify-between p-2.5">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                     <Image
@@ -46,8 +46,8 @@ export function FloatingHeader() {
                                 : '/assets/resumeai_logo_white.webp'
                         }
                         alt="Resume AI"
-                        width={120}
-                        height={40}
+                        width={140}
+                        height={47}
                         className="object-contain"
                         priority
                     />
@@ -59,7 +59,7 @@ export function FloatingHeader() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+                            className={buttonVariants({ variant: 'ghost', size: 'default' })}
                         >
                             {link.label}
                         </Link>
@@ -70,10 +70,10 @@ export function FloatingHeader() {
                 <div className="flex items-center gap-2">
                     <ThemeToggle />
                     <div className="hidden sm:flex items-center gap-2">
-                        <Button size="sm" variant="ghost" asChild>
+                        <Button size="default" variant="ghost" asChild>
                             <Link href="https://app.cvai.dev/dashboard">Log In</Link>
                         </Button>
-                        <Button size="sm" className="bg-gradient-to-r from-accent to-[#ff8533] border-accent text-white shadow-[0_4px_14px_rgba(255,102,0,0.25)] hover:opacity-90">
+                        <Button size="default" className="bg-gradient-to-r from-accent to-[#ff8533] border-accent text-white shadow-[0_4px_14px_rgba(255,102,0,0.25)] hover:opacity-90">
                             <Link href="https://app.cvai.dev/dashboard">Get Started</Link>
                         </Button>
                     </div>
@@ -102,8 +102,8 @@ export function FloatingHeader() {
                                             : '/assets/resumeai_logo_white.webp'
                                     }
                                     alt="Resume AI"
-                                    width={100}
-                                    height={33}
+                                    width={120}
+                                    height={40}
                                     className="object-contain"
                                 />
                             </div>

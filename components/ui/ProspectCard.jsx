@@ -96,15 +96,15 @@ const ProspectCard = ({
   };
   const handleEditSubmit = async () => {
     try {
-      const response = await scrumAxios.put(`/ideas/${prospect.id}`, {
+      const updatedIdea = await scrumAxios.put(`/ideas/${prospect.id}`, {
         title: editTitle,
         description: editDescription,
       });
       // Update the local prospect state
-      if (response.data) {
-        // Assuming response.data contains the updated idea
-        setEditTitle(response.data.title);
-        setEditDescription(response.data.description);
+      if (updatedIdea) {
+        // Assuming updatedIdea contains the updated idea
+        setEditTitle(updatedIdea.title);
+        setEditDescription(updatedIdea.description);
         toast({ title: "Success", description: "Idea updated successfully!" });
       }
       setIsEditDialogOpen(false);

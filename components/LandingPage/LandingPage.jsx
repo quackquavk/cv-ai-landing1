@@ -203,8 +203,7 @@ function LandingPage() {
     setLoading(true);
     setError(null);
     try {
-      const response = await scrumAxios.get("/ideas");
-      const data = response.data;
+      const data = await scrumAxios.get("/ideas");
 
       if (!data || !Array.isArray(data)) {
         throw new Error("Invalid response format from server");
@@ -223,7 +222,7 @@ function LandingPage() {
     } catch (error) {
       console.error("Error fetching ideas:", error);
       setError(
-        error.response?.data?.message ||
+        error.data?.message ||
           error.message ||
           "Failed to fetch ideas. Please try again later."
       );
@@ -250,8 +249,7 @@ function LandingPage() {
     }
 
     try {
-      const response = await scrumAxios.post(`/ideas/${id}/upvote`);
-      const data = response.data;
+      const data = await scrumAxios.post(`/ideas/${id}/upvote`);
 
       // Update vote locally
       setSampleIdeas((prev) => {
@@ -300,7 +298,7 @@ function LandingPage() {
     }
 
     try {
-      const response = await scrumAxios.put(`/ideas/${id}/status`, {
+      await scrumAxios.put(`/ideas/${id}/status`, {
         status: newStatus,
       });
 

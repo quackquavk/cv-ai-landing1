@@ -67,8 +67,7 @@ const Features = ({
   };
   const fetchArchivedIdeas = async () => {
     try {
-      const response = await scrumAxios.get("/ideas/archive");
-      const data = response.data;
+      const data = await scrumAxios.get("/ideas/archive");
       const transformedData = data.map((idea) => ({
         id: idea._id?.$oid || "unknown",
         title: idea.title || "Untitled",
@@ -79,9 +78,7 @@ const Features = ({
         username: idea.username || "Anonymous",
         email: idea.email || "No email provided",
       }));
-      if (response.status === 200) {
-        setArchivedIdeas(transformedData);
-      }
+      setArchivedIdeas(transformedData);
     } catch (error) {
       console.error("Error fetching archived ideas:", error);
     }
@@ -89,26 +86,24 @@ const Features = ({
 
   const handleSubmitFeature = async (featureData) => {
     try {
-      const response = await scrumAxios.post("/ideas", featureData);
+      await scrumAxios.post("/ideas", featureData);
 
-      if (response.status === 200 || response.status === 201) {
-        toast({
-          title: "Success",
-          description: "Feature suggestion submitted successfully!",
-        });
-        if (onTabChange) {
-          onTabChange("ideas");
-        }
-        if (onFeatureSubmit) {
-          await onFeatureSubmit();
-        }
+      toast({
+        title: "Success",
+        description: "Feature suggestion submitted successfully!",
+      });
+      if (onTabChange) {
+        onTabChange("ideas");
+      }
+      if (onFeatureSubmit) {
+        await onFeatureSubmit();
       }
     } catch (error) {
       console.error("Error submitting feature:", error);
       toast({
         title: "Error",
         description:
-          error.response?.data?.message ||
+          error.data?.message ||
           "Failed to submit feature suggestion",
         variant: "destructive",
       });

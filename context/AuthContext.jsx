@@ -22,9 +22,9 @@ export const AuthProvider = ({ children }) => {
       }
 
       console.log('Retrieved token:', token);
-      const response = await scrumAxios.get("/user/me");
-      console.log('API response:', response.data);
-      setUser(response.data);
+      const userData = await scrumAxios.get("/user/me");
+      console.log('API response:', userData);
+      setUser(userData);
     } catch (error) {
       console.error("Auth check failed:", error);
       localStorage.removeItem("auth_token");
