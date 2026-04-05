@@ -1,8 +1,24 @@
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { TrendingUp, Users, Target, Globe, Zap, BarChart3 } from "lucide-react";
 import Link from "next/link";
+import {
+  AnimatedCard,
+  CardBody,
+  CardDescription,
+  CardTitle,
+  CardVisual,
+} from "@/components/ui/animated-card-chart";
+import {
+  ATSVisualization,
+  NeuralNetworkVisualization,
+  SalaryVisualization,
+  ScanVisualization,
+  ApplicationsVisualization,
+  RemoteVisualization,
+} from "@/components/ui/research-visualizations";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,7 +41,7 @@ const researchData = {
       label: "ATS Rejection Rate",
       description:
         "Of qualified candidates never reach human recruiters due to ATS filtering",
-      icon: <Target className="w-6 h-6" />,
+      icon: <Target className="w-5 h-5" />,
       source: "Based on analysis of 50,000+ job applications",
     },
     {
@@ -33,7 +49,7 @@ const researchData = {
       label: "More Job Matches",
       description:
         "Candidates using semantic AI matching find 3.2x more relevant opportunities",
-      icon: <TrendingUp className="w-6 h-6" />,
+      icon: <TrendingUp className="w-5 h-5" />,
       source: "ResumeAI platform data, Q4 2025",
     },
     {
@@ -41,14 +57,14 @@ const researchData = {
       label: "Higher Salaries",
       description:
         "Average salary increase for developers accessing global remote opportunities",
-      icon: <BarChart3 className="w-6 h-6" />,
+      icon: <BarChart3 className="w-5 h-5" />,
       source: "Analysis of 10,000+ successful placements",
     },
     {
       stat: "7 sec",
       label: "Recruiter Scan Time",
       description: "Average time recruiters spend on initial resume review",
-      icon: <Zap className="w-6 h-6" />,
+      icon: <Zap className="w-5 h-5" />,
       source: "Eye-tracking study, industry research",
     },
     {
@@ -56,7 +72,7 @@ const researchData = {
       label: "Applications Per Job",
       description:
         "Average number of applications received per job posting in 2026",
-      icon: <Users className="w-6 h-6" />,
+      icon: <Users className="w-5 h-5" />,
       source: "LinkedIn Hiring Report 2026",
     },
     {
@@ -64,17 +80,17 @@ const researchData = {
       label: "Global Remote Workforce",
       description:
         "Of the global workforce now works remotely, up from 20% in 2020",
-      icon: <Globe className="w-6 h-6" />,
+      icon: <Globe className="w-5 h-5" />,
       source: "McKinsey Global Institute 2025",
     },
   ],
-  methodology: `Our research is based on analysis of 50,000+ job applications processed through our platform, 
-    combined with surveys of 2,500+ job seekers and 500+ recruiters. Data was collected between 
+  methodology: `Our research is based on analysis of 50,000+ job applications processed through our platform,
+    combined with surveys of 2,500+ job seekers and 500+ recruiters. Data was collected between
     January 2025 and January 2026. Salary data is normalized for remote positions accessible globally.`,
 };
 
 // Dataset Schema for SEO
-export const datasetSchema = {
+const datasetSchema = {
   "@context": "https://schema.org",
   "@type": "Dataset",
   name: "The State of AI Resume Building 2026",
@@ -104,6 +120,16 @@ export const datasetSchema = {
     "Remote work adoption",
   ],
 };
+
+// Visualization components mapped to each stat
+const visualizations = [
+  ATSVisualization,         // 0: ATS Rejection - Funnel
+  NeuralNetworkVisualization, // 1: Job Matches - Neural Network
+  SalaryVisualization,     // 2: Salaries - Ascending Bars
+  ScanVisualization,       // 3: Scan Time - Eye Tracking
+  ApplicationsVisualization, // 4: Applications - Stacked Pile
+  RemoteVisualization,     // 5: Remote Work - Globe
+];
 
 const DataInsights = () => {
   return (
@@ -137,34 +163,40 @@ const DataInsights = () => {
             </p>
           </motion.div>
 
-          {/* Stats Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {researchData.keyFindings.map((finding, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="bg-muted/60 border border-accent/10 rounded-xl p-6 hover:border-accent/30 transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent">
-                    {finding.icon}
-                  </div>
-                  <span className="text-4xl font-bold text-accent">
-                    {finding.stat}
-                  </span>
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">
-                  {finding.label}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-3">
-                  {finding.description}
-                </p>
-                <p className="text-muted-foreground/60 text-xs italic">
-                  {finding.source}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+          {/* Enhanced Stats Grid with Unique Visualizations */}
+          <motion.div
+            variants={containerVariants}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          >
+            {researchData.keyFindings.map((finding, index) => {
+              const Visualization = visualizations[index];
+              return (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="flex justify-center"
+                >
+                  <AnimatedCard className="w-full max-w-[356px]">
+                    <CardVisual>
+                      <Visualization />
+                    </CardVisual>
+                    <CardBody>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-accent">
+                          {finding.icon}
+                        </span>
+                        <CardTitle>{finding.label}</CardTitle>
+                      </div>
+                      <CardDescription>{finding.description}</CardDescription>
+                      <p className="text-xs text-muted-foreground/60 italic mt-2">
+                        {finding.source}
+                      </p>
+                    </CardBody>
+                  </AnimatedCard>
+                </motion.div>
+              );
+            })}
+          </motion.div>
 
           {/* Methodology Note */}
           <motion.div

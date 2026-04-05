@@ -50,12 +50,12 @@ const Hero = ({ isLoading, router }) => {
                   candidate
                 </span>
                 <span className="relative">
-                  <span className="text-accent drop-shadow-glow">faster</span>
+                  <span className="text-accent drop-shadow-sm">faster</span>
                   <motion.span
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className="absolute bottom-0 left-0 h-1 bg-accent/70 rounded-full"
+                    className="absolute bottom-0 left-0 h-1 bg-accent rounded-full"
                   />
                 </span>
               </div>
@@ -74,9 +74,9 @@ const Hero = ({ isLoading, router }) => {
               className="flex flex-col sm:flex-row gap-4 mt-8 items-center justify-center"
             >
               <Button
-                className="relative px-8 py-6 text-lg font-medium rounded-lg 
-                  transition-all duration-300 ease-out text-white bg-accent hover:bg-accent
-                  shadow-lg shadow-accent/20 hover:shadow-accent/40"
+                className="relative px-8 py-6 text-lg font-medium rounded-lg
+                  transition-all duration-300 ease-out text-white bg-accent hover:bg-accent/90
+                  shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40"
                 disabled={isLoading}
               >
                 <span className="relative z-10 flex items-center justify-center gap-2 ">
@@ -88,10 +88,10 @@ const Hero = ({ isLoading, router }) => {
               <Link href="#how-it-works">
                 <Button
                   variant="outline"
-                  className="relative px-8 py-6 text-lg font-medium rounded-lg 
-                  border-2 border-border hover:border-accent/70
-                  transition-all duration-300 ease-out text-foreground 
-                  hover:bg-accent/10"
+                  className="relative px-8 py-6 text-lg font-medium rounded-lg
+                  border-2 border-border hover:border-accent
+                  transition-all duration-300 ease-out text-foreground
+                  hover:bg-accent/10 dark:hover:bg-accent/20"
                   disabled={isLoading}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">

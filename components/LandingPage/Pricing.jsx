@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Check, Crown, Users, User } from "lucide-react";
+import { Users, User } from "lucide-react";
+import AdaptivePricingSection from "@/components/ui/adaptive-pricing-section";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,15 +19,6 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
-
 const candidateFeatures = [
   "LinkedIn Job Apply Bot",
   "AI Resume Builder",
@@ -39,11 +31,14 @@ const recruiterPlans = [
   {
     id: "free",
     name: "Free Plan",
-    price: 0,
-    originalPrice: null,
-    period: "forever",
+    price: "$0",
+    period: "/forever",
+    subtitle: "FREE",
     description: "Everything you need to grow:",
-    features: ["Basic features", "Limited searches"],
+    features: [
+      { text: "Basic features", included: true },
+      { text: "Limited searches", included: true },
+    ],
     highlighted: false,
     badge: null,
     buttonText: "Get Started Free",
@@ -53,17 +48,17 @@ const recruiterPlans = [
   {
     id: "premium",
     name: "Premium Plan",
-    price: 99,
-    originalPrice: 149,
-    period: "year",
+    price: "$99",
+    period: "/year",
+    subtitle: "PREMIUM",
     description: "Everything you need to grow:",
     features: [
-      "Private Folder",
-      "Unlimited CV uploads",
-      "Access to LinkedIn bots",
-      "Unlimited semantic search",
-      "Priority support",
-      "All future updates",
+      { text: "Private Folder", included: true },
+      { text: "Unlimited CV uploads", included: true },
+      { text: "Access to LinkedIn bots", included: true },
+      { text: "Unlimited semantic search", included: true },
+      { text: "Priority support", included: true },
+      { text: "All future updates", included: true },
     ],
     highlighted: true,
     badge: null,
@@ -74,19 +69,19 @@ const recruiterPlans = [
   {
     id: "lifetime",
     name: "Premium Lifetime",
-    price: 299,
-    originalPrice: 499,
+    price: "$299",
     period: null,
+    subtitle: "LIFETIME",
     description: "Everything in Premium, forever:",
     features: [
-      "Private Folder",
-      "Unlimited CV uploads",
-      "Access to LinkedIn bots",
-      "Unlimited semantic search",
-      "Limited to first 100 users only!",
+      { text: "Private Folder", included: true },
+      { text: "Unlimited CV uploads", included: true },
+      { text: "Access to LinkedIn bots", included: true },
+      { text: "Unlimited semantic search", included: true },
+      { text: "Limited to first 100 users only!", included: true },
     ],
     highlighted: false,
-    badge: "BEST VALUE",
+    badge: { text: "BEST VALUE" },
     buttonText: "Get Lifetime Access",
     buttonLink: "https://app.cvai.dev/pricing",
     footnote: "One-time payment. Lifetime access.",
@@ -96,6 +91,37 @@ const recruiterPlans = [
 export default function Pricing() {
   const [activeTab, setActiveTab] = useState("recruiters");
 
+  const candidateTier = {
+    name: "Free",
+    subtitle: "CANDIDATES",
+    price: "$0",
+    period: "/forever",
+    description: "Everything you need to land your dream job",
+    badge: { text: "FREE FOREVER" },
+    features: candidateFeatures.map((feature) => ({
+      text: feature,
+      included: true,
+    })),
+    buttonText: "Get Started Free",
+    buttonLink: `${process.env.NEXT_PUBLIC_SCRUM_API_URL || "https://app.cvai.dev"}/auth/google`,
+    highlighted: false,
+  };
+
+  const transformedRecruiterTiers = recruiterPlans.map((plan) => ({
+    name: plan.name,
+    subtitle: plan.subtitle,
+    price: plan.price,
+    period: plan.period,
+    description: plan.description,
+    badge: plan.badge,
+    features: plan.features,
+    buttonText: plan.buttonText,
+    buttonLink: plan.buttonLink,
+    highlighted: plan.highlighted,
+    footerText: plan.footnote,
+    footerLink: plan.buttonLink,
+  }));
+
   return (
     <motion.section
       variants={containerVariants}
@@ -103,12 +129,12 @@ export default function Pricing() {
       whileInView="show"
       id="pricing"
       viewport={{ once: true, margin: "-100px" }}
-      className="py-20 bg-background text-foreground relative"
+      className="py-12 bg-background text-foreground relative"
     >
       <div className="relative z-10 container mx-auto px-6">
         <motion.div
           variants={itemVariants}
-          className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+          className="text-center max-w-3xl mx-auto mb-4 space-y-4"
         >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
             Simple, Transparent Pricing
@@ -151,45 +177,13 @@ export default function Pricing() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="max-w-lg mx-auto"
+              className="max-w-6xl mx-auto"
             >
-              <div className="relative rounded-xl overflow-hidden border border-accent bg-card p-8 flex flex-col">
-                <div className="absolute top-0 left-0 right-0 bg-accent text-white text-center py-1.5 text-sm font-medium">
-                  Free Forever
-                </div>
-
-                <div className="mt-6 mb-6 text-center">
-                  <h3 className="text-2xl font-bold mb-2">For Candidates</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Everything you need to land your dream job
-                  </p>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-6xl font-bold">$0</span>
-                    <span className="text-muted-foreground ml-2 text-lg">
-                      /forever
-                    </span>
-                  </div>
-                </div>
-
-                <ul className="space-y-4 mb-8">
-                  {candidateFeatures.map((feature, i) => (
-                    <li key={i} className="flex items-start">
-                      <Check className="w-5 h-5 text-accent mr-3 flex-shrink-0 mt-0.5" />
-                      <span className="text-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={`${process.env.NEXT_PUBLIC_SCRUM_API_URL || "https://app.cvai.dev"}/auth/google`}
-                  className="block px-6 py-3.5 text-base font-medium rounded-lg transition-colors duration-200 bg-accent hover:bg-accent/90 text-white text-center"
-                >
-                  Get Started Free
-                </a>
-                <p className="text-center text-sm text-muted-foreground mt-3">
-                  No credit card required
-                </p>
-              </div>
+              <AdaptivePricingSection
+                title=""
+                subtitle=""
+                tiers={[candidateTier]}
+              />
             </motion.div>
           ) : (
             <motion.div
@@ -198,86 +192,12 @@ export default function Pricing() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch"
             >
-              {recruiterPlans.map((plan) => (
-                <div
-                  key={plan.id}
-                  className={`relative rounded-xl overflow-hidden border ${
-                    plan.highlighted
-                      ? "border-accent"
-                      : plan.badge
-                        ? "border-accent/50"
-                        : "border-border"
-                  } bg-card p-6 md:p-8 flex flex-col h-full transition-colors duration-200 hover:border-accent/60`}
-                >
-                  {plan.highlighted && (
-                    <div className="absolute top-0 left-0 right-0 bg-accent text-white text-center py-1.5 text-sm font-medium">
-                      Most Popular
-                    </div>
-                  )}
-
-                  {plan.badge && (
-                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-center py-1.5 text-sm font-bold tracking-wider">
-                      {plan.badge}
-                    </div>
-                  )}
-
-                  <div className={`mb-6 ${plan.highlighted || plan.badge ? "mt-6" : ""}`}>
-                    <div className="flex items-center gap-2 mb-2">
-                      {plan.id === "lifetime" && (
-                        <Crown className="w-5 h-5 text-amber-500" />
-                      )}
-                      <h3 className="text-xl font-bold">{plan.name}</h3>
-                    </div>
-                    <p className="text-muted-foreground text-sm mb-4">
-                      {plan.description}
-                    </p>
-                    <div className="flex items-baseline">
-                      {plan.originalPrice && (
-                        <span className="text-xl text-muted-foreground line-through mr-2">
-                          ${plan.originalPrice}
-                        </span>
-                      )}
-                      <span className="text-4xl font-bold">${plan.price}</span>
-                      {plan.period && (
-                        <span className="text-muted-foreground ml-1 text-sm">
-                          /{plan.period}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <ul className="space-y-3 mb-8 flex-grow">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <Check className="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div>
-                    <a
-                      href={plan.buttonLink}
-                      className={`block w-full py-3 text-sm font-medium rounded-lg transition-colors duration-200 text-center whitespace-nowrap ${
-                        plan.highlighted
-                          ? "bg-accent hover:bg-accent/90 text-white"
-                          : plan.badge
-                            ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white"
-                            : "bg-background border border-border hover:border-accent/50 text-foreground"
-                      }`}
-                    >
-                      {plan.buttonText}
-                    </a>
-                    {plan.footnote && (
-                      <p className="text-center text-xs text-muted-foreground mt-2">
-                        {plan.footnote}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              ))}
+              <AdaptivePricingSection
+                title=""
+                subtitle=""
+                tiers={transformedRecruiterTiers}
+              />
             </motion.div>
           )}
         </AnimatePresence>
