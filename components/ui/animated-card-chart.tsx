@@ -113,7 +113,7 @@ export function AnimatedCard({ className, ...props }: CardProps) {
       aria-labelledby="card-title"
       aria-describedby="card-description"
       className={cn(
-        "group/animated-card relative w-[356px] overflow-hidden rounded-xl border border-border bg-card shadow-sm",
+        "group/animated-card relative w-[356px] overflow-hidden rounded border border-border bg-card shadow-[0_30px_45px_-30px_rgba(50,50,93,0.25),0_18px_36px_-18px_rgba(0,0,0,0.1)]",
         className
       )}
       {...props}
@@ -140,7 +140,7 @@ export function CardTitle({ className, ...props }: CardTitleProps) {
   return (
     <h3
       className={cn(
-        "text-lg font-semibold leading-none tracking-tight text-foreground",
+        "text-lg font-light leading-none tracking-tight text-foreground",
         className
       )}
       {...props}
@@ -201,7 +201,7 @@ interface RadialGradientLayerProps {
   color?: string;
 }
 
-export function RadialGradientLayer({ color = "#8b5cf6" }: RadialGradientLayerProps) {
+export function RadialGradientLayer({ color = "#533afd" }: RadialGradientLayerProps) {
   return (
     <div className="absolute inset-0 z-[5] flex h-full w-full items-center justify-center">
       <svg
@@ -242,7 +242,7 @@ interface LinearRevealLayerProps {
   children?: React.ReactNode;
 }
 
-export function LinearRevealLayer({ color = "#8b5cf6", hovered = false, children }: LinearRevealLayerProps) {
+export function LinearRevealLayer({ color = "#533afd", hovered = false, children }: LinearRevealLayerProps) {
   return (
     <div
       className={cn(
@@ -276,7 +276,7 @@ interface TooltipLayerProps {
   children?: React.ReactNode;
 }
 
-export function TooltipLayer({ color = "#8b5cf6", hovered = false, children }: TooltipLayerProps) {
+export function TooltipLayer({ color = "#533afd", hovered = false, children }: TooltipLayerProps) {
   return (
     <div
       className={cn(
@@ -319,8 +319,8 @@ interface BadgeLayerProps {
 }
 
 export function BadgeLayer({
-  color = "#8b5cf6",
-  secondaryColor = "#fbbf24",
+  color = "#533afd",
+  secondaryColor = "#64748b",
   hovered = false,
   badges = [
     { color, text: "+15.2%" },
@@ -333,9 +333,9 @@ export function BadgeLayer({
         <div
           key={i}
           className={cn(
-            "flex shrink-0 items-center justify-center gap-1 rounded-full border border-zinc-200/50 bg-white/80 px-2 py-0.5 backdrop-blur-sm transition-opacity duration-[150ms]",
+            "flex shrink-0 items-center justify-center gap-1 rounded border border-border bg-white/80 px-2 py-0.5 backdrop-blur-sm transition-opacity duration-[150ms]",
             hovered ? "opacity-0" : "opacity-100",
-            "dark:border-zinc-700/50 dark:bg-black/80"
+            "dark:border-slate-800 dark:bg-black/80"
           )}
           style={{
             transitionTimingFunction: easing.gentle,
@@ -399,8 +399,8 @@ interface BarChartLayerProps {
 
 export function BarChartLayer({
   hovered = false,
-  color = "#8b5cf6",
-  secondaryColor = "#fbbf24",
+  color = "#533afd",
+  secondaryColor = "#64748b",
   data
 }: BarChartLayerProps) {
   const defaultData = [
@@ -464,8 +464,8 @@ interface Visual3Props {
 }
 
 export function Visual3({
-  mainColor = "#8b5cf6",
-  secondaryColor = "#fbbf24",
+  mainColor = "#533afd",
+  secondaryColor = "#64748b",
   gridColor = "#80808015",
 }: Visual3Props) {
   const [hovered, setHovered] = useState(false);
