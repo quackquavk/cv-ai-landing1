@@ -60,6 +60,7 @@ None at this time.
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260426-fr4 | Redesign DataInsights component with Stripe-inspired design | 2026-04-26 | d2b0781 | [260426-fr4-redesign-datainsights-component-with-str](./quick/260426-fr4-redesign-datainsights-component-with-str/) |
+| 260426-fwg | Redesign AnimatedCard components with Stripe design | 2026-04-26 | f339838 | [260426-fwg-redesign-animatedcard-components-with-st](./quick/260426-fwg-redesign-animatedcard-components-with-st/) |
 
 ## Session Continuity
 
