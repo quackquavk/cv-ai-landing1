@@ -191,12 +191,10 @@ const DataInsights = () => {
                       <Visualization />
                     </CardVisual>
                     <CardBody>
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-accent">
-                          {finding.icon}
-                        </span>
-                        <CardTitle>{finding.label}</CardTitle>
-                      </div>
+                      <CardTitle>{finding.label}</CardTitle>
+                      <p className="text-2xl font-[300] text-[#533afd] mb-1" style={{ fontFeatureSettings: '"ss01" on' }}>
+                        {finding.stat}
+                      </p>
                       <CardDescription>{finding.description}</CardDescription>
                       <p className="text-xs text-muted-foreground/60 italic mt-2">
                         {finding.source}

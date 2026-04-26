@@ -36,7 +36,7 @@ export function ATSVisualization() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <GridLayer color="#64748b10" />
+      <GridLayer color="#64748d10" />
 
       {/* Resume papers at top */}
       {resumePositions.map((pos, i) => (
@@ -82,8 +82,8 @@ export function ATSVisualization() {
         <svg width="100%" height="100%" viewBox="0 0 280 70" preserveAspectRatio="none">
           <defs>
             <linearGradient id="funnelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#64748b" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="#64748b" stopOpacity="0.05" />
+              <stop offset="0%" stopColor="#64748d" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#64748d" stopOpacity="0.05" />
             </linearGradient>
           </defs>
           <path
@@ -93,8 +93,8 @@ export function ATSVisualization() {
             strokeWidth="1"
           />
           {/* Filter lines */}
-          <line x1="60" y1="20" x2="220" y2="20" stroke="#ef4444" strokeWidth="1" strokeDasharray="4 2" />
-          <line x1="80" y1="45" x2="200" y2="45" stroke="#ef4444" strokeWidth="1" strokeDasharray="4 2" />
+          <line x1="60" y1="20" x2="220" y2="20" stroke="#ea2261" strokeWidth="1" strokeDasharray="4 2" />
+          <line x1="80" y1="45" x2="200" y2="45" stroke="#ea2261" strokeWidth="1" strokeDasharray="4 2" />
         </svg>
       </div>
 
@@ -103,12 +103,12 @@ export function ATSVisualization() {
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <svg width="100" height="60" className="animate-pulse" style={{ animationDuration: '1.5s' }}>
             <g transform="translate(20, 10)">
-              <line x1="0" y1="0" x2="12" y2="12" stroke="#ef4444" strokeWidth="2" />
-              <line x1="12" y1="0" x2="0" y2="12" stroke="#ef4444" strokeWidth="2" />
+              <line x1="0" y1="0" x2="12" y2="12" stroke="#ea2261" strokeWidth="2" />
+              <line x1="12" y1="0" x2="0" y2="12" stroke="#ea2261" strokeWidth="2" />
             </g>
             <g transform="translate(70, 35)">
-              <line x1="0" y1="0" x2="12" y2="12" stroke="#ef4444" strokeWidth="2" />
-              <line x1="12" y1="0" x2="0" y2="12" stroke="#ef4444" strokeWidth="2" />
+              <line x1="0" y1="0" x2="12" y2="12" stroke="#ea2261" strokeWidth="2" />
+              <line x1="12" y1="0" x2="0" y2="12" stroke="#ea2261" strokeWidth="2" />
             </g>
           </svg>
         </div>
@@ -133,7 +133,7 @@ export function ATSVisualization() {
             height="32"
             rx="2"
             fill="white"
-            stroke="#22c55e"
+            stroke="#15be53"
             strokeWidth="2"
           />
           <line x1="4" y1="10" x2="20" y2="10" stroke="#bbf7d0" strokeWidth="2" />
@@ -142,16 +142,8 @@ export function ATSVisualization() {
         </svg>
       </div>
 
-      {/* 73% badge */}
-      <BadgeLayer
-        hovered={hovered}
-        color="#ef4444"
-        secondaryColor="#f97316"
-        badges={[{ color: "#ef4444", text: "73%" }]}
-      />
-
       {/* Percentage label */}
-      <LinearRevealLayer color="#ef4444" hovered={hovered}>
+      <LinearRevealLayer color="#ea2261" hovered={hovered}>
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center">
           <p className="text-xs text-slate-500 font-medium">filtered out</p>
         </div>
@@ -257,7 +249,7 @@ export function NeuralNetworkVisualization() {
         </svg>
       </ScaleLayer>
 
-      <RadialGradientLayer color="#8b5cf6" />
+      <RadialGradientLayer color="#533afd" />
 
       {/* 3.2x badge */}
       <div
@@ -272,7 +264,7 @@ export function NeuralNetworkVisualization() {
         </div>
       </div>
 
-      <LinearRevealLayer color="#8b5cf6" hovered={hovered} />
+      <LinearRevealLayer color="#533afd" hovered={hovered} />
     </div>
   );
 }
@@ -297,18 +289,18 @@ export function SalaryVisualization() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <GridLayer color="#10b98110" />
+      <GridLayer color="#15be5310" />
 
       <ScaleLayer hovered={hovered} scale={1.08}>
         <svg width="356" height="180" className="absolute inset-0">
           <defs>
             <linearGradient id="salaryBarGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="#10b981" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#10b981" stopOpacity="0.9" />
+              <stop offset="0%" stopColor="#15be53" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#15be53" stopOpacity="0.9" />
             </linearGradient>
             <linearGradient id="salaryBarGradHover" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.95" />
+              <stop offset="0%" stopColor="#2874ad" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#2874ad" stopOpacity="0.95" />
             </linearGradient>
           </defs>
 
@@ -320,7 +312,7 @@ export function SalaryVisualization() {
               y1={40 + i * 30}
               x2="316"
               y2={40 + i * 30}
-              stroke="#10b981"
+              stroke="#15be53"
               strokeOpacity="0.1"
               strokeDasharray="2 4"
             />
@@ -371,7 +363,7 @@ export function SalaryVisualization() {
             <path
               d="M 0 25 L 12 0 L 24 25 M 12 0 L 12 30"
               fill="none"
-              stroke="#10b981"
+              stroke="#15be53"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -385,17 +377,9 @@ export function SalaryVisualization() {
         </svg>
       </ScaleLayer>
 
-      <RadialGradientLayer color="#10b981" />
+      <RadialGradientLayer color="#15be53" />
 
-      {/* +68% badge */}
-      <BadgeLayer
-        hovered={hovered}
-        color="#10b981"
-        secondaryColor="#06b6d4"
-        badges={[{ color: "#10b981", text: "+68%" }]}
-      />
-
-      <LinearRevealLayer color="#10b981" hovered={hovered} />
+      <LinearRevealLayer color="#15be53" hovered={hovered} />
     </div>
   );
 }
@@ -446,17 +430,17 @@ export function ScanVisualization() {
           {/* Document content */}
           <g opacity={hovered ? 0.9 : 0.7} className="transition-opacity duration-[150ms]">
             {/* Header bar */}
-            <rect x="112" y="25" width="70" height="8" rx="2" fill="#64748b" className="dark:fill-zinc-400 fill-slate-500" />
+            <rect x="112" y="25" width="70" height="8" rx="2" fill="#64748d" className="dark:fill-zinc-400 fill-slate-500" />
             {/* Subtitle */}
             <rect x="112" y="38" width="100" height="4" rx="1" fill="#94a3b8" className="dark:fill-zinc-500 fill-slate-400" />
             <rect x="112" y="46" width="80" height="4" rx="1" fill="#94a3b8" className="dark:fill-zinc-500 fill-slate-400" />
             {/* Section */}
-            <rect x="112" y="60" width="45" height="5" rx="1" fill="#64748b" className="dark:fill-zinc-400 fill-slate-500" />
+            <rect x="112" y="60" width="45" height="5" rx="1" fill="#64748d" className="dark:fill-zinc-400 fill-slate-500" />
             <rect x="112" y="70" width="116" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
             <rect x="112" y="78" width="100" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
             <rect x="112" y="86" width="110" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
             {/* Another section */}
-            <rect x="112" y="100" width="50" height="5" rx="1" fill="#64748b" className="dark:fill-zinc-400 fill-slate-500" />
+            <rect x="112" y="100" width="50" height="5" rx="1" fill="#64748d" className="dark:fill-zinc-400 fill-slate-500" />
             <rect x="112" y="110" width="116" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
             <rect x="112" y="118" width="90" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
             <rect x="112" y="126" width="105" height="3" rx="1" fill="#e2e8f0" className="dark:fill-zinc-700 fill-slate-200" />
@@ -683,7 +667,7 @@ export function RemoteVisualization() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <GridLayer color="#06b6d410" />
+      <GridLayer color="#2874ad10" />
 
       {/* 48% badge - HTML for proper centering */}
       <div
@@ -702,7 +686,7 @@ export function RemoteVisualization() {
         <svg width="356" height="180" className="absolute inset-0">
           <defs>
             <radialGradient id="globeGrad" cx="40%" cy="35%" r="65%">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.2" />
+              <stop offset="0%" stopColor="#2874ad" stopOpacity="0.2" />
               <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0.05" />
             </radialGradient>
             <clipPath id="globeClip">
@@ -716,7 +700,7 @@ export function RemoteVisualization() {
             cy="90"
             r="65"
             fill="url(#globeGrad)"
-            stroke="#06b6d4"
+            stroke="#2874ad"
             strokeWidth="1.5"
           />
 
@@ -731,7 +715,7 @@ export function RemoteVisualization() {
                 rx={Math.cos(lat * Math.PI / 180) * 65}
                 ry="12"
                 fill="none"
-                stroke="#06b6d4"
+                stroke="#2874ad"
                 strokeWidth="0.75"
               />
             ))}
@@ -743,7 +727,7 @@ export function RemoteVisualization() {
                 y1="25"
                 x2={178 + lon * 0.5}
                 y2="155"
-                stroke="#06b6d4"
+                stroke="#2874ad"
                 strokeWidth="0.75"
               />
             ))}
@@ -795,8 +779,8 @@ export function RemoteVisualization() {
         </svg>
       </ScaleLayer>
 
-      <RadialGradientLayer color="#06b6d4" />
-      <LinearRevealLayer color="#06b6d4" hovered={hovered} />
+      <RadialGradientLayer color="#2874ad" />
+      <LinearRevealLayer color="#2874ad" hovered={hovered} />
     </div>
   );
 }
