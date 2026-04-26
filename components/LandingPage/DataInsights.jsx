@@ -161,10 +161,10 @@ const DataInsights = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-accent bg-accent/10 rounded-full border border-accent/20">
+            <span className="inline-block px-4 py-2 mb-4 text-sm font-medium bg-[#533afd]/10 border border-[#533afd]/20 text-[#533afd] rounded-sm" style={{ fontFeatureSettings: '"ss01" on' }}>
               Original Research
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+            <h2 className="text-4xl md:text-5xl font-[300] tracking-tight mb-4 text-[--ds-raw-navy-975]" style={{ fontFeatureSettings: '"ss01" on' }}>
               The State of AI Resume Building 2026
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -213,8 +213,8 @@ const DataInsights = () => {
             variants={itemVariants}
             className="max-w-3xl mx-auto text-center"
           >
-            <div className="bg-muted/40 border border-accent/10 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-3">
+            <div className="bg-[--ds-raw-white] border border-[--ds-raw-border] rounded-sm p-6 shadow-elevated">
+              <h3 className="text-lg font-[300] tracking-tight text-[--ds-raw-navy-975] mb-3" style={{ fontFeatureSettings: '"ss01" on' }}>
                 Methodology
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -230,7 +230,8 @@ const DataInsights = () => {
             </p>
             <Link
               href="https://app.cvai.dev/dashboard/resumes"
-              className="inline-block bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+              className="inline-block bg-[#533afd] hover:bg-[#4434d4] text-white font-[400] px-8 py-3 rounded-sm transition-colors"
+              style={{ fontFeatureSettings: '"ss01" on' }}
             >
               Build Your Resume with AI
             </Link>
