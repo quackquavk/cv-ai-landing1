@@ -249,7 +249,7 @@ export function NeuralNetworkVisualization() {
         </svg>
       </ScaleLayer>
 
-      <RadialGradientLayer color="#533afd" />
+      <RadialGradientLayer color="#ff6600" />
 
       {/* 3.2x badge */}
       <div
@@ -264,7 +264,7 @@ export function NeuralNetworkVisualization() {
         </div>
       </div>
 
-      <LinearRevealLayer color="#533afd" hovered={hovered} />
+      <LinearRevealLayer color="#ff6600" hovered={hovered} />
     </div>
   );
 }

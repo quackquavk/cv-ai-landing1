@@ -161,7 +161,7 @@ const DataInsights = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 mb-4 text-sm font-medium bg-[#533afd]/10 border border-[#533afd]/20 text-[#533afd] rounded-sm" style={{ fontFeatureSettings: '"ss01" on' }}>
+            <span className="inline-block px-4 py-2 mb-4 text-sm font-medium bg-[#ff6600]/10 border border-[#ff6600]/20 text-[#ff6600] rounded-sm" style={{ fontFeatureSettings: '"ss01" on' }}>
               Original Research
             </span>
             <h2 className="text-4xl md:text-5xl font-[300] tracking-tight mb-4 text-[--ds-raw-navy-975]" style={{ fontFeatureSettings: '"ss01" on' }}>
@@ -192,7 +192,7 @@ const DataInsights = () => {
                     </CardVisual>
                     <CardBody>
                       <CardTitle>{finding.label}</CardTitle>
-                      <p className="text-2xl font-[300] text-[#533afd] mb-1" style={{ fontFeatureSettings: '"ss01" on' }}>
+                      <p className="text-2xl font-[300] text-[#ff6600] mb-1" style={{ fontFeatureSettings: '"ss01" on' }}>
                         {finding.stat}
                       </p>
                       <CardDescription>{finding.description}</CardDescription>
@@ -228,7 +228,7 @@ const DataInsights = () => {
             </p>
             <Link
               href="https://app.cvai.dev/dashboard/resumes"
-              className="inline-block bg-[#533afd] hover:bg-[#4434d4] text-white font-[400] px-8 py-3 rounded-sm transition-colors"
+              className="inline-block bg-[#ff6600] hover:bg-[#e65c00] text-white font-[400] px-8 py-3 rounded-sm transition-colors"
               style={{ fontFeatureSettings: '"ss01" on' }}
             >
               Build Your Resume with AI
