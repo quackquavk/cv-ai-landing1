@@ -174,7 +174,7 @@ export function NeuralNetworkVisualization() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <GridLayer color="#8b5cf610" />
+      <GridLayer color="#ff660010" />
 
       <ScaleLayer hovered={hovered} scale={1.05}>
         <svg width="356" height="180" className="absolute inset-0">
@@ -187,7 +187,7 @@ export function NeuralNetworkVisualization() {
                 y1={node.y}
                 x2={nodes[j].x}
                 y2={nodes[j].y}
-                stroke="#8b5cf6"
+                stroke="#ff6600"
                 strokeWidth={hovered ? 1.5 : 0.75}
                 strokeOpacity={hovered ? 0.5 : 0.2}
                 className="transition-all duration-[200ms]"
@@ -207,7 +207,7 @@ export function NeuralNetworkVisualization() {
               cy={node.y}
               r="18"
               fill="none"
-              stroke="#8b5cf6"
+              stroke="#ff6600"
               strokeWidth="1"
               opacity="0.3"
               className="animate-ping"
@@ -229,7 +229,7 @@ export function NeuralNetworkVisualization() {
                   cx={node.x}
                   cy={node.y}
                   r={size + 4}
-                  fill="#8b5cf6"
+                  fill="#ff6600"
                   opacity={hovered ? 0.3 : 0.15}
                   className="transition-all duration-[150ms]"
                   style={{ transitionDelay: `${i * 35}ms` }}
@@ -239,7 +239,7 @@ export function NeuralNetworkVisualization() {
                   cx={node.x}
                   cy={node.y}
                   r={size}
-                  fill="#8b5cf6"
+                  fill="#ff6600"
                   className="transition-all duration-[150ms]"
                   style={{ transitionDelay: `${i * 35}ms` }}
                 />
@@ -250,19 +250,6 @@ export function NeuralNetworkVisualization() {
       </ScaleLayer>
 
       <RadialGradientLayer color="#ff6600" />
-
-      {/* 3.2x badge */}
-      <div
-        className="absolute top-3 right-3 transition-all duration-[150ms]"
-        style={{
-          transform: hovered ? "scale(1.1)" : "scale(1)",
-          transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)"
-        }}
-      >
-        <div className="flex items-center justify-center rounded-full bg-violet-500 px-3 py-1 shadow-lg min-w-[44px]">
-          <span className="text-xs font-bold text-white leading-none">3.2x</span>
-        </div>
-      </div>
 
       <LinearRevealLayer color="#ff6600" hovered={hovered} />
     </div>
@@ -499,19 +486,6 @@ export function ScanVisualization() {
 
       <RadialGradientLayer color="#f59e0b" />
 
-      {/* 7s badge - positioned differently */}
-      <div
-        className="absolute top-3 right-3 transition-all duration-300"
-        style={{
-          transform: hovered ? "scale(1.1)" : "scale(1)",
-          transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)"
-        }}
-      >
-        <div className="flex items-center justify-center rounded-full bg-amber-500 px-3 py-1 shadow-lg min-w-[36px]">
-          <span className="text-xs font-bold text-white leading-none">7s</span>
-        </div>
-      </div>
-
       {/* Subtle timer arc */}
       <svg
         width="40"
@@ -556,19 +530,6 @@ export function ApplicationsVisualization() {
       onMouseLeave={() => setHovered(false)}
     >
       <GridLayer color="#ec489910" />
-
-      {/* 250+ badge - HTML for proper centering */}
-      <div
-        className="absolute top-3 right-3 z-10 flex items-center justify-center rounded-full bg-pink-500 transition-all duration-[150ms] shadow-lg"
-        style={{
-          width: "55px",
-          height: "26px",
-          transform: hovered ? "scale(1.15)" : "scale(1)",
-          transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)"
-        }}
-      >
-        <span className="text-sm font-bold text-white leading-none">250+</span>
-      </div>
 
       <ScaleLayer hovered={hovered} scale={1.1}>
         <svg width="356" height="180" className="absolute inset-0">
@@ -668,19 +629,6 @@ export function RemoteVisualization() {
       onMouseLeave={() => setHovered(false)}
     >
       <GridLayer color="#2874ad10" />
-
-      {/* 48% badge - HTML for proper centering */}
-      <div
-        className="absolute top-3 right-3 z-10 flex items-center justify-center rounded-full bg-teal-500 transition-all duration-[150ms] shadow-lg"
-        style={{
-          width: "50px",
-          height: "24px",
-          transform: hovered ? "scale(1.1)" : "scale(1)",
-          transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)"
-        }}
-      >
-        <span className="text-xs font-bold text-white leading-none">48%</span>
-      </div>
 
       <ScaleLayer hovered={hovered} scale={1.08}>
         <svg width="356" height="180" className="absolute inset-0">
