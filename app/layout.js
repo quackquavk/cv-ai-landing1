@@ -2,12 +2,19 @@ import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Toaster } from "@/components/ui/toaster";
-import { Poppins } from "next/font/google";
+import { Manrope } from "next/font/google";
+import { Source_Code_Pro } from "next/font/google";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const sourceCode = Source_Code_Pro({
+  variable: "--font-source-code",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -170,7 +177,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={` ${poppins.variable} `}>
+      <body className={`${manrope.variable} ${sourceCode.variable}`}>
         <AuthProvider>
           <ThemeProvider>
             <Toaster />

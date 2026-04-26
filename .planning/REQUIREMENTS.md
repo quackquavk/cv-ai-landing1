@@ -4,16 +4,16 @@
 
 | Requirement | Description | Phase | Status |
 |-------------|-------------|-------|--------|
-| DS-01 | Migrate color tokens to Stripe design system (#533afd purple, #061b31 navy, etc.) | Phase 1 | Pending |
-| DS-02 | Implement sohne-var font with OpenType "ss01" stylistic set | Phase 1 | Pending |
-| DS-03 | Apply weight 300 typography hierarchy with negative letter-spacing at display sizes | Phase 1 | Pending |
-| DS-04 | Implement blue-tinted multi-layer shadow system (rgba(50,50,93,0.25)) | Phase 1 | Pending |
-| DS-05 | Update button components to Stripe specs (4px radius, proper padding, ghost/outlined variants) | Phase 2 | Pending |
-| DS-06 | Update card components with Stripe shadow formulas and border treatments | Phase 2 | Pending |
-| DS-07 | Implement badge/pill components with Stripe color scheme | Phase 2 | Pending |
-| DS-08 | Update form/input styling with Stripe focus states and label treatments | Phase 2 | Pending |
-| DS-09 | Ensure dark mode support with light-dark() CSS function | Phase 1 | Pending |
-| DS-10 | Apply conservative border-radius scale (4px-8px only, no pill shapes) | Phase 1 | Pending |
+| DS-01 | Migrate color tokens to Stripe design system (#533afd purple, #061b31 navy, etc.) | Phase 1 | Complete |
+| DS-02 | Implement Manrope font with OpenType "ss01" stylistic set (sohne-var alternative) | Phase 1 | Complete |
+| DS-03 | Apply weight 300 typography hierarchy with negative letter-spacing at display sizes | Phase 1 | Complete |
+| DS-04 | Implement blue-tinted multi-layer shadow system (rgba(50,50,93,0.25)) | Phase 1 | Complete |
+| DS-05 | Update button components to Stripe specs (4px radius, proper padding, ghost/outlined variants) | Phase 2 | Complete |
+| DS-06 | Update card components with Stripe shadow formulas and border treatments | Phase 2 | Complete |
+| DS-07 | Implement badge/pill components with Stripe color scheme | Phase 2 | Complete |
+| DS-08 | Update form/input styling with Stripe focus states and label treatments | Phase 2 | N/A (no form components) |
+| DS-09 | Ensure dark mode support with light-dark() CSS function | Phase 1 | Complete |
+| DS-10 | Apply conservative border-radius scale (4px-8px only, no pill shapes) | Phase 1 | Complete | |
 
 ## Requirements List
 

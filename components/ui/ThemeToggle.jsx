@@ -18,7 +18,7 @@ const ThemeToggle = () => {
       <Button
         variant="ghost"
         size="icon"
-        className="text-[#b0b0b0] hover:text-[#ff6600] hover:bg-[#ff6600]/10"
+        className="text-[--ds-raw-slate-body] hover:text-[--ds-raw-orange-500] hover:bg-[--ds-raw-orange-500]/10"
       >
         <Sun size={20} />
       </Button>
@@ -29,7 +29,7 @@ const ThemeToggle = () => {
     <Button
       variant="ghost"
       size="icon"
-      className="text-[#b0b0b0] hover:text-[#ff6600] hover:bg-[#ff6600]/10 transition-all duration-200"
+      className="text-[--ds-raw-slate-body] hover:text-[--ds-raw-orange-500] hover:bg-[--ds-raw-orange-500]/10 transition-all duration-200"
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >

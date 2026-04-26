@@ -21,7 +21,6 @@
 /build
 
 # misc
-.planning
 .DS_Store
 *.pem
 
